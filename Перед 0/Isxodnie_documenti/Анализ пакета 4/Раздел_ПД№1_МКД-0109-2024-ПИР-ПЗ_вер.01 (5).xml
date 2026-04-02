@@ -1,0 +1,1124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="explanatorynote-01-05.xsl" ?>
+<ExplanatoryNote xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="explanatorynote-01-05.xsd" SchemaVersion="01.05" id="07A0DDBB-414C-07CA-E4AE-130FF7B9132D">
+  <ExplanatoryNoteNumber>МКД-0109-2024-ПИР-ПЗ</ExplanatoryNoteNumber>
+  <ExplanatoryNoteYear>2025</ExplanatoryNoteYear>
+  <IssueAuthor>
+    <IP>
+      <FamilyName>Рыбкин</FamilyName>
+      <FirstName>Владимир</FirstName>
+      <SecondName>Ильич</SecondName>
+      <OGRNIP>323774600408320</OGRNIP>
+      <PostAddress>
+        <Country>Россия</Country>
+        <Region>77</Region>
+        <PostIndex>108809</PostIndex>
+        <District>Внуково</District>
+        <City>Москва</City>
+        <Settlement>Давыдково</Settlement>
+      </PostAddress>
+    </IP>
+  </IssueAuthor>
+  <Signers>
+    <ChiefProjectEngineer>
+      <FamilyName>Рыбкин</FamilyName>
+      <FirstName>Владимир</FirstName>
+      <SecondName>Ильич</SecondName>
+      <SNILS>124-030-763 03</SNILS>
+      <NOPRIZ>П-070820</NOPRIZ>
+    </ChiefProjectEngineer>
+  </Signers>
+  <Developer>
+    <Organization>
+      <OrgFullName>АДМИНИСТРАЦИЯ МУНИЦИПАЛЬНОГО ОКРУГА ЗАРАЙСК МОСКОВСКОЙ ОБЛАСТИ</OrgFullName>
+      <OrgOGRN>1035002850960</OrgOGRN>
+      <OrgINN>5014003145</OrgINN>
+      <OrgKPP>501401001</OrgKPP>
+      <Address>
+        <Country>Россия</Country>
+        <Region>50</Region>
+        <City>Зарайск</City>
+        <Street>Советская</Street>
+        <Building>23</Building>
+      </Address>
+    </Organization>
+  </Developer>
+  <UsedNorms>
+    <UsedNorm>Муниципальная программа городского округа Зарайск Московской области «Переселение граждан из аварийного жилищного фонда» на 2023-2027 годы, утвержденная постановлением главы городского округа Зарайск Московской области от 09.12.2022 № 2217/12 (Подпрограмма 4 «Обеспечение мероприятий по переселению граждан из аварийного жилищного фонда в Московской области, признанного таковым после 1 января 2017 года», Основное мероприятие 01. «Переселение граждан из аварийного жилищного фонда, признанного таковым после 1 января 2017 года», Мероприятие 01.01. «Обеспечение мероприятий по переселению граждан из аварийного жилищного фонда, признанного таковым после 01 января 2017 года»)</UsedNorm>
+    <UsedNorm>Государственная программа Московской области «Переселение граждан из аварийного жилищного фонда в Московской области», утвержденная постановлением Правительства Московской области от 28.03.2019 №182/10 (в редакции от 01.01.2024)</UsedNorm>
+  </UsedNorms>
+  <ProjectDecisionDocuments>
+    <Document>
+      <DocType>05.03</DocType>
+      <DocName>Умный контракт_выполнение работ одновременно по проектированию, строительству, реконструкции и (или) капитальному ремонту объектов капитального строительства (здания) (вер.16) 9741339 2024_06_17-23_02</DocName>
+      <DocNumber>9741339 2024_06_17-23_02</DocNumber>
+      <DocDate>2024-06-17</DocDate>
+      <DocIssueAuthor>АДМИНИСТРАЦИЯ ГОРОДСКОГО ОКРУГА ЗАРАЙСК МОСКОВСКОЙ ОБЛАСТИ</DocIssueAuthor>
+      <File>
+        <FileName>Умный контракт_выполнение работ одновременно по проектированию, строительс___апитального строительства _здания_ _вер_16_ 9741339 2024_06_17-23_02.docx</FileName>
+        <FileFormat>docx</FileFormat>
+        <FileChecksum>246B33F2</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.03</DocType>
+      <DocName>Приложение_5_к_контракту_Описание_объекта_закупки_24.06.24</DocName>
+      <DocNumber>5</DocNumber>
+      <DocDate>2024-06-24</DocDate>
+      <DocIssueAuthor>АДМИНИСТРАЦИЯ ГОРОДСКОГО ОКРУГА ЗАРАЙСК МОСКОВСКОЙ ОБЛАСТИ</DocIssueAuthor>
+      <File>
+        <FileName>Приложение_5_к_контракту_Описание_объекта_закупки_24.06.24.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>D6F24A50</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>03.02</DocType>
+      <DocName>ГПЗУ_Администрация_го_Зарайск_МО_1120</DocName>
+      <DocNumber>РФ-50-3-53-0-00-2024-26767-0</DocNumber>
+      <DocDate>2024-06-03</DocDate>
+      <DocIssueAuthor>Комитет по архитектуре и градостроительству Московской области</DocIssueAuthor>
+      <File>
+        <FileName>ГПЗУ_Администрация_го_Зарайск_МО_1120.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>D1AB1D6B</FileChecksum>
+      </File>
+    </Document>
+  </ProjectDecisionDocuments>
+  <ProjectInitialDocuments>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия водоснабжения</DocName>
+      <DocNumber>№227</DocNumber>
+      <DocDate>2024-03-28</DocDate>
+      <DocIssueAuthor>МУП "ЕСКХ Зарайского района"</DocIssueAuthor>
+      <File>
+        <FileName>Подключение_к_системе_водоснабжения.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>E892101D</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия на вынос тепловой сети</DocName>
+      <DocNumber>б/н</DocNumber>
+      <DocDate>2025-02-25</DocDate>
+      <DocIssueAuthor>МУП "ЕСКХ Зарайского района"</DocIssueAuthor>
+      <File>
+        <FileName>SKM_224e25022517240.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>31355BC8</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия на технологическое присоединение к электрическим сетям ПАО «Россети Московский регион» энергопринимающих устройств</DocName>
+      <DocNumber>И-25-00-222905/102/В8</DocNumber>
+      <DocDate>2025-05-24</DocDate>
+      <DocIssueAuthor>ПАО «Россети Московский регион»</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия, 222905  TU.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>B07685AE</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>ТЕХНИЧЕСКИЕ УСЛОВИЯ на подключение (технологическое присоединение) к сетям электросвязи</DocName>
+      <DocNumber>№ 01/17/12739/25</DocNumber>
+      <DocDate>2025-07-14</DocDate>
+      <DocIssueAuthor>ПАО "Ростелеком"</DocIssueAuthor>
+      <File>
+        <FileName>ТУ_01_17_12739_25_на_подключение_ТП_для_МКД_ЖК_FTTB_Зарайск_Московская.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>749EA653</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>ТЕХНИЧЕСКИЕ УСЛОВИЯ на подключение (технологическое присоединение) газоиспользующего оборудования и объектов капитального строительства к сетям газораспределения</DocName>
+      <DocNumber>№ К0649-62/1</DocNumber>
+      <DocDate>2025-06-05</DocDate>
+      <DocIssueAuthor>АО «Мособлгаз»</DocIssueAuthor>
+      <File>
+        <FileName>ТУ № К0649-621.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>8A104ED7</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия на подключение к Единой региональной информационной системе сбора, обработки и хранения видеоданных в электронном виде системы «Безопасный регион» создаваемого программно-технического комплекса видеонаблюдения</DocName>
+      <DocNumber>№ 20241119-3ЭУ</DocNumber>
+      <DocDate>0024-11-19</DocDate>
+      <DocIssueAuthor>Министерства государственного управления, информационных технологий и связи Московской области</DocIssueAuthor>
+      <File>
+        <FileName>С печатью ЭЦП МИТС МО Решение (Технические условия на подключение к ЕРИС-ВН создаваемого ПТКВ) (1).pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>F8FDF35E</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия водоотведения</DocName>
+      <DocNumber>№227</DocNumber>
+      <DocDate>2025-03-28</DocDate>
+      <DocIssueAuthor>МУП "ЕСКХ Зарайского района"</DocIssueAuthor>
+      <File>
+        <FileName>Подключение_к_системе_водоотведения.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>2FA10F78</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.01</DocType>
+      <DocName>Задание ИГДИ</DocName>
+      <DocNumber>76-09/2024АЗ-ИГДИ</DocNumber>
+      <DocDate>2024-09-03</DocDate>
+      <DocIssueAuthor>ООО "АЗИМУТ"</DocIssueAuthor>
+      <File>
+        <FileName>Задание ИГДИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>7229579C</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.02</DocType>
+      <DocName>Программа ИГДИ</DocName>
+      <DocNumber>76-09/2024АЗ-ИГДИ</DocNumber>
+      <DocDate>2024-09-04</DocDate>
+      <DocIssueAuthor>ООО "АЗИМУТ"</DocIssueAuthor>
+      <File>
+        <FileName>Программа ИГДИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>FE4F2860</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.01</DocType>
+      <DocName>Задание ИГИ</DocName>
+      <DocNumber>76-09/2024АЗ-ИГИ</DocNumber>
+      <DocDate>2024-09-04</DocDate>
+      <DocIssueAuthor>ООО "АЗИМУТ"</DocIssueAuthor>
+      <File>
+        <FileName>Задание ИГИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>5077FD55</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.02</DocType>
+      <DocName>Программа ИГИ</DocName>
+      <DocNumber>76-09/2024АЗ-ИГИ</DocNumber>
+      <DocDate>2024-09-04</DocDate>
+      <DocIssueAuthor>ООО "АЗИМУТ"</DocIssueAuthor>
+      <File>
+        <FileName>Программа ИГИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>8DE24750</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.01</DocType>
+      <DocName>Задание ИГМИ</DocName>
+      <DocNumber>76-09/2024АЗ-ИГМИ</DocNumber>
+      <DocDate>2024-09-04</DocDate>
+      <DocIssueAuthor>ООО "АЗИМУТ"</DocIssueAuthor>
+      <File>
+        <FileName>Задание ИГМИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>93407C41</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.02</DocType>
+      <DocName>Программа ИГМИ</DocName>
+      <DocNumber>76-09/2024АЗ-ИГМИ</DocNumber>
+      <DocDate>2024-09-04</DocDate>
+      <DocIssueAuthor>ООО "АЗИМУТ"</DocIssueAuthor>
+      <File>
+        <FileName>Программа ИГМИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>24657BD8</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.01</DocType>
+      <DocName>Задание ИЭИ</DocName>
+      <DocNumber>76-09/2024АЗ-ИЭИ</DocNumber>
+      <DocDate>2024-09-04</DocDate>
+      <DocIssueAuthor>ООО "АЗИМУТ"</DocIssueAuthor>
+      <File>
+        <FileName>Задание ИЭИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>7797E7D3</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.02</DocType>
+      <DocName>Программа ИЭИ</DocName>
+      <DocNumber>76-09/2024АЗ-ИЭИ</DocNumber>
+      <DocDate>2024-09-04</DocDate>
+      <DocIssueAuthor>ООО "АЗИМУТ"</DocIssueAuthor>
+      <File>
+        <FileName>Программа ИЭИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>C4AF05B4</FileChecksum>
+      </File>
+    </Document>
+  </ProjectInitialDocuments>
+  <EngineeringSurveyDocuments>
+    <Document>
+      <DocType>06.02</DocType>
+      <DocName>Технический отчет по результатам инженерно-геологических изысканий</DocName>
+      <DocNumber>76-09/2024АЗ-ИГИ</DocNumber>
+      <DocDate>2025-03-14</DocDate>
+      <FullDocIssueAuthor>
+        <Organization>
+          <OrgFullName>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "АЗИМУТ-45"</OrgFullName>
+          <OrgOGRN>1175074013113</OrgOGRN>
+          <OrgINN>5043062480</OrgINN>
+          <OrgKPP>504301001</OrgKPP>
+          <Address>
+            <Country>Россия</Country>
+            <Region>50</Region>
+            <District>Серпухов</District>
+            <City>Серпухов</City>
+            <Settlement>Оболенск</Settlement>
+            <Street>Строителей</Street>
+            <Building>2</Building>
+            <Room>47</Room>
+          </Address>
+        </Organization>
+        <SROMembership>
+          <SRO SROType="Саморегулируемая организация в области инженерных изысканий">Ассоциация "Объединение изыскателей "ГеоИндустрия"</SRO>
+        </SROMembership>
+      </FullDocIssueAuthor>
+      <File>
+        <FileName>76-09_2024АЗ-ИГИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>0C06FB35</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>06.04</DocType>
+      <DocName>Технический отчет по результатам инженерно-экологических изысканий</DocName>
+      <DocNumber>76-09/2024АЗ-ИЭИ</DocNumber>
+      <DocDate>2025-03-27</DocDate>
+      <FullDocIssueAuthor>
+        <Organization>
+          <OrgFullName>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "АЗИМУТ-45"</OrgFullName>
+          <OrgOGRN>1175074013113</OrgOGRN>
+          <OrgINN>5043062480</OrgINN>
+          <OrgKPP>504301001</OrgKPP>
+          <Address>
+            <Country>Россия</Country>
+            <Region>50</Region>
+            <District>Серпухов</District>
+            <City>Серпухов</City>
+            <Settlement>Оболенск</Settlement>
+            <Street>Строителей</Street>
+            <Building>2</Building>
+            <Room>47</Room>
+          </Address>
+        </Organization>
+        <SROMembership>
+          <SRO SROType="Саморегулируемая организация в области инженерных изысканий">Ассоциация "Объединение изыскателей "ГеоИндустрия"</SRO>
+        </SROMembership>
+      </FullDocIssueAuthor>
+      <File>
+        <FileName>76-09_2024АЗ-ИЭИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>56C4FD09</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>06.03</DocType>
+      <DocName>ТЕХНИЧЕСКИЙ ОТЧЕТ ПО РЕЗУЛЬТАТАМ ИНЖЕНЕРНО-ГИДРОМЕТЕОРОЛОГИЧЕСКИХ ИЗЫСКАНИЙ</DocName>
+      <DocNumber>76-092024АЗ-ИГМИ</DocNumber>
+      <DocDate>0025-02-25</DocDate>
+      <FullDocIssueAuthor>
+        <Organization>
+          <OrgFullName>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "АЗИМУТ-45"</OrgFullName>
+          <OrgOGRN>1175074013113</OrgOGRN>
+          <OrgINN>5043062480</OrgINN>
+          <OrgKPP>504301001</OrgKPP>
+          <Address>
+            <Country>Россия</Country>
+            <Region>50</Region>
+            <District>Серпухов</District>
+            <City>Серпухов</City>
+            <Settlement>Оболенск</Settlement>
+            <Street>Строителей</Street>
+            <Building>2</Building>
+            <Room>47</Room>
+          </Address>
+        </Organization>
+        <SROMembership>
+          <SRO SROType="Саморегулируемая организация в области инженерных изысканий">Ассоциация "Объединение изыскателей "ГеоИндустрия"</SRO>
+        </SROMembership>
+      </FullDocIssueAuthor>
+      <File>
+        <FileName>76-092024АЗ-ИГМИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>FB727601</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>06.99</DocType>
+      <DocName>ТЕХНИЧЕСКИЙ ОТЧЕТ о проведении археологической разведки на земельном участке</DocName>
+      <DocNumber>-</DocNumber>
+      <DocDate>2024-11-11</DocDate>
+      <FullDocIssueAuthor>
+        <Organization>
+          <OrgFullName>ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ БЮДЖЕТНОЕ УЧРЕЖДЕНИЕ НАУКИ ИНСТИТУТ АРХЕОЛОГИИ РОССИЙСКОЙ АКАДЕМИИ НАУК</OrgFullName>
+          <OrgOGRN>1027739836728</OrgOGRN>
+          <OrgINN>7728023670</OrgINN>
+          <OrgKPP>772801001</OrgKPP>
+          <Address>
+            <Country>Россия</Country>
+            <Region>77</Region>
+            <City>Москва</City>
+            <Street>Дмитрия Ульянова</Street>
+            <Building>19</Building>
+          </Address>
+        </Organization>
+      </FullDocIssueAuthor>
+      <File>
+        <FileName>Техотчет_Рыбкин_2099-24.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>CB6A7E57</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>06.01</DocType>
+      <DocName>Технический отчет по результатам инженерно-геодезических изысканий</DocName>
+      <DocNumber>76-09/2024АЗ-ИГДИ</DocNumber>
+      <DocDate>2024-11-06</DocDate>
+      <FullDocIssueAuthor>
+        <Organization>
+          <OrgFullName>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "АЗИМУТ-45"</OrgFullName>
+          <OrgOGRN>1175074013113</OrgOGRN>
+          <OrgINN>5043062480</OrgINN>
+          <OrgKPP>504301001</OrgKPP>
+          <Address>
+            <Country>Россия</Country>
+            <Region>50</Region>
+            <District>Серпухов</District>
+            <City>Серпухов</City>
+            <Settlement>Оболенск</Settlement>
+            <Street>Строителей</Street>
+            <Building>2</Building>
+            <Room>47</Room>
+          </Address>
+        </Organization>
+        <SROMembership>
+          <SRO SROType="Саморегулируемая организация в области инженерных изысканий">Ассоциация "Объединение изыскателей "ГеоИндустрия"</SRO>
+        </SROMembership>
+      </FullDocIssueAuthor>
+      <File>
+        <FileName>76-09-2024АЗ-ИГДИ  .pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>E77E08D5</FileChecksum>
+      </File>
+    </Document>
+  </EngineeringSurveyDocuments>
+  <FinanceSources>
+    <BudgetSource>
+      <BudgetLevel>Бюджет субъекта Российской Федерации</BudgetLevel>
+      <SourceRatio>100</SourceRatio>
+    </BudgetSource>
+  </FinanceSources>
+  <NonIndustrialObject ObjectID="id40349291" Placement="1">
+    <Name>Многоквартирный жилой дом по адресу: Московская область, городской округ Зарайск, ул. Московская</Name>
+    <ConstructionType>1</ConstructionType>
+    <ConstructionDuration>24</ConstructionDuration>
+    <Address>
+      <Country>Российская Федерация</Country>
+      <Region>50</Region>
+      <City>Зарайск</City>
+      <Street>Московская</Street>
+    </Address>
+    <Functions>
+      <FunctionsNote>Жилой дом</FunctionsNote>
+      <FunctionsClass>01.02.001.003</FunctionsClass>
+    </Functions>
+    <FunctionsFeatures>
+      <Text>Не относится</Text>
+    </FunctionsFeatures>
+    <PowerIndicator>
+      <Name>Количество жильцов</Name>
+      <Measure>792</Measure>
+      <Value>145</Value>
+    </PowerIndicator>
+    <TEI>
+      <Name>Строительный объем</Name>
+      <Measure>113</Measure>
+      <Value>26442,0</Value>
+    </TEI>
+    <TEI>
+      <Name>Строительный объем подземный</Name>
+      <Measure>113</Measure>
+      <Value>3667</Value>
+    </TEI>
+    <TEI>
+      <Name>Строительный объем надземный</Name>
+      <Measure>113</Measure>
+      <Value>22775</Value>
+    </TEI>
+    <TEI>
+      <Name>Этажность</Name>
+      <Measure>796</Measure>
+      <Value>4</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество этажей</Name>
+      <Measure>796</Measure>
+      <Value>5</Value>
+    </TEI>
+    <TEI>
+      <Name>Общая площадь здания</Name>
+      <Measure>055</Measure>
+      <Value>6870,7</Value>
+    </TEI>
+    <TEI>
+      <Name>Площадь застройки</Name>
+      <Measure>055</Measure>
+      <Value>1970,3</Value>
+    </TEI>
+    <EnergyEfficiency>
+      <EnergyEfficiencyClass>A</EnergyEfficiencyClass>
+    </EnergyEfficiency>
+    <FireDangerCategory>Категория не устанавливается</FireDangerCategory>
+    <PeoplePermanentStay>
+      <Text>В указанном многоквартирном доме к помещениям с постоянным пребыванием людей относятся жилые квартиры</Text>
+    </PeoplePermanentStay>
+    <ResponsibilityLevel>нормальный</ResponsibilityLevel>
+    <ClimateConditions>
+      <ClimateNote>
+        <Text>Место строительства – Московская обл., г. Зарайск.&lt;br&gt;Согласно СП 50.13330.2024 зона влажности – 2 (нормальная).&lt;br&gt;Согласно п.4.4 СП 50.13330.2024 условия эксплуатации – Б.&lt;br&gt;</Text>
+      </ClimateNote>
+      <DangerousNatureProcesses>
+        <Text>-</Text>
+      </DangerousNatureProcesses>
+      <ClimateDistrict>III</ClimateDistrict>
+      <GeologicalConditions>I</GeologicalConditions>
+      <WindDistrict>I</WindDistrict>
+      <SnowDistrict>III</SnowDistrict>
+      <SeismicActivity>5</SeismicActivity>
+    </ClimateConditions>
+    <Resources>
+      <Resource>
+        <Name>Водопотребление</Name>
+        <Measure>599</Measure>
+        <Value>0,045126</Value>
+      </Resource>
+      <Resource>
+        <Name>Водоотведение</Name>
+        <Measure>599</Measure>
+        <Value>0,03492</Value>
+      </Resource>
+      <Resource>
+        <Name>Расчетная нагрузка</Name>
+        <Measure>214</Measure>
+        <Value>284,3</Value>
+      </Resource>
+    </Resources>
+    <LandCategory>2</LandCategory>
+    <ProjectDocumentation>
+      <Section2>
+        <SectionContent>
+          <Document>
+            <DocName>Раздел 2</DocName>
+            <DocNumber>МКД-0109-2024-ПИР-ПЗУ</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Согласование">
+                <FamilyName>Рыбкин</FamilyName>
+                <FirstName>Владимир</FirstName>
+                <SNILS>124-030-763 03</SNILS>
+                <NOPRIZ>П-070820</NOPRIZ>
+              </ProjectDocParticipant>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Макарова</FamilyName>
+                <FirstName>Дарья</FirstName>
+                <SecondName>Владимировна</SecondName>
+                <SNILS>167-414-365 76</SNILS>
+                <NOPRIZ>П-167933</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>Раздел_ПД№2_МКД-0109-2024-ПИР-ПЗУ_вер.01-ИУЛ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>4608E43F</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел_ПД№2_МКД-0109-2024-ПИР-ПЗУ_вер.01.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>B4129BFA</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section2>
+      <Section3>
+        <SectionContent>
+          <Document>
+            <DocName>Раздел 3</DocName>
+            <DocNumber>МКД-0109-2024-ПИР-АР</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Согласование">
+                <FamilyName>Рыбкин</FamilyName>
+                <FirstName>Владимир</FirstName>
+                <SNILS>124-030-763 03</SNILS>
+                <NOPRIZ>П-070820</NOPRIZ>
+              </ProjectDocParticipant>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Макарова</FamilyName>
+                <FirstName>Дарья</FirstName>
+                <SecondName>Владимировна</SecondName>
+                <SNILS>167-414-365 76</SNILS>
+                <NOPRIZ>П-167933</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>Раздел_ПД№3_МКД-0109-2024-ПИР-АР_вер.01-ИУЛ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>0C585EE7</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел_ПД№3_МКД-0109-2024-ПИР-АР_вер.01.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>E33FC933</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section3>
+      <Section4>
+        <SectionContent>
+          <Document>
+            <DocName>Раздел 4</DocName>
+            <DocNumber>МКД-0109-2024-ПИР-КР</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Согласование">
+                <FamilyName>Рыбкин</FamilyName>
+                <FirstName>Владимир</FirstName>
+                <SNILS>124-030-763 03</SNILS>
+                <NOPRIZ>П-070820</NOPRIZ>
+              </ProjectDocParticipant>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Макарова</FamilyName>
+                <FirstName>Дарья</FirstName>
+                <SecondName>Владимировна</SecondName>
+                <SNILS>167-414-365 76</SNILS>
+                <NOPRIZ>П-167933</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>Раздел_ПД№4_МКД-0109-2024-ПИР-КР_вер.01-ИУЛ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>DF91AB98</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел_ПД№4_МКД-0109-2024-ПИР-КР_вер.01.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>BF5E3C9F</FileChecksum>
+            </File>
+          </Document>
+          <Document>
+            <DocName>Раздел 4. Расчетная пояснительная записка</DocName>
+            <DocNumber>МКД-0109-2025-ПИР-КР.РР</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Согласование">
+                <FamilyName>Рыбкин</FamilyName>
+                <FirstName>Владимир</FirstName>
+                <SNILS>124-030-763 03</SNILS>
+                <NOPRIZ>П-070820</NOPRIZ>
+              </ProjectDocParticipant>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Макарова</FamilyName>
+                <FirstName>Дарья</FirstName>
+                <SecondName>Владимировна</SecondName>
+                <SNILS>167-414-365 76</SNILS>
+                <NOPRIZ>П-167933</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>Раздел_ПД№4_МКД-0109-2024-ПИР-КР_вер.01-ИУЛ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>DF91AB98</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел_ПД№4_МКД-0109-2024-ПИР-КР.РР.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>CEE08E30</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section4>
+      <Section5>
+        <SectionContent>
+          <ElectricitySupply>
+            <Document>
+              <DocName>Раздел 1 подраздел 1</DocName>
+              <DocNumber>МКД-0109-2024-ПИР-ИОС1</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Согласование">
+                  <FamilyName>Рыбкин</FamilyName>
+                  <FirstName>Владимир</FirstName>
+                  <SNILS>124-030-763 03</SNILS>
+                  <NOPRIZ>П-070820</NOPRIZ>
+                </ProjectDocParticipant>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Макарова</FamilyName>
+                  <FirstName>Дарья</FirstName>
+                  <SecondName>Владимировна</SecondName>
+                  <SNILS>167-414-365 76</SNILS>
+                  <NOPRIZ>П-167933</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>Раздел_ПД№5_подраздел_ПД№1_МКД-0109-2024-ПИР-ИОС1_вер.01-ИУЛ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>B609E554</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел_ПД№5_подраздел_ПД№1_МКД-0109-2024-ПИР-ИОС1_вер.01.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>3B143EBB</FileChecksum>
+              </File>
+            </Document>
+          </ElectricitySupply>
+          <WaterSupply>
+            <Document>
+              <DocName>Раздел 5 подраздел 2</DocName>
+              <DocNumber>МКД-0109-2024-ПИР-ИОС2</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Согласование">
+                  <FamilyName>Рыбкин</FamilyName>
+                  <FirstName>Владимир</FirstName>
+                  <SNILS>124-030-763 03</SNILS>
+                  <NOPRIZ>П-070820</NOPRIZ>
+                </ProjectDocParticipant>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Макарова</FamilyName>
+                  <FirstName>Дарья</FirstName>
+                  <SecondName>Владимировна</SecondName>
+                  <SNILS>167-414-365 76</SNILS>
+                  <NOPRIZ>П-167933</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>Раздел_ПД№5_подраздел_ПД№2_МКД-0109-2024-ПИР-ИОС2_вер.01-ИУЛ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>418A668D</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел_ПД№5_подраздел_ПД№2_МКД-0109-2024-ПИР-ИОС2_вер.01.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>D4E1A8A4</FileChecksum>
+              </File>
+            </Document>
+          </WaterSupply>
+          <WaterRemoval>
+            <Document>
+              <DocName>Раздел 5 подраздел 3</DocName>
+              <DocNumber>МКД-0109-2024-ПИР-ИОС3</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Согласование">
+                  <FamilyName>Рыбкин</FamilyName>
+                  <FirstName>Владимир</FirstName>
+                  <SNILS>124-030-763 03</SNILS>
+                  <NOPRIZ>П-070820</NOPRIZ>
+                </ProjectDocParticipant>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Макарова</FamilyName>
+                  <FirstName>Дарья</FirstName>
+                  <SecondName>Владимировна</SecondName>
+                  <SNILS>167-414-365 76</SNILS>
+                  <NOPRIZ>П-167933</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>Раздел_ПД№5_подраздел_ПД№3_МКД-0109-2024-ПИР-ИОС3_вер.01-ИУЛ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>CC7BFA59</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел_ПД№5_подраздел_ПД№3_МКД-0109-2024-ПИР-ИОС3_вер.01.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>37371A1D</FileChecksum>
+              </File>
+            </Document>
+          </WaterRemoval>
+          <HeatingVentilation>
+            <Document>
+              <DocName>Раздел 5 подраздел 4 часть 1</DocName>
+              <DocNumber>МКД-0109-2024-ПИР-ИОС4.1</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Согласование">
+                  <FamilyName>Рыбкин</FamilyName>
+                  <FirstName>Владимир</FirstName>
+                  <SNILS>124-030-763 03</SNILS>
+                  <NOPRIZ>П-070820</NOPRIZ>
+                </ProjectDocParticipant>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Макарова</FamilyName>
+                  <FirstName>Дарья</FirstName>
+                  <SecondName>Владимировна</SecondName>
+                  <SNILS>167-414-365 76</SNILS>
+                  <NOPRIZ>П-167933</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>Раздел_ПД№5_подраздел_ПД№4_часть1_МКД-0109-2024-ПИР-ИОС4.1_вер.01-ИУЛ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>DEE22A82</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел_ПД№5_подраздел_ПД№4_часть1_МКД-0109-2024-ПИР-ИОС4.1_вер.01.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>E3156526</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Раздел 5 подраздел 4 часть 2</DocName>
+              <DocNumber>МКД-0109-2024-ПИР-ИОС4.2</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Согласование">
+                  <FamilyName>Рыбкин</FamilyName>
+                  <FirstName>Владимир</FirstName>
+                  <SNILS>124-030-763 03</SNILS>
+                  <NOPRIZ>П-070820</NOPRIZ>
+                </ProjectDocParticipant>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Макарова</FamilyName>
+                  <FirstName>Дарья</FirstName>
+                  <SecondName>Владимировна</SecondName>
+                  <SNILS>167-414-365 76</SNILS>
+                  <NOPRIZ>П-167933</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>Раздел_ПД№5_подраздел_ПД№4_часть2_МКД-0109-2024-ПИР-ИОС4.2_вер.01-ИУЛ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>5B75408A</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел_ПД№5_подраздел_ПД№4_часть2_МКД-0109-2024-ПИР-ИОС4.2_вер.01.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>F5FDCC43</FileChecksum>
+              </File>
+            </Document>
+          </HeatingVentilation>
+          <Communication>
+            <Document>
+              <DocName>Раздел 5 подраздел 5 часть 1</DocName>
+              <DocNumber>МКД-0109-2024-ПИР-ИОС5.1</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Согласование">
+                  <FamilyName>Рыбкин</FamilyName>
+                  <FirstName>Владимир</FirstName>
+                  <SNILS>124-030-763 03</SNILS>
+                  <NOPRIZ>П-070820</NOPRIZ>
+                </ProjectDocParticipant>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Макарова</FamilyName>
+                  <FirstName>Дарья</FirstName>
+                  <SecondName>Владимировна</SecondName>
+                  <SNILS>167-414-365 76</SNILS>
+                  <NOPRIZ>П-167933</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>Раздел_ПД№5_подраздел_ПД№5_часть1_МКД-0109-2024-ПИР-ИОС5.1_вер.01-ИУЛ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>39483527</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел_ПД№5_подраздел_ПД№5_часть1_МКД-0109-2024-ПИР-ИОС5.1_вер.01.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>6CB539EF</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Раздел 5 подраздел 5 часть 2</DocName>
+              <DocNumber>МКД-0109-2024-ПИР-ИОС5.2</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Согласование">
+                  <FamilyName>Рыбкин</FamilyName>
+                  <FirstName>Владимир</FirstName>
+                  <SNILS>124-030-763 03</SNILS>
+                  <NOPRIZ>П-070820</NOPRIZ>
+                </ProjectDocParticipant>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Макарова</FamilyName>
+                  <FirstName>Дарья</FirstName>
+                  <SecondName>Владимировна</SecondName>
+                  <SNILS>167-414-365 76</SNILS>
+                  <NOPRIZ>П-167933</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>Раздел_ПД№5_подраздел_ПД№5_часть2_МКД-0109-2024-ПИР-ИОС5.2_вер.01-ИУЛ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>DDBD4E8E</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел_ПД№5_подраздел_ПД№5_часть2_МКД-0109-2024-ПИР-ИОС5.2_вер.01.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>2109E716</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Раздел 5 подраздел 5 часть 3</DocName>
+              <DocNumber>МКД-0109-2024-ПИР-ИОС5.3</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Согласование">
+                  <FamilyName>Рыбкин</FamilyName>
+                  <FirstName>Владимир</FirstName>
+                  <SNILS>124-030-763 03</SNILS>
+                  <NOPRIZ>П-070820</NOPRIZ>
+                </ProjectDocParticipant>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Макарова</FamilyName>
+                  <FirstName>Дарья</FirstName>
+                  <SecondName>Владимировна</SecondName>
+                  <SNILS>167-414-365 76</SNILS>
+                  <NOPRIZ>П-167933</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>Раздел_ПД№5_подраздел_ПД№5_часть3_МКД-0109-2024-ПИР-ИОС5.3_вер.01-ИУЛ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>036343EC</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел_ПД№5_подраздел_ПД№5_часть3_МКД-0109-2024-ПИР-ИОС5.3_вер.01.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>1123D1AE</FileChecksum>
+              </File>
+            </Document>
+          </Communication>
+        </SectionContent>
+      </Section5>
+      <Section6>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section6>
+      <Section7>
+        <SectionContent>
+          <Document>
+            <DocName>Раздел 7</DocName>
+            <DocNumber>МКД-0109-2024-ПИР-ПОС</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Согласование">
+                <FamilyName>Рыбкин</FamilyName>
+                <FirstName>Владимир</FirstName>
+                <SNILS>124-030-763 03</SNILS>
+                <NOPRIZ>П-070820</NOPRIZ>
+              </ProjectDocParticipant>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Макарова</FamilyName>
+                <FirstName>Дарья</FirstName>
+                <SecondName>Владимировна</SecondName>
+                <SNILS>167-414-365 76</SNILS>
+                <NOPRIZ>П-167933</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>Раздел_ПД№7_МКД-0109-2024-ПИР-ПОС_вер.01-ИУЛ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>4E348B1C</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел_ПД№7_МКД-0109-2024-ПИР-ПОС_вер.01.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>27C57793</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section7>
+      <Section8>
+        <SectionContent>
+          <Document>
+            <DocName>Раздел 8</DocName>
+            <DocNumber>МКД-0109-2024-ПИР-ООС</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Согласование">
+                <FamilyName>Рыбкин</FamilyName>
+                <FirstName>Владимир</FirstName>
+                <SNILS>124-030-763 03</SNILS>
+                <NOPRIZ>П-070820</NOPRIZ>
+              </ProjectDocParticipant>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Макарова</FamilyName>
+                <FirstName>Дарья</FirstName>
+                <SecondName>Владимировна</SecondName>
+                <SNILS>167-414-365 76</SNILS>
+                <NOPRIZ>П-167933</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>Раздел_ПД№8_МКД-0109-2024-ПИР-ООС_вер.01-ИУЛ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>7AF4FE30</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел_ПД№8_МКД-0109-2024-ПИР-ООС_вер.01.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>DF84C343</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section8>
+      <Section9>
+        <SectionContent>
+          <Document>
+            <DocName>Раздел 9</DocName>
+            <DocNumber>МКД-0109-2024-ПИР-ПБ</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Согласование">
+                <FamilyName>Рыбкин</FamilyName>
+                <FirstName>Владимир</FirstName>
+                <SNILS>124-030-763 03</SNILS>
+                <NOPRIZ>П-070820</NOPRIZ>
+              </ProjectDocParticipant>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Макарова</FamilyName>
+                <FirstName>Дарья</FirstName>
+                <SecondName>Владимировна</SecondName>
+                <SNILS>167-414-365 76</SNILS>
+                <NOPRIZ>П-167933</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>Раздел_ПД№9_МКД-0109-2024-ПИР-ПБ_вер.01-ИУЛ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>94610C7B</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел_ПД№9_МКД-0109-2024-ПИР-ПБ_вер.01.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>E3F0C917</FileChecksum>
+            </File>
+          </Document>
+          <Document>
+            <DocName>Раздел 9. Отчет по определению расчетных величин пожарного риска</DocName>
+            <DocNumber>МКД-0109-2024-ПИР-ПБ.РР</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Согласование">
+                <FamilyName>Рыбкин</FamilyName>
+                <FirstName>Владимир</FirstName>
+                <SNILS>124-030-763 03</SNILS>
+                <NOPRIZ>П-070820</NOPRIZ>
+              </ProjectDocParticipant>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Макарова</FamilyName>
+                <FirstName>Дарья</FirstName>
+                <SecondName>Владимировна</SecondName>
+                <SNILS>167-414-365 76</SNILS>
+                <NOPRIZ>П-167933</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>Раздел_ПД№9_МКД-0109-2024-ПИР-ПБ.РР_вер.01-ИУЛ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>4818B2EF</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел_ПД№9_МКД-0109-2024-ПИР-ПБ.РР_вер.01.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>3196DB01</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section9>
+      <Section10>
+        <SectionContent>
+          <Document>
+            <DocName>Раздел 10</DocName>
+            <DocNumber>МКД-0109-2024-ПИР-ТБЭ</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Согласование">
+                <FamilyName>Рыбкин</FamilyName>
+                <FirstName>Владимир</FirstName>
+                <SNILS>124-030-763 03</SNILS>
+                <NOPRIZ>П-070820</NOPRIZ>
+              </ProjectDocParticipant>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Макарова</FamilyName>
+                <FirstName>Дарья</FirstName>
+                <SecondName>Владимировна</SecondName>
+                <SNILS>167-414-365 76</SNILS>
+                <NOPRIZ>П-167933</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>Раздел_ПД№10_МКД-0109-2024-ПИР-ТБЭ_вер.01-ИУЛ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>E01F5E9E</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел_ПД№10_МКД-0109-2024-ПИР-ТБЭ_вер.01.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>14E20D42</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section10>
+      <Section11>
+        <SectionContent>
+          <Document ObjectIDREFS="id40349291">
+            <DocName>Раздел 11</DocName>
+            <DocNumber>МКД-0109-2024-ПИР-ОДИ</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Согласование">
+                <FamilyName>Рыбкин</FamilyName>
+                <FirstName>Владимир</FirstName>
+                <SNILS>124-030-763 03</SNILS>
+                <NOPRIZ>П-070820</NOPRIZ>
+              </ProjectDocParticipant>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Макарова</FamilyName>
+                <FirstName>Дарья</FirstName>
+                <SecondName>Владимировна</SecondName>
+                <SNILS>167-414-365 76</SNILS>
+                <NOPRIZ>П-167933</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>Раздел_ПД№11_МКД-0109-2024-ПИР-ОДИ_вер.01-ИУЛ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>A4155659</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел_ПД№11_МКД-0109-2024-ПИР-ОДИ_вер.01.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>F839FC69</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section11>
+      <Section12>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section12>
+      <Section13>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section13>
+    </ProjectDocumentation>
+    <Model>
+      <Description>БИМ-Модель</Description>
+      <ModelFile>
+        <FileName>МКД-0109-2024-ПИР-КР_вер.01.ifc</FileName>
+        <FileFormat>IFC</FileFormat>
+        <FileChecksum>161C0484</FileChecksum>
+      </ModelFile>
+      <ModelFile>
+        <FileName>МКД-0109-2024-ПИР-АР_вер.01.ifc</FileName>
+        <FileFormat>IFC</FileFormat>
+        <FileChecksum>15248CC7</FileChecksum>
+      </ModelFile>
+    </Model>
+  </NonIndustrialObject>
+  <DesignerAssurance>
+    <Text>Проектная документация подготовлена в соответствии с требованиями, указанными в пункте 5 Постановления Правительства Российской Федерации от 16 февраля 2008 года N 87 "О составе разделов проектной документации и требованиях к их содержанию" (в действующей редакции), градостроительным планом земельного участка, заданием на проектирование, градостроительным регламентом, техническими регламентами, устанавливающими в том числе требования к обеспечению безопасной эксплуатации зданий, строений, сооружений и безопасному использованию прилегающих к ним территорий, а также с соблюдением технических условий</Text>
+  </DesignerAssurance>
+</ExplanatoryNote>

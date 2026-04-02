@@ -1,0 +1,2080 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="explanatorynote-01-05.xsl" ?>
+<ExplanatoryNote xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="explanatorynote-01-05.xsd" SchemaVersion="01.05" id="A4909D6C-6954-3764-D925-1976963CD2A4">
+  <ExplanatoryNoteNumber>157/25</ExplanatoryNoteNumber>
+  <ExplanatoryNoteYear>2025</ExplanatoryNoteYear>
+  <IssueAuthor>
+    <Organization>
+      <OrgFullName>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "МОСРЕГИОНПРОЕКТ"</OrgFullName>
+      <OrgOGRN>1135053000675</OrgOGRN>
+      <OrgINN>5053034203</OrgINN>
+      <OrgKPP>505301001</OrgKPP>
+      <Address>
+        <Country>Россия</Country>
+        <Region>50</Region>
+        <City>Электросталь</City>
+        <Street>Захарченко</Street>
+        <Building>4</Building>
+        <Room>2</Room>
+      </Address>
+    </Organization>
+  </IssueAuthor>
+  <Signers>
+    <ChiefProjectEngineer>
+      <FamilyName>Лагуточкин</FamilyName>
+      <FirstName>Андрей</FirstName>
+      <SecondName>Вячеславович</SecondName>
+      <SNILS>001-009-008 51</SNILS>
+      <NOPRIZ>П-121916</NOPRIZ>
+    </ChiefProjectEngineer>
+    <Signer engineeringRegistry="да" constructionRegistry="да">
+      <FamilyName>Лагуточкин</FamilyName>
+      <FirstName>Андрей</FirstName>
+      <SecondName>Вячеславович</SecondName>
+      <Position>ГИП</Position>
+    </Signer>
+  </Signers>
+  <Developer>
+    <Organization>
+      <OrgFullName>ГОСУДАРСТВЕННОЕ КАЗЕННОЕ УЧРЕЖДЕНИЕ МОСКОВСКОЙ ОБЛАСТИ "ДИРЕКЦИЯ ЗАКАЗЧИКА КАПИТАЛЬНОГО СТРОИТЕЛЬСТВА"</OrgFullName>
+      <OrgOGRN>1165047063103</OrgOGRN>
+      <OrgINN>5024171050</OrgINN>
+      <OrgKPP>502401001</OrgKPP>
+      <Address>
+        <Country>Россия</Country>
+        <Region>50</Region>
+        <City>Красногорск</City>
+        <Street>Строителей</Street>
+        <Building>7</Building>
+      </Address>
+    </Organization>
+  </Developer>
+  <UsedNorms>
+    <UsedNorm>СП 118.13330.2022 "СНиП 31-06-2009 Общественные здания и сооружения"</UsedNorm>
+    <UsedNorm>СП 2.4.3648-20 «Санитарно-эпидемиологические требования к организациям воспитания и обучения, отдыха и оздоровления детей и молодежи</UsedNorm>
+    <UsedNorm>САНПИН 1.2.3685-21 "Гигиенические нормативы и требования к обеспечению безопасности и (или) безвредности для человека факторов среды обитания"</UsedNorm>
+    <UsedNorm>СП 252.1325800.2016 «Здания дошкольных и общеобразовательных организаций»</UsedNorm>
+    <UsedNorm>СП 41-101-95 «Проектирование тепловых пунктов»</UsedNorm>
+    <UsedNorm>СП 124.13330.2012 «Тепловые сети»</UsedNorm>
+    <UsedNorm>«Правил коммерческого учета тепловой энергии, теплоносителя» №1034 от 18.10.2013г</UsedNorm>
+    <UsedNorm>СП 256.1325800.2016 «Электроустановки жилых и общественных зданий. Правила проектирования и монтажа»</UsedNorm>
+    <UsedNorm>ГОСТ 32396-2013 "Устройства вводно-распределительные для жилых и общественных зданий. Общие технические условия"</UsedNorm>
+    <UsedNorm>ПУЭ. Правила устройства электроустановок. Издание 7</UsedNorm>
+    <UsedNorm>Градостроительный кодекс РФ от 29.12.2004 г. № 190-ФЗ (ред. от 11.01.2018)</UsedNorm>
+    <UsedNorm>ГОСТ 12.1.033-81 ССБТ. «Пожарная безопасность. Термины и определения»</UsedNorm>
+    <UsedNorm>СП 30.13330.2016 «Внутренний водопровод и канализация зданий»</UsedNorm>
+    <UsedNorm>СП 31.13330.2012 «Водоснабжение. Наружные сети и сооружения»</UsedNorm>
+    <UsedNorm>СП 60.13330.2020 «Отопление, вентиляция и кондиционирование»</UsedNorm>
+    <UsedNorm>СП 118.13330.2012 «Общественные здания административного назначения»</UsedNorm>
+    <UsedNorm>СП 1.13130.2020 «Системы противопожарной защиты. Эвакуационные пути и выходы»</UsedNorm>
+    <UsedNorm>СП 2.13130.2020 «Системы противопожарной защиты. Обеспечение огнестойкости объектов защиты»</UsedNorm>
+    <UsedNorm>СП 251.1325800.2016 "Здания общеобразовательных организаций"</UsedNorm>
+    <UsedNorm>СП 51.13330.2011 "Защита от шума"</UsedNorm>
+    <UsedNorm>СП 52.13330.2016 "Естественное и искусственное освещение"</UsedNorm>
+    <UsedNorm>СП 44.13330.2011 «СНиП 2.09.04-87* Административные и бытовые здания»</UsedNorm>
+    <UsedNorm>СП 63.13330.2018 «СНиП 52-01-2003 Бетонные и железобетонные конструкции»</UsedNorm>
+    <UsedNorm>СП 16.13330.2017 «СНиП II-23-81* Стальные конструкции»</UsedNorm>
+    <UsedNorm>СП 15.13330.2020 «СНиП II-22-81* Каменные и армокаменные конструкции»</UsedNorm>
+    <UsedNorm>СП 22.13330.2016 «СНиП 2.02.01-83* Основания зданий и сооружений»</UsedNorm>
+    <UsedNorm>СП 131.13330.2020 «Строительная климатология»</UsedNorm>
+    <UsedNorm>СП 256.1325800.2016 «Электроустановки жилых и общественных зданий. Правила проектирования и монтажа»</UsedNorm>
+    <UsedNorm>СП 6.13.13130 "Системы противопожарной защиты. Электрооборудование»</UsedNorm>
+    <UsedNorm>СО 153-34.21.122-2003 «Инструкция по устройству молниезащиты зданий, сооружений и промышленных коммуникаций»</UsedNorm>
+    <UsedNorm>ГОСТ Р 31565-2012 «Кабельные изделия. Требования пожарной безопасности»</UsedNorm>
+    <UsedNorm>ГОСТ 30331.1-2013 «Электроустановки низковольтные»</UsedNorm>
+    <UsedNorm>СП 2.4.3648.2020 «Санитарно-эпидемиологические требования к организациям воспитания и обучения, отдыха и оздоровления детей и молодежи»</UsedNorm>
+    <UsedNorm>СП 8.13130.2020 «Наружный противопожарный водопровод»</UsedNorm>
+    <UsedNorm>СП 10.13130.2020 «Внутренний противопожарный водопровод"</UsedNorm>
+    <UsedNorm>СП 40-102-2000 «Проектирование и монтаж трубопроводов систем водоснабжения и канализации из полимерных труб»</UsedNorm>
+    <UsedNorm>СП 42.13330.2016 «Градостроительство. Планировка и застройка городских и сельских поселений»</UsedNorm>
+    <UsedNorm>СП 73.13330.2016 «Внутренние санитарно-технические системы»</UsedNorm>
+    <UsedNorm>СанПиН 2.1.4.2496-09 «Гигиенические требования к обеспечению безопасности систем горячего водоснабжения»</UsedNorm>
+    <UsedNorm>ГОСТ Р 3262-75 «Трубы стальные водогазопроводные»</UsedNorm>
+    <UsedNorm>ГОСТ Р 10704-91 «Трубы стальные электросварные прямошовные»</UsedNorm>
+    <UsedNorm>ГОСТ Р 21.619-2023 «Правила выполнения проектной документации внутренних систем и наружных сетей водоснабжения»</UsedNorm>
+    <UsedNorm>ГОСТ Р 21.1101-2020 «Основные требования к проектной и рабочей документации»</UsedNorm>
+    <UsedNorm>Постановления от 16 февраля 2008 года №87 «О составе разделов проектной документации и требованиях к их содержанию»</UsedNorm>
+    <UsedNorm>СП 32.13330.2018 «Канализация. Наружные сети и сооружения»</UsedNorm>
+    <UsedNorm>СП 86.13330.2014 "Магистральные трубопроводы"</UsedNorm>
+    <UsedNorm>СП 112.13330.2011 «Пожарная безопасность зданий и сооружений»</UsedNorm>
+    <UsedNorm>СП 7.13130.2013 «Отопление, вентиляция и кондиционирование. Требования пожарной безопасности»</UsedNorm>
+    <UsedNorm>ГОСТ 30494-2011 «Здания жилые и общественные. Параметры микроклимата в помещениях»</UsedNorm>
+    <UsedNorm>ГОСТ 12.1.005-88 «Общие санитарно-гигиенические требования к воздуху рабочей зоны»</UsedNorm>
+    <UsedNorm>СП 12-136-2002 "Решения по охране труда и промышленной безопасности в проектах организации строительства и проектах производства работ"</UsedNorm>
+    <UsedNorm>СП 61.13330.2012 "Тепловая изоляция оборудования и трубопроводов"</UsedNorm>
+    <UsedNorm>СП 41-105-2002 "Проектирование и строительство тепловых сетей бесканальной прокладки из стальных труб"</UsedNorm>
+    <UsedNorm>ГОСТ 30732-2020 "Трубы и фасонные изделия с тепловой изоляцией из пенополиуретана в полиэтиленовой оболочке"</UsedNorm>
+    <UsedNorm>Руководства НПО "Стройполимер" по проектированию и строительству трубопроводов с заводской изоляцией</UsedNorm>
+    <UsedNorm>СП 3.13130.2009 "Системы противопожарной защиты. Системы оповещения и управления эвакуацией людей при пожаре. Требования пожарной безопасности"</UsedNorm>
+    <UsedNorm>СП 484.1311500.2020 "Системы противопожарной защиты. Системы пожарной сигнализации и автоматизация систем противопожарной защиты. Нормы и правила проектирования"</UsedNorm>
+    <UsedNorm>СП 6.13130.2021 "Системы противопожарной защиты. Электроустановки низковольтные. Требования пожарной безопасности"</UsedNorm>
+    <UsedNorm>СП 6.13130.2021 "Системы противопожарной защиты. Электроустановки низковольтные. Требования пожарной безопасности"</UsedNorm>
+    <UsedNorm>Р 78.36.050-2015 "Выбор и применение активных оптико-электронных извещателей для блокировки внутренних и внешних периметров, дверей, окон, витрин и подступов к отдельным предметам"</UsedNorm>
+    <UsedNorm>Р 78.36.044-2014 «Выбор и применение охранных поверхностных звуковых извещателей для блокировки остекленных конструкций закрытых помещений»</UsedNorm>
+    <UsedNorm>Р 78.36.032-2014 «Инженерно-техническая укрепленность и оснащение техническими средствами охраны объектов, принимаемых под централизованную охрану"</UsedNorm>
+    <UsedNorm>РД 5-682-89 "Автоматизированные системы. Требования к содержанию документов"</UsedNorm>
+    <UsedNorm>ГОСТ 34.201-89" Информационная технология. Комплекс стандартов на автоматизированные системы. Виды, комплектность и обозначение документов при создании автоматизированных систем"</UsedNorm>
+    <UsedNorm>ГОСТ 34.602-89 "Информационная технология. Комплекс стандартов на автоматизированные системы. Техническое задание на создание автоматизированной системы"</UsedNorm>
+    <UsedNorm>ГОСТ 34.601-90 "Информационная технология. Комплекс стандартов на автоматизированные системы. Автоматизированные системы. Стадии создания"</UsedNorm>
+    <UsedNorm>EIA/TIA-568-А "Стандарт на телекоммуникационные кабельные системы в коммерческих зданиях"</UsedNorm>
+    <UsedNorm>EIA/TIA-569-A "Стандарт на телекоммуникационные кабельные трассы и помещения в коммерческих зданиях"</UsedNorm>
+    <UsedNorm>EIA/TIA-606 "Стандарт на администрирование телекоммуникационных инфраструктур"</UsedNorm>
+    <UsedNorm>EIA/TIA-607 "Стандарт на защитное и технологическое заземление для телекоммуникационного оборудования"</UsedNorm>
+    <UsedNorm>ГОСТ Р 53246-2008 "Системы кабельные структурированные. Проектирование основных узлов системы. Общие требования"</UsedNorm>
+    <UsedNorm>ВСН 116-2002 "Инструкция по проектированию линейно-кабельных сооружений связи"</UsedNorm>
+    <UsedNorm>СП 133.13330.2012 "Сети проводного радиовещания и оповещения в зданиях и сооружениях. Нормы проектирования"</UsedNorm>
+    <UsedNorm>СП 11-112-2001 "Порядок разработки и состав раздела "Инженерно-технические мероприятия гражданской обороны. Мероприятия по предупреждению чрезвычайных ситуаций" градостроительной документации для территория городских и сельских поселений, других муниципальных образов"</UsedNorm>
+    <UsedNorm>ГОСТ Р 21.1101-2013 "Система проектной документации для строительства (СПДС). Основные требования к проектной и рабочей документации"</UsedNorm>
+    <UsedNorm>СП 77.13330.2016 "Системы автоматизации"</UsedNorm>
+    <UsedNorm>ГОСТ Р 21.1101-2013 "Система проектной документации для строительства (СПДС). Основные требования к проектной и рабочей документации"</UsedNorm>
+    <UsedNorm>ГОСТ 2.701-2008 "Единая система конструкторской документации (ЕСКД). Схемы. Виды и типы. Общие требования к выполнению"</UsedNorm>
+    <UsedNorm>ГОСТ 21.406-88 "Система проектной документации для строительства. Проводные средства связи. Обозначения условные графические на схемах и планах"</UsedNorm>
+    <UsedNorm>СП 3.5.3.1129-02, «Санитарно-эпидемиологические требования к проведению дератизации»</UsedNorm>
+    <UsedNorm>«Методические указания по применению Охранно-защитной дератизационной системы, утвержденные Руководителем Департамента Госсанэпиднадзора Минздрава России 11-3/123-09 от 31.05.2000г.»</UsedNorm>
+    <UsedNorm>Постановления Правительства Москвы от 27.04.1999г. №379 "Об оснащении объектов города охранно-защитными дератизационными системами (ОЗДС)"</UsedNorm>
+    <UsedNorm>СП 59.13330.2020 "Доступность зданий и сооружений для маломобильных групп населения"</UsedNorm>
+    <UsedNorm>СП 48.13330.2019 «Организация строительства» СНиП 12-01-2004</UsedNorm>
+    <UsedNorm>СП 45.13330.2017«Земляные сооружения, основания и фундаменты»</UsedNorm>
+    <UsedNorm>СП 70.13330.2012 «Несущие и ограждающие конструкции"</UsedNorm>
+    <UsedNorm>СП 126.13330.2017 «Геодезические работы в строительстве"</UsedNorm>
+    <UsedNorm>СП 20.13330.2016 «СНиП 2.01.07-85 Нагрузки и воздействия»</UsedNorm>
+    <UsedNorm>СП 14.13330.2018 «Строительство в сейсмических районах»</UsedNorm>
+    <UsedNorm>СНиП 12-03-2001 «Безопасность труда в строительстве. Часть 1. Общие требования»</UsedNorm>
+    <UsedNorm>СНиП 12-04-2002 «Безопасность труда в строительстве. Часть 2. Строительное производство»</UsedNorm>
+    <UsedNorm>СНиП 1.04.03-85* «Нормы продолжительности строительства и задела в строительстве предприятий, зданий и сооружений», часть I, часть II</UsedNorm>
+    <UsedNorm>Пособие по определению продолжительности строительства предприятий, зданий и сооружений к СНиП 1.04.03-85*</UsedNorm>
+    <UsedNorm>СП 2.2.3670-20 «Санитарно-эпидемиологические требования к условиям труда»</UsedNorm>
+    <UsedNorm>Методическое пособие по разработке решений по экологической безопасности строительства в составе ПОС и ППР</UsedNorm>
+    <UsedNorm>Федеральный закон «Об охране окружающей среды» от 10.01.02 г.№7-ФЗ (с изм. от 08.08.2024 г.)</UsedNorm>
+    <UsedNorm>Федеральный закон «Об охране атмосферного воздуха» от 04.05.1999г. №96-ФЗ (с изм. от 08.08.2024 г.)</UsedNorm>
+    <UsedNorm>Водный кодекс РФ от 03.06.2006 г. №74-ФЗ (с изм. 08.08.20214 г)</UsedNorm>
+    <UsedNorm>Земельный кодекс Российской Федерации от 25.10.2001г. №136-ФЗ (последняя редакция)</UsedNorm>
+    <UsedNorm>Федеральный закон от 24.04.1995 N 52-ФЗ «О животном мире» (с изм. от 30.11.2024 г.)</UsedNorm>
+    <UsedNorm>Лесной кодекс Российской Федерации от 4.12.2006 г. N200-ФЗ (с изм. от 26.12.2024 г.)</UsedNorm>
+    <UsedNorm>Федеральный закон «О санитарно-эпидемиологическом благополучии населения» от30.03.99г. №52-ФЗ (в ред. от 26.12.2024 г.)</UsedNorm>
+    <UsedNorm>Федеральный закон «Об отходах производства и потребления» от 24.06.98 г. №89- ФЗ (с изм. от 26.12.2024 г.)</UsedNorm>
+    <UsedNorm>ФЗ «Об экологической экспертизе» от 23.11.95 г. №174-ФЗ (с изм. на 08.08.2024 г.)</UsedNorm>
+    <UsedNorm>СП 4.13130.2013 "Системы противопожарной защиты. Ограничение распространения пожара на объектах защиты. Требования к объемно-планировочным и конструктивным решениям (с изменением №1, утвержденным и введенным в действие приказом МЧС России от 14.02.2020 г. № 89 c 14.08.2020; с изменением №2, утвержденным и введенным в действие приказом МЧС России от 30.12.2021 №944 c 01.03.2022; с изменением №3, утвержденным и введенным в действие приказом МЧС России от 15.06.2022 № 610 c 01.12.2022; с изменением №4, утвержденным и введенным в действие приказом МЧС России от 27.06.2023 №659 c 01.12.2023) "</UsedNorm>
+    <UsedNorm>СП 485.1311500.2020 "Системы противопожарной защиты. Установки пожаротушения автоматические. Нормы и правила проектирования"</UsedNorm>
+    <UsedNorm>СП 486.1311500.2020 "Системы противопожарной защиты. Перечень зданий, сооружений, помещений и оборудования, подлежащих защите автоматическими установками пожаротушения и системами пожарной сигнализации. Требования пожарной безопасности"</UsedNorm>
+    <UsedNorm>«Правила противопожарного режима в Российской Федерации», утвержденные Постановлением Правительства РФ от 16.09.2020 №1479</UsedNorm>
+    <UsedNorm>Приказ МЧС России от 14.11.2022 №1140 «Об утверждении методики определения расчетных величин пожарного риска в зданиях, сооружениях и пожарных отсеках различных классов функциональной пожарной опасности»</UsedNorm>
+    <UsedNorm>Федеральный закон «Технический регламент о безопасности зданий и сооружений» от 30.12.2009 №384-ФЗ</UsedNorm>
+    <UsedNorm>СП 35-101-2001 «Проектирование зданий и сооружений с учетом доступности для маломобильных групп населения. Общие положения»</UsedNorm>
+    <UsedNorm>СП 138.13330.2012 «Общественные здания и сооружения, доступные маломобильным группам населения. Правила проектирования (с изменениями № 1-3)»</UsedNorm>
+    <UsedNorm>ОСН-АПК 2.10.24.001-04 "Нормы освещения сельскохозяйственных предприятий, зданий и сооружений"</UsedNorm>
+    <UsedNorm>СП 367.1325800.2017 «Здания жилые и общественные Правила проектирования естественного и совмещенного освещения»</UsedNorm>
+    <UsedNorm>Приказ Министерства строительства и жилищно-коммунального хозяйства Российской Федерации от 17.11.2017 года № 1550/пр «Об утверждении Требований энергетической эффективности зданий, строений, сооружений»</UsedNorm>
+    <UsedNorm>СП 50.13330.2024 "Тепловая защита зданий"</UsedNorm>
+    <UsedNorm>ГОСТ 31937-201 «Здания и сооружения. Правила обследования и мониторинга технического состояния»</UsedNorm>
+  </UsedNorms>
+  <ProjectDecisionDocuments>
+    <Document>
+      <DocType>01.99</DocType>
+      <DocName>Проект государственного контракта</DocName>
+      <DocNumber>0148200005425000064</DocNumber>
+      <DocDate>2025-02-14</DocDate>
+      <DocIssueAuthor>ГКУ МО "ДЗКС"</DocIssueAuthor>
+      <File>
+        <FileName>Лист подписания условий контракта №10711207 от 14.02.2025 (МСК).html</FileName>
+        <FileFormat>html</FileFormat>
+        <FileChecksum>56D85EBE</FileChecksum>
+      </File>
+    </Document>
+  </ProjectDecisionDocuments>
+  <ProjectInitialDocuments>
+    <Document>
+      <DocType>17.01</DocType>
+      <DocName>Выписка из Единого государственного реестра недвижимости об объекте недвижимости</DocName>
+      <DocNumber>КУВИ-001/2025-93868187</DocNumber>
+      <DocDate>2025-04-21</DocDate>
+      <DocIssueAuthor>Филиал публично-правовой компании "Роскадастр" по Московской области</DocIssueAuthor>
+      <File>
+        <FileName>Выписка ЕГРН 50_45_0040322_1152.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>1CDFC094</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.03</DocType>
+      <DocName>Техническое задание на выполнение работ по подготовке проектной и разработке рабочей документации для объекта: МБОУ СОШ на 1100 мест: Московская область, г.о.Королев, ЖК "Золотые ворота"</DocName>
+      <DocNumber>1</DocNumber>
+      <DocDate>2025-12-10</DocDate>
+      <DocIssueAuthor>ООО "Высота"</DocIssueAuthor>
+      <File>
+        <FileName>ЗнП.xml</FileName>
+        <FileFormat>xml</FileFormat>
+        <FileChecksum>E1E41FCA</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия на подключение (присоединение) объектовой системы оповещения</DocName>
+      <DocNumber>9/5</DocNumber>
+      <DocDate>2025-09-01</DocDate>
+      <DocIssueAuthor>ГКУ МО "Спеццентр "Звенигород"</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия на подключение (присоединение) объектовой системы оповещения.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>8299FD9E</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия на подключение к Единой региональной информационной системе сбора, обработки и хранения видеоданных в электронном виде системы «Безопасный регион» создаваемого программно-технического комплекса видеонаблюдения</DocName>
+      <DocNumber>20250514-2ЭУ</DocNumber>
+      <DocDate>2025-05-14</DocDate>
+      <DocIssueAuthor>Государственное управление информационных технологий и связи Московской области</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия на подключение к Единой региональной информационной системе сбора, обработки и хранения видеоданных в электронном вид.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>03BEF7F9</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия на присоединение к сетям ливневой канализации</DocName>
+      <DocNumber>08-25</DocNumber>
+      <DocDate>2025-11-10</DocDate>
+      <DocIssueAuthor>Муниципальное бюджетное учреждение городского округа Королёв Московской области по комплексному содержанию объектов дорожного хозяйства и благоустройству "Автобытдор"</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия на присоединение к сетям ливневой канализации.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>6EF8830F</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия для присоединения к электрическим сетям</DocName>
+      <DocNumber>2509788/Р/1/МТ</DocNumber>
+      <DocDate>2025-06-11</DocDate>
+      <DocIssueAuthor>АО "Мособлэнерго"</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия для присоединения к электрическим сетям.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>0548F42B</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия на перекладку наружных сетей водоснабжения и водоотведения, попадающих в зону размещения объекта</DocName>
+      <DocNumber>1083-П</DocNumber>
+      <DocDate>2025-08-29</DocDate>
+      <DocIssueAuthor>АО "Водоканал"</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия на перекладку наружных сетей водоснабжения и водоотведения, попадающих в зону размещения объекта.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>D7D86169</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.99</DocType>
+      <DocName>Технические условия на проектирование и монтаж узла учёта тепловой энергии и теплоносителя</DocName>
+      <DocNumber>539</DocNumber>
+      <DocDate>0005-05-27</DocDate>
+      <DocIssueAuthor>АО "Теплосеть"</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия на проектирование и монтаж узла учёта тепловой энергии и теплоносителя.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>AA10494C</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.99</DocType>
+      <DocName>Технические условия на подключение лифтов к действующей лифтовой диспетчерской системы "ОБЬ" единичного лифта</DocName>
+      <DocNumber>001/Д-05</DocNumber>
+      <DocDate>2025-05-16</DocDate>
+      <DocIssueAuthor>ООО "Специализированное предприятие "Волга"</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия на подключение лифтов к действующей лифтовой диспетчерской системы ОБЬ единичного лифта.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>E22A8443</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.01</DocType>
+      <DocName>Технические условия на подключение к системе теплоснабжения</DocName>
+      <DocNumber>П-ТС-99</DocNumber>
+      <DocDate>2025-09-25</DocDate>
+      <DocIssueAuthor>АО "Теплосеть"</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия на подключение к системе теплоснабжения.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>B619B127</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.99</DocType>
+      <DocName>Технические условия на установку узлов учета расхода холодной воды объекта</DocName>
+      <DocNumber>854</DocNumber>
+      <DocDate>2025-08-27</DocDate>
+      <DocIssueAuthor>АО "Водоканал"</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия на установку узлов учета расхода холодной воды объекта.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>4124A168</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.99</DocType>
+      <DocName>Технические условия на телевизионное обеспечение, IP телефонию и организацию доступа в сети Интернет объекта</DocName>
+      <DocNumber>ТУ I-II-04-25</DocNumber>
+      <DocDate>2025-08-27</DocDate>
+      <DocIssueAuthor>АО "КАСКАД"</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия на телевизионное обеспечение, IP телефонию и организацию доступа в сети Интернет объекта.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>3873553C</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.99</DocType>
+      <DocName>Технические условия на подключение с сетям электросвязи</DocName>
+      <DocNumber>ПАО "Ростелеком"</DocNumber>
+      <DocDate>2025-09-18</DocDate>
+      <DocIssueAuthor>01/17/17083/25</DocIssueAuthor>
+      <File>
+        <FileName>Технические условия на подключение с сетям электросвязи.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>65E04E87</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>04.99</DocType>
+      <DocName>ТУ на подключение к региональной системе оповещения населения (РСОН)</DocName>
+      <DocNumber>9/5</DocNumber>
+      <DocDate>2025-09-01</DocDate>
+      <DocIssueAuthor>Главное управление гражданской защиты Московской области</DocIssueAuthor>
+      <File>
+        <FileName>ТУ подключения (технологического присоединения)- РСОН.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>8299FD9E</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>23.02</DocType>
+      <DocName>Заключение Главного управления культурного наследия Московской области</DocName>
+      <DocNumber>Р001-1745582406-95901639</DocNumber>
+      <DocDate>2025-04-14</DocDate>
+      <DocIssueAuthor>Главное управление культурного наследия Московской области</DocIssueAuthor>
+      <File>
+        <FileName>Заключение Главного управления культурного наследия Московской области.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>42892002</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.01</DocType>
+      <DocName>Техническое задание на выполнение инженерно-геодезических изысканий</DocName>
+      <DocNumber>б/н</DocNumber>
+      <DocDate>2025-04-22</DocDate>
+      <DocIssueAuthor>ООО "Высота"</DocIssueAuthor>
+      <File>
+        <FileName>ТЗ на ИГДИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>59BA0C35</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.02</DocType>
+      <DocName>Программа инженерно-геодезических изысканий</DocName>
+      <DocNumber>819-ИГДИ-П</DocNumber>
+      <DocDate>0025-05-06</DocDate>
+      <DocIssueAuthor>ООО "Высота"</DocIssueAuthor>
+      <File>
+        <FileName>Программа ИГДИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>4A3C8C88</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.01</DocType>
+      <DocName>Техническое задание на выполнение инженерно-геологических изысканий</DocName>
+      <DocNumber>б/н</DocNumber>
+      <DocDate>2025-09-05</DocDate>
+      <DocIssueAuthor>ООО "Высота"</DocIssueAuthor>
+      <File>
+        <FileName>ТЗ на ИГИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>759C8CEA</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.02</DocType>
+      <DocName>Программа на выполнение инженерно-геологических изысканий</DocName>
+      <DocNumber>б/н</DocNumber>
+      <DocDate>2025-09-05</DocDate>
+      <DocIssueAuthor>ООО "Высота"</DocIssueAuthor>
+      <File>
+        <FileName>Программа ИГИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>8CDB6100</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.01</DocType>
+      <DocName>Задание на выполнение инженерно-экологических изысканий</DocName>
+      <DocNumber>б/н</DocNumber>
+      <DocDate>2025-09-05</DocDate>
+      <DocIssueAuthor>ООО "Высота"</DocIssueAuthor>
+      <File>
+        <FileName>ТЗ по ИЭИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>45B8CF74</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>05.02</DocType>
+      <DocName>Программа работ на выполнение инженерно-экологических изысканий</DocName>
+      <DocNumber>б/н</DocNumber>
+      <DocDate>2025-09-05</DocDate>
+      <DocIssueAuthor>ООО "Высота"</DocIssueAuthor>
+      <File>
+        <FileName>Программа ИЭИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>83FE69E6</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>03.02</DocType>
+      <DocName>Градостроительный план земельного участка</DocName>
+      <DocNumber>РФ-50-3-39-0-00-2025-04973-0</DocNumber>
+      <DocDate>2025-02-03</DocDate>
+      <DocIssueAuthor>Комитет по архитектуре и градостроительству Московской области</DocIssueAuthor>
+      <File>
+        <FileName>ГПЗУ 2025.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>044C3C88</FileChecksum>
+      </File>
+    </Document>
+  </ProjectInitialDocuments>
+  <EngineeringSurveyDocuments>
+    <Document>
+      <DocType>06.02</DocType>
+      <DocName>Технический отчет по инженерно-геологическим изысканиям объекта</DocName>
+      <DocNumber>ПИР-ВЫС-ГВГК-091</DocNumber>
+      <DocDate>2025-10-08</DocDate>
+      <FullDocIssueAuthor>
+        <Organization>
+          <OrgFullName>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "ГЛАВГЕОКОМ"</OrgFullName>
+          <OrgOGRN>1127746649370</OrgOGRN>
+          <OrgINN>7726703422</OrgINN>
+          <OrgKPP>772601001</OrgKPP>
+          <Address>
+            <Country>Россия</Country>
+            <Region>77</Region>
+            <City>Москва</City>
+            <Street>Варшавское</Street>
+            <Building>17/6</Building>
+          </Address>
+        </Organization>
+      </FullDocIssueAuthor>
+      <IULFile>
+        <FileName>ИУЛ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>F3DA348D</FileChecksum>
+      </IULFile>
+      <File>
+        <FileName>Технический отчет по инженерно-геологическим изысканиям объекта.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>1E5B282A</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>06.04</DocType>
+      <DocName>Технический отчет по результатам инженерно-экологическим изысканиям</DocName>
+      <DocNumber>ГБ-11248-25ЭИ</DocNumber>
+      <DocDate>2025-10-20</DocDate>
+      <FullDocIssueAuthor>
+        <Organization>
+          <OrgFullName>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "ГЛАВГЕОКОМ"</OrgFullName>
+          <OrgOGRN>1127746649370</OrgOGRN>
+          <OrgINN>7726703422</OrgINN>
+          <OrgKPP>772601001</OrgKPP>
+          <Address>
+            <Country>Россия</Country>
+            <Region>77</Region>
+            <City>Москва</City>
+            <Street>Варшавское</Street>
+            <Building>17/6</Building>
+          </Address>
+        </Organization>
+      </FullDocIssueAuthor>
+      <IULFile>
+        <FileName>ИУЛ 11248-25ЭИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>89B8DC59</FileChecksum>
+      </IULFile>
+      <File>
+        <FileName>Технический отчет по результатам инженерно-экологическим изысканиям.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>D4CBF609</FileChecksum>
+      </File>
+    </Document>
+    <Document>
+      <DocType>06.01</DocType>
+      <DocName>Технический отчет по результатам инженерно-геодезических изысканий для подготовки проектной документации</DocName>
+      <DocNumber>819-ИГДИ</DocNumber>
+      <DocDate>2025-07-09</DocDate>
+      <FullDocIssueAuthor>
+        <Organization>
+          <OrgFullName>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТСТВЕННОСТЬЮ "ИНЖЕНЕРНЫЕ ИЗЫСКАНИЯ"</OrgFullName>
+          <OrgOGRN>1115050007775</OrgOGRN>
+          <OrgINN>5050093095</OrgINN>
+          <OrgKPP>505001001</OrgKPP>
+          <Address>
+            <Country>Россия</Country>
+            <Region>50</Region>
+            <City>Щёлково</City>
+            <Street>Браварская</Street>
+            <Building>2Г</Building>
+          </Address>
+        </Organization>
+      </FullDocIssueAuthor>
+      <IULFile>
+        <FileName>ИУЛ ИГДИ.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>541F06E3</FileChecksum>
+      </IULFile>
+      <File>
+        <FileName>Технический отчет по результатам инженерно-геодезических изысканий для подготовки проектной документации.pdf</FileName>
+        <FileFormat>pdf</FileFormat>
+        <FileChecksum>FA33BEA5</FileChecksum>
+      </File>
+    </Document>
+  </EngineeringSurveyDocuments>
+  <FinanceSources>
+    <BudgetSource>
+      <BudgetLevel>Бюджет субъекта Российской Федерации</BudgetLevel>
+      <SourceRatio>100</SourceRatio>
+    </BudgetSource>
+  </FinanceSources>
+  <NonIndustrialObject ObjectID="id54805286" Placement="1">
+    <Name>МБОУ СОШ на 1100 мест: Московская область, г.о. Королев, ЖК "Золотые ворота"</Name>
+    <ConstructionType>1</ConstructionType>
+    <ConstructionDuration>16</ConstructionDuration>
+    <Address>
+      <Country>Российская Федерация</Country>
+      <Region>50</Region>
+      <Note>г.о. Королев, ЖК "Золотые ворота"</Note>
+    </Address>
+    <Functions>
+      <FunctionsNote>Объект школьного образования</FunctionsNote>
+      <FunctionsClass>02.03.002.002</FunctionsClass>
+    </Functions>
+    <FunctionsFeatures>
+      <Text>не принадлежит</Text>
+    </FunctionsFeatures>
+    <PowerIndicator>
+      <Name>вместимость</Name>
+      <Measure>902</Measure>
+      <Value>1100</Value>
+    </PowerIndicator>
+    <TEI>
+      <Name>Этажность</Name>
+      <Measure>796</Measure>
+      <Value>3</Value>
+    </TEI>
+    <TEI>
+      <Name>Количество этажей</Name>
+      <Measure>796</Measure>
+      <Value>4</Value>
+    </TEI>
+    <TEI>
+      <Name>Площадь застройки</Name>
+      <Measure>055</Measure>
+      <Value>5927,17</Value>
+    </TEI>
+    <TEI>
+      <Name>Общая площадь</Name>
+      <Measure>055</Measure>
+      <Value>13070,15</Value>
+    </TEI>
+    <EnergyEfficiency>
+      <EnergyEfficiencyClass>A</EnergyEfficiencyClass>
+    </EnergyEfficiency>
+    <FireDangerCategory>Б</FireDangerCategory>
+    <PeoplePermanentStay>
+      <Text>В здании имеются помещения с постоянным пребыванием людей</Text>
+    </PeoplePermanentStay>
+    <ResponsibilityLevel>нормальный</ResponsibilityLevel>
+    <ClimateConditions>
+      <ClimateNote Title="Климат">
+        <Text>Климат</Text>
+      </ClimateNote>
+      <DangerousNatureProcesses Title="В геоморфологическом отношении участок работ расположен в пределах аккумулятивного пологоволнистого рельефа основной морены, сформированного московским ледником.">
+        <Text> В геоморфологическом отношении участок работ расположен в пределах аккумулятивного пологоволнистого рельефа основной морены, сформированного московским ледником. </Text>
+      </DangerousNatureProcesses>
+      <ClimateDistrict>IВ</ClimateDistrict>
+      <GeologicalConditions>II</GeologicalConditions>
+      <WindDistrict>I</WindDistrict>
+      <SnowDistrict>III</SnowDistrict>
+      <SeismicActivity>5</SeismicActivity>
+    </ClimateConditions>
+    <Resources>
+      <Resource>
+        <Name>Водоотведение</Name>
+        <Measure>599</Measure>
+        <Value>0,013</Value>
+      </Resource>
+      <Resource>
+        <Name>Расход тепла</Name>
+        <Measure>237</Measure>
+        <Value>0,476</Value>
+      </Resource>
+      <Resource>
+        <Name>Электроснабжение. Расчетная мощность объекта</Name>
+        <Measure>214</Measure>
+        <Value>300</Value>
+      </Resource>
+      <Resource>
+        <Name>Водоснабжение</Name>
+        <Measure>599</Measure>
+        <Value>0,019</Value>
+      </Resource>
+    </Resources>
+    <LandCategory>2</LandCategory>
+    <SoftwareUsed>
+      <Software>
+        <Name>Программный комплекс Мономах САПР. Сертификат соответствия № RA.RU.AБ86.H01213 до 04.09.2026 для проектирования железобетонных. конструкций многоэтажных каркасных зданий</Name>
+        <UsingNote>Для расчета здания в пространственной постановке была создана расчетная схема с приложением всех необходимых нагрузок, заданием соответствующих жесткостей элементов. При расчете здания учитывалось взаимодействие сооружения с основанием. С этой целью в ПК Мономах САПР была выполнена стыковка с моделью грунта, созданной в подпрограмме ГРУНТ на основе результатов инженерно-геологических изысканий.</UsingNote>
+      </Software>
+      <Software>
+        <Name>Лира-САПР для расчета конструкций различного назначения. Сертификат соответствия № RA.RU.АБ 86.Н 01173 программного комплекса Лира-САПР для расчета конструкций различного назначения, до 24.06.2026г.</Name>
+        <UsingNote>для детального расчета конструктивных элементов</UsingNote>
+      </Software>
+    </SoftwareUsed>
+    <ProjectDocumentation>
+      <Section2>
+        <SectionContent>
+          <Document>
+            <DocName>Схема планировочной организации земельного участка</DocName>
+            <DocNumber>157/25-ПЗУ</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Лагуточкин</FamilyName>
+                <FirstName>Андрей</FirstName>
+                <SecondName>Вячеславович</SecondName>
+                <SNILS>001-009-008 51</SNILS>
+                <NOPRIZ>П-121916</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>2. ИУЛ ПЗУ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>49706034</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел ПД2-ПЗУ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>942C341C</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section2>
+      <Section3>
+        <SectionContent>
+          <Document>
+            <DocName>Объемно-планировочные и архитектурные решения</DocName>
+            <DocNumber>157/25-АР</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Лагуточкин</FamilyName>
+                <FirstName>Андрей</FirstName>
+                <SecondName>Вячеславович</SecondName>
+                <SNILS>001-009-008 51</SNILS>
+                <NOPRIZ>П-121916</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>3. ИУЛ АР.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>D592B2DB</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел ПД3-АР.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>CCDB56D7</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section3>
+      <Section4>
+        <SectionContent>
+          <Document>
+            <DocName>Конструктивные решения</DocName>
+            <DocNumber>157/25-КР</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Лагуточкин</FamilyName>
+                <FirstName>Андрей</FirstName>
+                <SecondName>Вячеславович</SecondName>
+                <SNILS>001-009-008 51</SNILS>
+                <NOPRIZ>П-121916</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>4. ИУЛ КР.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>EE15F343</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел ПД4-КР.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>E150E8A8</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section4>
+      <Section5>
+        <SectionContent>
+          <ElectricitySupply>
+            <Document>
+              <DocName>Система электроснабжения</DocName>
+              <DocNumber>157/25 - ИОС 1</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.1 ИУЛ ИОС1-ЭС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>96A58696</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел1-ИОС1-ЭС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>71BFAB7F</FileChecksum>
+              </File>
+            </Document>
+          </ElectricitySupply>
+          <WaterSupply>
+            <Document>
+              <DocName>Система внутреннего водоснабжения</DocName>
+              <DocNumber>157/25 - ИОС 2.1</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.2.1 ИУЛ ИОС2.1-ВС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>A3358E1E</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел2 Часть1-ИОС 2.1-ВС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>438BBEBC</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Внутриплощадочные сети водоснабжения</DocName>
+              <DocNumber>157/25 - ИОС2.2</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.2.2 ИУЛ ИОС2.2-НВС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>759F151C</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел2 Часть2-ИОС2.2-НВС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>453A685C</FileChecksum>
+              </File>
+            </Document>
+          </WaterSupply>
+          <WaterRemoval>
+            <Document>
+              <DocName>Система внутреннего водоотведения</DocName>
+              <DocNumber>157/25-ИОС3.1</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.3.1 ИУЛ ИОС3.1-ВО.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>7C631111</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел3 Часть1-ИОС3.1-ВО.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>F9297132</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Наружные сети водоотведения. Хозяйственно-бытовая канализация и дождевая канализация</DocName>
+              <DocNumber>157/25- ИОС3.2</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.3.2 ИУЛ ИОС3.2-НВО.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>1F179D65</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел3 Часть2-ИОС3.2-НВО.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>2A1F36F1</FileChecksum>
+              </File>
+            </Document>
+          </WaterRemoval>
+          <HeatingVentilation>
+            <Document>
+              <DocName>Отопление, вентиляция и кондиционирование</DocName>
+              <DocNumber>157/24-ИОС4.1</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.4.1 ИУЛ ИОС4.1 ОВиК.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>F93A9BC2</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел4 Часть1-ИОС4.1-ОВиК.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>3800C3A8</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Тепловые сети</DocName>
+              <DocNumber>157/25-ИОС4.2</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.4.2 ИУЛ ИОС4.2 ТС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>A22F7005</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел4 Часть2-ИОС4.2-ТС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>EA4EC437</FileChecksum>
+              </File>
+            </Document>
+          </HeatingVentilation>
+          <Communication>
+            <Document>
+              <DocName>Автоматическая установка пожарной сигнализации</DocName>
+              <DocNumber>157/25-ИОС5.1</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.5.1 ИУЛ ИОС5.1- АУПС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>86CE5BCD</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел5 Часть1-ИОС5.1-АУПС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>A2A47B7B</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Система оповещения и управления эвакуацией</DocName>
+              <DocNumber>157/25-ИОС5.2</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.5.2 ИУЛ ИОС5.2-СОУЭ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>27460B09</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел5 Часть2-ИОС5.2-СОУЭ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>DFEAD0FC</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Система охранного телевидения. Безопасный регион</DocName>
+              <DocNumber>157/25-ИОС5.3</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.5.3 ИУЛ ИОС5.3-СОТ.БР.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>6ABC5B30</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел5 Часть3-ИОС5.3 СОТ.БР.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>10D36BC0</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Система охранной сигнализации</DocName>
+              <DocNumber>157/25-ИОС5.4</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.5.4 ИУЛ ИОС5.4-ОС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>3F392D4A</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел5 Часть4-ИОС5.4-ОС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>B06BCDD6</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Структурированная кабельная система. Локальная вычислительная сеть, система телефонизации</DocName>
+              <DocNumber>157/25-ИОС5.5</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.5.5 ИУЛ ИОС5.5-СКС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>3BFEE8BC</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел5 Часть5-ИОС5.5-СКС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>1912CF93</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Система радиофикации. Система коллективного проема телевидения. Система связи маломобильных групп населения</DocName>
+              <DocNumber>157/25-ИОС5.6</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.5.6 ИУЛ ИОС5.6-РТ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>B099C27F</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел5 Часть6-ИОС5.6-РТ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>FB271001</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Автоматизированная система управления и диспетчеризации</DocName>
+              <DocNumber>157/25-ИОС5.7</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.5.7 ИУЛ ИОС5.7-АСДУ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>26A253CA</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел5 Часть7-ИОС5.7-АСДУ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>88CCF9AE</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Система часофикации</DocName>
+              <DocNumber>157/25-ИОС5.8</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.5.8 ИУЛ ИОС5.8-ЭЧ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>7FFDD8A3</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел5 Часть8-ИОС5.8-ЭЧ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>12B2F3DB</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Охранно-защитная дератизационная система</DocName>
+              <DocNumber>157/25-ИОС5.9</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.5.9 ИУЛ ИОС5.9-ОЗДС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>03CCD0C8</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел5 Часть9-ИОС5.9-ОЗДС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>7BD01C45</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Наружные сети связи</DocName>
+              <DocNumber>157/25-ИОС5.10</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>5.5.10 ИУЛ ИОС5.10-НСС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>2533B3AF</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД5 Подраздел5 Часть10-ИОС5.10 НСС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>BDD61F17</FileChecksum>
+              </File>
+            </Document>
+          </Communication>
+        </SectionContent>
+      </Section5>
+      <Section6>
+        <SectionContent>
+          <Document>
+            <DocName>Технологические решения</DocName>
+            <DocNumber>157/25-ТХ</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Лагуточкин</FamilyName>
+                <FirstName>Андрей</FirstName>
+                <SecondName>Вячеславович</SecondName>
+                <SNILS>001-009-008 51</SNILS>
+                <NOPRIZ>П-121916</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>6. ИУЛ ТХ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>424D53AB</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел ПД6-ТХ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>69810304</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section6>
+      <Section7>
+        <SectionContent>
+          <Document>
+            <DocName>Проект организации строительства</DocName>
+            <DocNumber>157/25-ПОС</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Лагуточкин</FamilyName>
+                <FirstName>Андрей</FirstName>
+                <SecondName>Вячеславович</SecondName>
+                <SNILS>001-009-008 51</SNILS>
+                <NOPRIZ>П-121916</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>7. ИУЛ ПОС.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>B640CEFD</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел ПД7 - ПОС.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>849919A6</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section7>
+      <Section8>
+        <SectionContent>
+          <Document>
+            <DocName>Мероприятия по охране окружающей среды</DocName>
+            <DocNumber>157/25-ООС</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Лагуточкин</FamilyName>
+                <FirstName>Андрей</FirstName>
+                <SecondName>Вячеславович</SecondName>
+                <SNILS>001-009-008 51</SNILS>
+                <NOPRIZ>П-121916</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>8. ИУЛ ООС.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>0650BA46</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел ПД8-ООС.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>3EE3D912</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section8>
+      <Section9>
+        <SectionContent>
+          <Document>
+            <DocName>Мероприятия по обеспечению пожарной безопасности</DocName>
+            <DocNumber>157/25-ПБ</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Лагуточкин</FamilyName>
+                <FirstName>Андрей</FirstName>
+                <SecondName>Вячеславович</SecondName>
+                <SNILS>001-009-008 51</SNILS>
+                <NOPRIZ>П-121916</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>9. ИУЛ ПБ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>F3BCDEB5</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел ПД9-ПБ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>A636DEF2</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section9>
+      <Section10>
+        <SectionContent>
+          <Document>
+            <DocName>Требования к обеспечению безопасной эксплуатации объектов капитального строительства</DocName>
+            <DocNumber>157/25-ТБЭ</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Лагуточкин</FamilyName>
+                <FirstName>Андрей</FirstName>
+                <SecondName>Вячеславович</SecondName>
+                <SNILS>001-009-008 51</SNILS>
+                <NOPRIZ>П-121916</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>10. ИУЛ ТБЭ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>9832C90E</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел ПД10-ТБЭ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>FD37DD1E</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section10>
+      <Section11>
+        <SectionContent>
+          <Document>
+            <DocName>Мероприятия по обеспечению доступа инвалидов к объекту капитального строительства</DocName>
+            <DocNumber>157/25-ОДИ</DocNumber>
+            <ProjectDocParticipants>
+              <ProjectDocParticipant role="Нормоконтроль">
+                <FamilyName>Лагуточкин</FamilyName>
+                <FirstName>Андрей</FirstName>
+                <SecondName>Вячеславович</SecondName>
+                <SNILS>001-009-008 51</SNILS>
+                <NOPRIZ>П-121916</NOPRIZ>
+              </ProjectDocParticipant>
+            </ProjectDocParticipants>
+            <IULFile>
+              <FileName>11. ИУЛ ОДИ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>2CCF92DB</FileChecksum>
+            </IULFile>
+            <File>
+              <FileName>Раздел ПД11-ОДИ.pdf</FileName>
+              <FileFormat>pdf</FileFormat>
+              <FileChecksum>8BC9A835</FileChecksum>
+            </File>
+          </Document>
+        </SectionContent>
+      </Section11>
+      <Section12>
+        <SectionContent>
+          <EstimateExplanatoryNote>
+            <Document>
+              <DocName>Пояснительная записка к сметной документации</DocName>
+              <DocNumber>157_25-СМ</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>12. ИУЛ СМ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>F4ABABC6</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Раздел ПД12 - СМ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>6ECE9ECE</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Конъюнктурный анализ цен</DocName>
+              <DocNumber>Конъюнктурный анализ цен</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>12.2. ИУЛ КАЦ.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>0FD3A33E</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>Конъюнктурный анализ.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>E9D4E615</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Ведомость объёмов работ</DocName>
+              <DocNumber>ВОР</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>01-01-01 ВОР ПР.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>DC2DF105</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-01 ВОР_КР.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>8B2B57EA</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-03 ВОР ВС.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>535C6630</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-04 ВОР ВО.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>6EDF1B4F</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-05 ВОР Отопление и теплоснабжение.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>D380B784</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-06 ВОР Вентиляция и кондиционирование.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>20909D11</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-07 ВОР-ОДИ.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>81C8446E</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-09 ВОР ЭС.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>CE7DF455</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-10 ВОР АУПС.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>41DD9FAD</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-11 ВОР СОУЭ.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>D6AC4E48</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-12 ВОР СОТ.БР.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>83D4689D</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-13 ВОР ОС.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>D195EBCC</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-14- ВОР СКС.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>38C7EF54</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-15 ВОР РТ.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>1DEB7473</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-16 ВОР АСУД.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>6A3C8B94</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-17 ВОР ЭЧ.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>89295297</FileChecksum>
+              </File>
+              <File>
+                <FileName>02-01-18 ВОР ОЗДС.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>8B8F1745</FileChecksum>
+              </File>
+              <File>
+                <FileName>04-01-01 ВОР ЭН.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>AFD195FB</FileChecksum>
+              </File>
+              <File>
+                <FileName>05-01-01 ВОР НСС.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>DBE255AD</FileChecksum>
+              </File>
+              <File>
+                <FileName>06-01-03 ВОР Дренаж.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>50658354</FileChecksum>
+              </File>
+              <File>
+                <FileName>07-01-01 ВОР_ПЗУ.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>D99192B6</FileChecksum>
+              </File>
+            </Document>
+          </EstimateExplanatoryNote>
+          <SummaryEstimate>
+            <Document>
+              <DocName>Сводный сметный расчёт стоимости строительства</DocName>
+              <DocNumber>-</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <IULFile>
+                <FileName>12.1. ИУЛ ССРСС.pdf</FileName>
+                <FileFormat>pdf</FileFormat>
+                <FileChecksum>EAD586A2</FileChecksum>
+              </IULFile>
+              <File>
+                <FileName>ССРСС.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>0C4DBBFE</FileChecksum>
+              </File>
+            </Document>
+          </SummaryEstimate>
+          <ObjectEstimates>
+            <Document>
+              <DocName>Объектная смета</DocName>
+              <DocNumber>01</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>Объектная смета.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>CC29C895</FileChecksum>
+              </File>
+            </Document>
+          </ObjectEstimates>
+          <LocalEstimates>
+            <Document>
+              <DocName>Подготовительные работы</DocName>
+              <DocNumber>01-01-01</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>01-01-01 Подготовительные работы.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>5075B662</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Конструктивные решения</DocName>
+              <DocNumber>02-01-01</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-01 Конструктивные решения.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>6024451E</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Архитектурные решения</DocName>
+              <DocNumber>02-01-02</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-02 Архитектурные решения.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>3AAED096</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Система водоснабжения</DocName>
+              <DocNumber>02-01-03</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-03 Система водоснабжения.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>7F524C02</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Система водоотведения</DocName>
+              <DocNumber>02-01-04</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-04 Система водоотведения.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>86EFA49C</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Системы отопления и теплоснабжения</DocName>
+              <DocNumber>02-01-05</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-05 Системы отопления и теплоснабжения.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>CF62FC4F</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Вентиляция и кондиционирование</DocName>
+              <DocNumber>02-01-06</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-06 Вентиляция и кондиционирование.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>75252BA4</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Мероприятия по обеспечению доступа инвалидов</DocName>
+              <DocNumber>02-01-07</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-07 Мероприятия по обеспечению доступа инвалидов.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>5A17F9D7</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Индивидуальный тепловой пункт</DocName>
+              <DocNumber>02-01-08</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-08 Индивидуальный тепловой пункт.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>70E2A6B7</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Система электроснабжения</DocName>
+              <DocNumber>02-01-09</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-09 Система электроснабжения.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>268DDA45</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Автоматическая установка пожарной сигнализации</DocName>
+              <DocNumber>02-01-10</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-10 Автоматическая установка пожарной сигнализации.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>C2954B16</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Система оповещения и управления эвакуацией</DocName>
+              <DocNumber>02-01-11</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-11 Система оповещения и управления эвакуацией.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>BBCB2252</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Система охранного телевидения. Безопасный регион</DocName>
+              <DocNumber>02-01-12</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-12 Система охранного телевидения. Безопасный регион. В2.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>2E4DDE3C</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Охранная сигнализация</DocName>
+              <DocNumber>02-01-13</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-13 Охранная сигнализация.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>6C0A1C18</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Структурированная кабельная сеть</DocName>
+              <DocNumber>02-01-14</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-14 Структурированная кабельная сеть.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>534D6E8C</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Радиофикация, сигнализация для МГН, телевидение, экстренная связь</DocName>
+              <DocNumber>02-01-15</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-15 Радиофикация, сигнализация для МГН, телевидение, экстренная связь.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>09A8F3CF</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Автоматизированная система диспетчерского управления</DocName>
+              <DocNumber>02-01-16</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-16 Автоматизированная система диспетчерского управления.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>7331D6C5</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Часофикация. Звонковая сигнализация</DocName>
+              <DocNumber>02-01-17</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-17 Часофикация. Звонковая сигнализация.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>5B491ADD</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Охранно-защитная дератизационная система</DocName>
+              <DocNumber>02-01-18</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-18 Охранно-защитная дератизационная система.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>CFF2565C</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Технологические решения</DocName>
+              <DocNumber>02-01-19</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>02-01-19 Технологические решения.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>9F56818A</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Электроснабжение. Электроснабжение КПП</DocName>
+              <DocNumber>04-01-01</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>04-01-01 Электроснабжение. Электроснабжение КПП.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>6A10B129</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Внутриплощадочные сети связи</DocName>
+              <DocNumber>05-01-01</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>05-01-01 Внутриплощадочные сети связи.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>A557C351</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Наружные сети водоснабжения</DocName>
+              <DocNumber>06-01-01</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>06-01-01 Наружные сети водоснабжения.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>E3A58D97</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Наружные сети водоотведения</DocName>
+              <DocNumber>06-01-02</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>06-01-02 Наружные сети водоотведения.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>87E8FFE7</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Дренаж</DocName>
+              <DocNumber>06-01-03</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>06-01-03 Дренаж.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>99489AB9</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Тепловые сети</DocName>
+              <DocNumber>06-01-04</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>06-01-04 Тепловые сети.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>9BAD2A53</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Благоустройство</DocName>
+              <DocNumber>07-01-01</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>07-01-01 Благоустройство.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>3A1B1EA9</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Наружное электроосвещение</DocName>
+              <DocNumber>07-01-02</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>07-01-02 Наружное электроосвещение.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>CFC53671</FileChecksum>
+              </File>
+            </Document>
+            <Document>
+              <DocName>Пусконаладочные работы</DocName>
+              <DocNumber>09-01-01</DocNumber>
+              <ProjectDocParticipants>
+                <ProjectDocParticipant role="Нормоконтроль">
+                  <FamilyName>Лагуточкин</FamilyName>
+                  <FirstName>Андрей</FirstName>
+                  <SecondName>Вячеславович</SecondName>
+                  <SNILS>001-009-008 51</SNILS>
+                  <NOPRIZ>П-121916</NOPRIZ>
+                </ProjectDocParticipant>
+              </ProjectDocParticipants>
+              <File>
+                <FileName>09-01-01 Пусконаладочные работы.gge</FileName>
+                <FileFormat>gge</FileFormat>
+                <FileChecksum>1DD0B0C3</FileChecksum>
+              </File>
+            </Document>
+          </LocalEstimates>
+        </SectionContent>
+      </Section12>
+      <Section13>
+        <NotDeveloped>Раздел не разрабатывался</NotDeveloped>
+      </Section13>
+    </ProjectDocumentation>
+    <Model>
+      <ModelFile>
+        <FileName>157-25-П-ПЗУ-К1.ifc</FileName>
+        <FileFormat>IFC</FileFormat>
+        <FileChecksum>A5301495</FileChecksum>
+      </ModelFile>
+      <ModelFile>
+        <FileName>157-25-П-АР-К1.ifc</FileName>
+        <FileFormat>IFC</FileFormat>
+        <FileChecksum>FFC2C3F9</FileChecksum>
+      </ModelFile>
+      <ModelFile>
+        <FileName>157-25-П-КР-К1.ifc</FileName>
+        <FileFormat>IFC</FileFormat>
+        <FileChecksum>4D78D391</FileChecksum>
+      </ModelFile>
+      <ModelFile>
+        <FileName>157-25-П-ЭС-К1.ifc</FileName>
+        <FileFormat>IFC</FileFormat>
+        <FileChecksum>0E5CB328</FileChecksum>
+      </ModelFile>
+      <ModelFile>
+        <FileName>157-25-П-ВК-К1.ifc</FileName>
+        <FileFormat>IFC</FileFormat>
+        <FileChecksum>C1385BE0</FileChecksum>
+      </ModelFile>
+      <ModelFile>
+        <FileName>157-25-П-ТХ-К1.ifc</FileName>
+        <FileFormat>IFC</FileFormat>
+        <FileChecksum>139471EC</FileChecksum>
+      </ModelFile>
+      <ModelFile>
+        <FileName>157-25-П-СС-К1 1.ifc</FileName>
+        <FileFormat>IFC</FileFormat>
+        <FileChecksum>AFF0F79B</FileChecksum>
+      </ModelFile>
+    </Model>
+  </NonIndustrialObject>
+  <DesignerAssurance>
+    <Text>Проектная документация подготовлена в соответствии с требованиями, указанными в пункте 5 Положения, утвержденного постановлением Правительства Российской Федерации от 16.02.2088г. №87, градостроительным планом земельного участка, заданием на проектирование, градостроительным регламентом, техническими регламентами, устанавливающими в том числе требования к обеспечению безопасной эксплуатации зданий, строений, сооружений и безопасному использованию прилегающих к ним территории, а также с соблюдением технических условий</Text>
+  </DesignerAssurance>
+</ExplanatoryNote>
