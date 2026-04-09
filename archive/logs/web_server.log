@@ -1,0 +1,19 @@
+nohup: ignoring input
+INFO:__main__:Vostok: Loaded 49 KB entries from /home/segun/CascadeProjects/Перед 0_2/knowledge_base.json
+ * Serving Flask app 'web_server'
+ * Debug mode: off
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5005
+ * Running on http://172.31.130.149:5005
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2026 11:40:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:__main__:Vostok: KB Match Found! Score: 0.75 for Раздел 4 «Конструктивные решения» (МЕС-БМК-04/24-КР, Том 4)
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2026 11:40:23] "GET / HTTP/1.1" 200 -
+INFO:__main__:Vostok: KB Match Found! Score: 0.95 for Подраздел 1 «Система электроснабжения» (МЕС-БМК-04/24-ИОС1, Том 5.1)
+ERROR:__main__:Vostok LLM Error: HTTPConnectionPool(host='192.168.47.22', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7a7082081ed0>, 'Connection to 192.168.47.22 timed out. (connect timeout=240)'))
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2026 11:42:35] "POST /analyze HTTP/1.1" 200 -
+ERROR:__main__:Vostok LLM Error: HTTPConnectionPool(host='192.168.47.22', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7a7081adbca0>, 'Connection to 192.168.47.22 timed out. (connect timeout=240)'))
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2026 11:43:08] "POST /analyze HTTP/1.1" 200 -
+ERROR:__main__:Vostok LLM Error: HTTPConnectionPool(host='192.168.47.22', port=1234): Max retries exceeded with url: /v1/chat/completions (Caused by ConnectTimeoutError(<urllib3.connection.HTTPConnection object at 0x7a7081ad9180>, 'Connection to 192.168.47.22 timed out. (connect timeout=240)'))
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2026 11:46:57] "POST /analyze HTTP/1.1" 200 -
