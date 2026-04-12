@@ -77,10 +77,24 @@ class DocumentAnalyzer:
             logger.warning(f"KB not loaded: {e}")
 
     def _extract_code_from_filename(self, filename):
-        match = re.search(r'(\d{2,4}/\d{2,4})', filename)
+        # Паттерн 1: МКД-0109-2024
+        match = re.search(r'([А-Я]{2,4}-\d{4}-\d{4})', filename)
         if match:
             return match.group(1)
-        match = re.search(r'([А-Я]{2,4}-\d{4}-\d{4})', filename)
+        # Паттерн 2: МЕС-БМК-04/24, МЕС-БМК-04_24, МЕС-БМК-04.24
+        match = re.search(r'([А-Я]{2,4}-[А-Я]{2,4}[\-_\.]\d{2}[\-_\.]\d{2})', filename)
+        if match:
+            return match.group(1).replace('_', '-').replace('.', '-')
+        # Паттерн 3: МЕС_БМК_04_24
+        match = re.search(r'([А-Я]{2,4}_[А-Я]{2,4}_\d{2}_\d{2})', filename)
+        if match:
+            return match.group(1).replace('_', '-')
+        # Паттерн 4: МЕС-БМК-04/24 (из KB)
+        match = re.search(r'([А-Я]{2,4}-[А-Я]{2,4}-\d{2}/\d{2})', filename)
+        if match:
+            return match.group(1)
+        # Паттерн 5: 157/25, 04/24
+        match = re.search(r'(\d{2,4}/\d{2,4})', filename)
         if match:
             return match.group(1)
         return None
@@ -91,13 +105,24 @@ class DocumentAnalyzer:
 
         file_section = re.search(r'ПД№(\d+)', filename)
         kb_section = re.search(r'Раздел\s*(\d+)', kb_title)
-        if file_section and kb_section and file_section.group(1) == kb_section.group(1):
-            score = max(score, 0.99)
-
         file_code = self._extract_code_from_filename(filename)
         kb_code = self._extract_code_from_filename(kb_title)
+
+        # Нормализация шифров (МЕС-БМК-04/24 → МЕС-БМК-04-24)
+        if file_code:
+            file_code = file_code.replace('/', '-')
+        if kb_code:
+            kb_code = kb_code.replace('/', '-')
+
+        # BOOST ПО РАЗДЕЛУ С ПРОВЕРКОЙ ШИФРА
+        if file_section and kb_section and file_section.group(1) == kb_section.group(1):
+            if file_code and kb_code and file_code == kb_code:
+                score = max(score, 0.99)
+            else:
+                score = max(score, 0.70)
+
         if file_code and kb_code and file_code == kb_code:
-            score = max(score, 0.85)
+            score = max(score, 0.90)
 
         if 'АР' in filename and 'АР' in kb_title: score = max(score, 0.75)
         if 'КР' in filename and 'КР' in kb_title: score = max(score, 0.75)
