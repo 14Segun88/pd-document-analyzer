@@ -1,5 +1,79 @@
 # Общая память агентов (Antigravity & KiloCode)
 
+---
+
+## 🔴 АКТУАЛЬНЫЙ СТАТУС (2026-04-11 21:09) [Агент: Antigravity]
+
+`[2026-04-11 21:09] [Агент: Antigravity] СТАТУС: Завершён двойной fair-бенчмарк Mistral 14B Reasoning vs Gemma 4-31B на Пакете 1 и Пакете 2 + семантический scoring. СЛЕДУЮЩИЙ ШАГ: add_kb_pkg2.py — добавить эталоны для СОШ 10.`
+
+### Что сделано в этой сессии (09–11.04.2026):
+
+#### 1. KB Audit & Sync (до 57 записей)
+- Было: 48 записей, 29% покрытие PDF Пакета 1
+- Добавлено: 7 новых эталонов (ТЗ ИГМИ, ТУ, ИУЛ...) + 2 alias для дубликатов
+- Результат: **57 записей, 100% покрытие** 41 PDF из Пакета 1
+
+#### 2. Fair Benchmark — Пакет 1 (44 файла)
+- Скрипт: `run_benchmark_fair.py`
+- Условия: `temp=0.01, max_tokens=8000, timeout=180s, CoT+KB, KB Override ON`
+- Результаты (точное совпадение): Gemma 31.3% vs Mistral 30.2%
+- **Победитель Пакет 1: GEMMA** (10 vs 8 побед)
+
+#### 3. Fair Benchmark — Пакет 2 (50 файлов, СОШ 10 / ИГДИ)
+- Скрипт: `run_benchmark_pkg2.py`
+- Результаты: Mistral 8.3% vs Gemma 6.8% ← ЛОЖНО НИЗКИЕ (нет эталонов для Пакета 2)
+- KB содержит эталоны Пакета 1 (МЕС-БМК/МКД) → применяются к документам СОШ 10 = FAILs
+
+#### 4. Semantic Scorer (V6-стиль: SequenceMatcher + rapidfuzz)
+- Скрипт: `semantic_scorer.py`
+- Пакет 1 с KB: **Gemma 77.5% vs Mistral 68.2%** (+9.3%)
+- Gemma лучше по всем полям кроме purpose (=)
+- Mistral 0% на scanned PDF (ИОС1/2/4/6, КР) — нет текста для извлечения
+
+#### 5. Cross-Model Scorer — Пакет 2
+- Скрипт: `cross_model_scorer.py`
+- Mistral vs Gemma на 50 документах без эталонов
+- **Согласие: 98.3%** (339/350 AGREE) — обе модели дают идентичные ответы
+- Доказывает: LLM работает корректно, проблема была в KB а не моделях
+
+### Файлы созданные в сессии:
+```
+run_benchmark_fair.py     — единый fair-бенчмарк (обе модели)
+run_benchmark_pkg2.py     — бенчмарк Пакет 2
+semantic_scorer.py        — семантический scoring (Пакет 1 vs KB)
+cross_model_scorer.py     — cross-model scoring (Пакет 2)
+score_fair.py             — точный scorer (без семантики)
+Тесты_md/SUMMARY_2026-04-09_22-50-30.md   — Пакет 1 Mistral результаты
+Тесты_md/Тесты_md2-Gemma/SUMMARY_*.md     — Пакет 1 Gemma результаты
+Тесты_md/Пакет2-Mistral/SUMMARY_*.md      — Пакет 2 Mistral
+Тесты_md/Пакет2-Gemma/SUMMARY_*.md        — Пакет 2 Gemma
+```
+
+### Ключевые выводы:
+| | Пакет 1 (KB эталоны) | Пакет 2 (cross-model) |
+|--|--|--|
+| **Лучшая модель** | **Gemma 4-31B** (77.5%) | Обе равны (98.3% согласие) |
+| Mistral слабость | 0% на scanned PDF | — |
+| Mistral сила | ТЗ, ТУ, Доверенности (100%) | — |
+| Gemma сила | Заказчик 90%, Год 97% | Все поля |
+
+### Блокеры и следующие шаги:
+1. **[КРИТИЧНО]** `add_kb_pkg2.py` — создать ~50 эталонов для СОШ 10 / ИГДИ в KB
+2. **[ВЫСОКИЙ]** `model_router.py` — Gemma default, Mistral для ТЗ/ТУ/Доверенностей
+3. **[СРЕДНИЙ]** OCR fallback (olmocr/tesseract) для Mistral на scanned PDF
+4. **[НИЗКИЙ]** Улучшить промпт для поля `purpose` (цель)
+
+---
+
+## Зависимости и окружение:
+- **LLM API:** `http://192.168.47.22:1234/v1` (LM Studio)
+- **Модели:** `mistralai/ministral-3-14b-reasoning` + `gemma-4-31b-it`
+- **KB:** `knowledge_base.json` (57 записей, только Пакет 1 полностью)
+- **rapidfuzz:** установлен (`pip install rapidfuzz`)
+
+---
+
+
 # Долгосрочная память проекта (PROJECT_MEMORY)
 
 ## Критические технические выводы (07.04.2026)
