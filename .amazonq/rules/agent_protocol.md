@@ -7,5 +7,5 @@
 5. git pull перед стартом, git push после работы
 6. Формула контекста: shared_status.md (2KB) + index.md (1KB) + 1 wiki-страница (1-3KB) = 4-6KB
 
-Полный протокол: ./AGENT_PROTOCOL.md
+Полный протокол: ./md/AGENT_PROTOCOL.md
 Инструкции агента: ./AGENTS_RULES-v2/.agent/instructions.md

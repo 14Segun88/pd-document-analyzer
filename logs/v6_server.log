@@ -1,0 +1,10 @@
+INFO:__main__:KB loaded: 57 entries from /home/segun/CascadeProjects/Перед 0_2/json/knowledge_base.json
+🚀 Сервер запущен: http://localhost:5006
+📁 MD отчёты сохраняются в: Тесты_md/
+ * Serving Flask app 'web_server_v6'
+ * Debug mode: off
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5006
+ * Running on http://172.31.130.149:5006
+INFO:werkzeug:[33mPress CTRL+C to quit[0m

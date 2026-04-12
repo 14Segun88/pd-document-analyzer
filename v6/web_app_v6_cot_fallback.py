@@ -66,9 +66,9 @@ class DocumentAnalyzer:
         self.kb_data = []
 
         try:
-            kb_path = Path(__file__).parent.parent / "knowledge_base.json"
+            kb_path = Path(__file__).parent.parent / "json" / "knowledge_base.json"
             if not kb_path.exists():
-                kb_path = Path("knowledge_base.json")
+                kb_path = Path("../json/knowledge_base.json")
             if kb_path.exists():
                 with open(kb_path, "r", encoding="utf-8") as f:
                     self.kb_data = json.load(f)

@@ -166,7 +166,7 @@ def main():
     
     input_dir = Path("/home/segun/CascadeProjects/Перед 0_2/Перед 0/Isxodnie_documenti/Анализ пакета 1")
     output_dir = Path("/home/segun/CascadeProjects/Перед 0_2/Тесты_md")
-    kb_path = Path("/home/segun/CascadeProjects/Перед 0_2/knowledge_base.json")
+    kb_path = Path("/home/segun/CascadeProjects/Перед 0_2/json/knowledge_base.json")
     
     output_dir.mkdir(exist_ok=True)
     

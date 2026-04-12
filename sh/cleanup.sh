@@ -10,7 +10,7 @@ rm -rf __pycache__ 2>/dev/null
 rm -rf .kilo/worktrees/playful-flower/__pycache__ 2>/dev/null
 
 # Удаляем старые логи в корне
-rm -f *.log 2>/dev/null
+rm -f logs/*.log 2>/dev/null
 rm -f benchmark_run.log 2>/dev/null
 
 # Удаляем временные файлы
@@ -33,8 +33,8 @@ echo "📂 Текущая структура:"
 echo "   web_app_v6_cot_fallback.py - ГЛАВНЫЙ ФАЙЛ"
 echo "   web_server_v6.py           - Сервер"
 echo "   start_v6.sh                - Запуск"
-echo "   knowledge_base.json        - База знаний"
-echo "   README_V6.md               - Документация"
+echo "   json/knowledge_base.json   - База знаний"
+echo "   md/README_V6.md            - Документация"
 echo ""
 echo "📦 Архив в archive/"
 echo "   old_versions/ - старые версии"
@@ -43,4 +43,4 @@ echo "   scripts/      - скрипты"
 echo "   docs/         - документация"
 echo "   logs/         - логи"
 echo ""
-echo "🚀 Для запуска: bash start_v6.sh"
+echo "🚀 Для запуска: bash sh/start_v6.sh"

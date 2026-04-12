@@ -27,7 +27,7 @@ class DocumentAnalyzerGemma:
         self.model_name = "gemma-4-31b-it"
         self.kb_data = []
         
-        kb_path = Path("/home/segun/CascadeProjects/Перед 0_2/knowledge_base.json")
+        kb_path = Path("/home/segun/CascadeProjects/Перед 0_2/json/knowledge_base.json")
         if kb_path.exists():
             with open(kb_path, 'r', encoding='utf-8') as f:
                 self.kb_data = json.load(f)
@@ -273,7 +273,7 @@ def main():
     
     input_dir = Path("/home/segun/CascadeProjects/Перед 0_2/Перед 0/Isxodnie_documenti/Анализ пакета 1")
     output_dir = Path("/home/segun/CascadeProjects/Перед 0_2/Тесты_md/Тесты_md2-Gemma")
-    kb_path = Path("/home/segun/CascadeProjects/Перед 0_2/knowledge_base.json")
+    kb_path = Path("/home/segun/CascadeProjects/Перед 0_2/json/knowledge_base.json")
     
     output_dir.mkdir(parents=True, exist_ok=True)
     

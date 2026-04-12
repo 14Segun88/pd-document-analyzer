@@ -31,7 +31,7 @@ TIMEOUT     = 180
 TEXT_LIMIT  = 3000
 
 INPUT_DIR      = Path("/home/segun/CascadeProjects/Перед 0_2/Перед 0/Isxodnie_documenti/Анализ пакета 2")
-KB_PATH        = Path("/home/segun/CascadeProjects/Перед 0_2/knowledge_base.json")
+KB_PATH        = Path("/home/segun/CascadeProjects/Перед 0_2/json/knowledge_base.json")
 OUTPUT_MISTRAL = Path("/home/segun/CascadeProjects/Перед 0_2/Тесты_md/Пакет2-Mistral")
 OUTPUT_GEMMA   = Path("/home/segun/CascadeProjects/Перед 0_2/Тесты_md/Пакет2-Gemma")
 

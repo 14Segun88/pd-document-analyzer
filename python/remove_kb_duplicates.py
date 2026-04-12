@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 def main():
-    kb_path = Path(__file__).parent / "knowledge_base.json"
+    kb_path = Path(__file__).parent.parent / "json" / "knowledge_base.json"
     
     with open(kb_path, 'r', encoding='utf-8') as f:
         kb_data = json.load(f)

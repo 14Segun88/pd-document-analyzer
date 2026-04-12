@@ -6,4 +6,4 @@
 4. НЕ читайте AGENTS_RULES/ (v1) — устарело, используйте AGENTS_RULES-v2/
 5. git pull перед стартом, git push после работы
 
-Полный протокол: ./AGENT_PROTOCOL.md
+Полный протокол: ./md/AGENT_PROTOCOL.md
