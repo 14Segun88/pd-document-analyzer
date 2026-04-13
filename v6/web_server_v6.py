@@ -6,7 +6,6 @@
 Активная версия: web_app_v6_cot_fallback.py
 """
 
-import sys
 from pathlib import Path
 
 # Запускаем версию v6 с CoT Reasoning

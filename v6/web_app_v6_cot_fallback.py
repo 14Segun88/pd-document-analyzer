@@ -12,7 +12,6 @@ web_app_v6_cot_fallback.py - Версия с CoT промптом и fallback н
 Ожидаемая точность: 80-85%
 """
 
-import os
 import re
 import json
 import logging
@@ -99,10 +98,14 @@ class DocumentAnalyzer:
         if file_code and kb_code and file_code == kb_code:
             score = max(score, 0.85)
 
-        if 'АР' in filename and 'АР' in kb_title: score = max(score, 0.75)
-        if 'КР' in filename and 'КР' in kb_title: score = max(score, 0.75)
-        if 'ПБ' in filename and ('ПБ' in kb_title or 'пожарн' in kb_title.lower()): score = max(score, 0.85)
-        if 'ОДИ' in filename and 'ОДИ' in kb_title: score = max(score, 0.85)
+        if 'АР' in filename and 'АР' in kb_title:
+            score = max(score, 0.75)
+        if 'КР' in filename and 'КР' in kb_title:
+            score = max(score, 0.75)
+        if 'ПБ' in filename and ('ПБ' in kb_title or 'пожарн' in kb_title.lower()):
+            score = max(score, 0.85)
+        if 'ОДИ' in filename and 'ОДИ' in kb_title:
+            score = max(score, 0.85)
 
         return score
 
@@ -229,7 +232,7 @@ class DocumentAnalyzer:
             'raw_text': None,
         }
 
-    def analyze_pdf(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
+    def analyze_pdf(self, filepath: Path, original_name: str | None = None) -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'PDF')
 
         if not HAS_PYMUPDF:
@@ -260,14 +263,14 @@ class DocumentAnalyzer:
 
         return result
 
-    def analyze_docx(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
+    def analyze_docx(self, filepath: Path, original_name: str | None = None) -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'DOCX')
 
         if not HAS_PYTHON_DOCX:
             return {'error': 'python-docx не установлен', 'filename': result['filename']}
 
         try:
-            doc = Document(filepath)
+            doc = Document(str(filepath))
             text_content = "\n".join(para.text for para in doc.paragraphs)
 
             for table in doc.tables:
@@ -288,13 +291,13 @@ class DocumentAnalyzer:
 
         return result
 
-    def analyze_xml(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
-        import xml.etree.ElementTree as ET
+    def analyze_xml(self, filepath: Path, original_name: str | None = None) -> Dict[str, Any]:
+        import defusedxml.ElementTree as ET
 
         result = self._init_result(original_name or filepath.name, 'XML')
 
         try:
-            tree = ET.parse(filepath)
+            tree = ET.parse(str(filepath))
             root = tree.getroot()
 
             text_content = ' '.join(t.text for t in root.iter() if t.text)
