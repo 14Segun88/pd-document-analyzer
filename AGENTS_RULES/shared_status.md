@@ -150,3 +150,4 @@ score_fair.py             — точный scorer (без семантики)
 2. Код в `.kilo/worktrees/playful-flower/web_app_v5_final.py`
 3. Добавить новые документы → добавить в KB
 4. Проверить KB override → открыть http://localhost:5005 и загрузить файл
+[2026-04-13 19:45] [Агент: Jules] СТАТУС: Проведена полная диагностика V6. Выявлено 12 проблем, подготовлен FULL_DIAGNOSTIC_REPORT.md. СЛЕДУЮЩИЙ ШАГ: Исправление object_name в KB и закрытие уязвимостей XXE/XSS.
