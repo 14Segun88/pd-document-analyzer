@@ -16,21 +16,26 @@ import os
 import re
 import json
 import logging
+import requests
+import tempfile
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from datetime import datetime
+from flask import Flask, request, render_template_string, jsonify
+from werkzeug.utils import secure_filename
+from defusedxml import ElementTree as ET
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 try:
-    import fitz
+    import fitz  # type: ignore
     HAS_PYMUPDF = True
 except ImportError:
     HAS_PYMUPDF = False
 
 try:
-    from docx import Document
+    from docx import Document  # type: ignore
     HAS_PYTHON_DOCX = True
 except ImportError:
     HAS_PYTHON_DOCX = False
@@ -99,8 +104,8 @@ class DocumentAnalyzer:
         if file_code and kb_code and file_code == kb_code:
             score = max(score, 0.85)
 
-        if 'АР' in filename and 'АР' in kb_title: score = max(score, 0.75)
-        if 'КР' in filename and 'КР' in kb_title: score = max(score, 0.75)
+        if ('АР' in filename or 'Архитектурн' in filename) and ('АР' in kb_title or 'Архитектурн' in kb_title): score = max(score, 0.75)
+        if ('КР' in filename or 'Конструктивн' in filename) and ('КР' in kb_title or 'Конструктивн' in kb_title): score = max(score, 0.75)
         if 'ПБ' in filename and ('ПБ' in kb_title or 'пожарн' in kb_title.lower()): score = max(score, 0.85)
         if 'ОДИ' in filename and 'ОДИ' in kb_title: score = max(score, 0.85)
 
@@ -165,8 +170,6 @@ class DocumentAnalyzer:
         return "\n\n".join(examples)
 
     def _call_llm(self, text, filename):
-        import requests
-
         kb_override = self._get_kb_direct_fields(filename)
         kb_examples = self._get_semantic_examples_enhanced(filename, text)
         prompt = COT_SYSTEM_PROMPT.replace("{kb_examples}", kb_examples)
@@ -229,7 +232,7 @@ class DocumentAnalyzer:
             'raw_text': None,
         }
 
-    def analyze_pdf(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
+    def analyze_pdf(self, filepath: Path, original_name: str = "") -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'PDF')
 
         if not HAS_PYMUPDF:
@@ -260,14 +263,14 @@ class DocumentAnalyzer:
 
         return result
 
-    def analyze_docx(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
+    def analyze_docx(self, filepath: Path, original_name: str = "") -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'DOCX')
 
         if not HAS_PYTHON_DOCX:
             return {'error': 'python-docx не установлен', 'filename': result['filename']}
 
         try:
-            doc = Document(filepath)
+            doc = Document(str(filepath))
             text_content = "\n".join(para.text for para in doc.paragraphs)
 
             for table in doc.tables:
@@ -288,13 +291,11 @@ class DocumentAnalyzer:
 
         return result
 
-    def analyze_xml(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
-        import xml.etree.ElementTree as ET
-
+    def analyze_xml(self, filepath: Path, original_name: str = "") -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'XML')
 
         try:
-            tree = ET.parse(filepath)
+            tree = ET.parse(str(filepath))
             root = tree.getroot()
 
             text_content = ' '.join(t.text for t in root.iter() if t.text)
@@ -365,8 +366,6 @@ def generate_md_report(results: List[Dict], output_dir: Path) -> str:
 
 # Flask веб-сервер
 if __name__ == '__main__':
-    from flask import Flask, request, render_template_string, jsonify
-
     app = Flask(__name__)
     app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 
@@ -563,15 +562,20 @@ if __name__ == '__main__':
             return jsonify({'error': 'No file'}), 400
 
         file = request.files['file']
-        if file.filename == '':
+        if not file or file.filename == '':
             return jsonify({'error': 'No filename'}), 400
 
-        import tempfile
-        with tempfile.NamedTemporaryFile(delete=False, suffix=Path(file.filename).suffix) as tmp:
-            file.save(tmp.name)
-            tmp_path = Path(tmp.name)
+        filename = secure_filename(file.filename)
 
+        # Используем контекстный менеджер для автоматического удаления,
+        # но так как нам нужен путь для других библиотек,
+        # мы гарантируем удаление в блоке finally.
+        tmp_path = None
         try:
+            with tempfile.NamedTemporaryFile(delete=False, suffix=Path(filename).suffix) as tmp:
+                file.save(tmp.name)
+                tmp_path = Path(tmp.name)
+
             ext = tmp_path.suffix.lower()
             if ext == '.pdf':
                 result = analyzer.analyze_pdf(tmp_path, file.filename)
@@ -582,12 +586,12 @@ if __name__ == '__main__':
             else:
                 return jsonify({'error': 'Unsupported format'}), 400
 
-            tmp_path.unlink()
             return jsonify(result)
         except Exception as e:
-            if tmp_path.exists():
-                tmp_path.unlink()
             return jsonify({'error': str(e)}), 500
+        finally:
+            if tmp_path and tmp_path.exists():
+                tmp_path.unlink()
 
     @app.route('/generate-md', methods=['POST'])
     def generate_md():

@@ -76,3 +76,10 @@
 2. Код в `.kilo/worktrees/playful-flower/web_app_v5_final.py`
 3. Добавить новые документы → добавить в KB
 4. Проверить KB override → открыть http://localhost:5005 и загрузить файл
+
+### 2026-04-14 - Jules (Senior QA & Security Engineer)
+- Проведен полный аудит безопасности и качества кода ветки V6.
+- Исправлены уязвимости: XXE (defusedxml), Path Traversal (secure_filename), Insecure Code Execution (subprocess вместо exec).
+- Добавлены unit-тесты для базовой логики анализатора (`tests/test_unit.py`).
+- Исправлен баг в алгоритме скоринга KB matching.
+- Настроено окружение и статический анализ (mypy, bandit).
