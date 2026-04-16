@@ -1,0 +1,9 @@
+flask
+requests
+pymupdf
+python-docx
+defusedxml
+flake8
+mypy
+bandit
+pytest
