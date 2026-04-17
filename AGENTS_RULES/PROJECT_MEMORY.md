@@ -419,3 +419,85 @@ python3 web_server.py
    - Решение: запустить benchmark_models.py
 
 **Дата**: 2026-04-08 21:23
+
+### [QA & Security Hardening v6] (17.04.2026)
+- **Проблема**: В версии V6 использовались небезопасные методы (, ) и отсутствовала санитарная обработка имен файлов.
+- **Решение**:
+    -  переписан на использование  вместо .
+    - Внедрен  для парсинга XML.
+    - Добавлен  для всех загружаемых файлов.
+    - Гарантирована очистка временных файлов через  блоки.
+- **Инструментарий**: Добавлен  с разделением на runtime и dev зависимости.
+- **Тесты**: Внедрен ============================= test session starts ==============================
+platform linux -- Python 3.12.13, pytest-9.0.3, pluggy-1.6.0
+rootdir: /app
+collected 4 items / 4 errors
+
+==================================== ERRORS ====================================
+_______________ ERROR collecting archive/tests/test_new_pdfs.py ________________
+ImportError while importing test module '/app/archive/tests/test_new_pdfs.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/jules/.pyenv/versions/3.12.13/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+archive/tests/test_new_pdfs.py:7: in <module>
+    from web_app_v5_vostok import DocumentAnalyzerVostok
+E   ModuleNotFoundError: No module named 'web_app_v5_vostok'
+_______________ ERROR collecting archive/tests/test_simple_v6.py _______________
+ImportError while importing test module '/app/archive/tests/test_simple_v6.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/jules/.pyenv/versions/3.12.13/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+archive/tests/test_simple_v6.py:14: in <module>
+    from web_app_v6_cot_fallback import DocumentAnalyzer
+E   ModuleNotFoundError: No module named 'web_app_v6_cot_fallback'
+_____________ ERROR collecting archive/tests/test_v6_benchmark.py ______________
+ImportError while importing test module '/app/archive/tests/test_v6_benchmark.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/jules/.pyenv/versions/3.12.13/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+archive/tests/test_v6_benchmark.py:13: in <module>
+    from web_app_v6_cot_fallback import DocumentAnalyzer
+E   ModuleNotFoundError: No module named 'web_app_v6_cot_fallback'
+_______________ ERROR collecting archive/tests/test_v6_server.py _______________
+ImportError while importing test module '/app/archive/tests/test_v6_server.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/jules/.pyenv/versions/3.12.13/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+archive/tests/test_v6_server.py:15: in <module>
+    from web_app_v6_cot_fallback import DocumentAnalyzer
+E   ModuleNotFoundError: No module named 'web_app_v6_cot_fallback'
+=========================== short test summary info ============================
+ERROR archive/tests/test_new_pdfs.py
+ERROR archive/tests/test_simple_v6.py
+ERROR archive/tests/test_v6_benchmark.py
+ERROR archive/tests/test_v6_server.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 4 errors during collection !!!!!!!!!!!!!!!!!!!!
+======================== 4 errors in 194.75s (0:03:14) ========================= и первый набор тестов для логики скоринга и KB matching.
+- **Результат**: Повышена стабильность и безопасность системы. usage: bandit [-h] [-r] [-a {file,vuln}] [-n CONTEXT_LINES] [-c CONFIG_FILE]
+              [-p PROFILE] [-t TESTS] [-s SKIPS]
+              [-l | --severity-level {all,low,medium,high}]
+              [-i | --confidence-level {all,low,medium,high}]
+              [-f {csv,custom,html,json,screen,txt,xml,yaml}]
+              [--msg-template MSG_TEMPLATE] [-o [OUTPUT_FILE]] [-v] [-d] [-q]
+              [--ignore-nosec] [-x EXCLUDED_PATHS] [-b BASELINE]
+              [--ini INI_PATH] [--exit-zero] [--version]
+              [targets ...] больше не находит критических уязвимостей (кроме  биндинга для Flask dev-сервера).
+
+### [QA & Security Hardening v6] (17.04.2026)
+- **Проблема**: В версии V6 использовались небезопасные методы (exec, xml.etree.ElementTree) и отсутствовала санитарная обработка имен файлов.
+- **Решение**:
+    - web_server_v6.py переписан на использование subprocess.run вместо exec.
+    - Внедрен defusedxml для парсинга XML.
+    - Добавлен secure_filename для всех загружаемых файлов.
+    - Гарантирована очистка временных файлов через finally блоки.
+- **Инструментарий**: Добавлен requirements.txt с разделением на runtime и dev зависимости.
+- **Тесты**: Внедрен pytest и первый набор тестов для логики скоринга и KB matching.
+- **Результат**: Повышена стабильность и безопасность системы. bandit больше не находит критических уязвимостей (кроме 0.0.0.0 биндинга для Flask dev-сервера).

@@ -6,9 +6,10 @@
 Активная версия: web_app_v6_cot_fallback.py
 """
 
-import sys
+import subprocess
 from pathlib import Path
 
-# Запускаем версию v6 с CoT Reasoning
-target_file = Path(__file__).parent / 'web_app_v6_cot_fallback.py'
-exec(open(target_file).read())
+if __name__ == "__main__":
+    # Запускаем версию v6 с CoT Reasoning через subprocess для безопасности
+    target_file = Path(__file__).parent / 'web_app_v6_cot_fallback.py'
+    subprocess.run(["python3", str(target_file)])
