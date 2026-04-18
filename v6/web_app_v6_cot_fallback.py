@@ -12,13 +12,19 @@ web_app_v6_cot_fallback.py - Версия с CoT промптом и fallback н
 Ожидаемая точность: 80-85%
 """
 
-import os
 import re
 import json
 import logging
+import tempfile
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from datetime import datetime
+from difflib import SequenceMatcher
+
+import requests
+import defusedxml.ElementTree as ET
+from flask import Flask, request, render_template_string, jsonify
+from werkzeug.utils import secure_filename
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -80,14 +86,14 @@ class DocumentAnalyzer:
         match = re.search(r'(\d{2,4}/\d{2,4})', filename)
         if match:
             return match.group(1)
-        match = re.search(r'([А-Я]{2,4}-\d{4}-\d{4})', filename)
+        match = re.search(r'([А-ЯA-Z]{2,4}-\d{4}-\d{3,4})', filename)
         if match:
             return match.group(1)
         return None
 
-    def _calculate_score(self, filename, kb_title):
-        from difflib import SequenceMatcher
-        score = SequenceMatcher(None, filename.lower(), kb_title.lower()).ratio()
+    def _calculate_score(self, filename: str, kb_title: str) -> float:
+        score = SequenceMatcher(None, filename.lower(),
+                                kb_title.lower()).ratio()
 
         file_section = re.search(r'ПД№(\d+)', filename)
         kb_section = re.search(r'Раздел\s*(\d+)', kb_title)
@@ -99,10 +105,15 @@ class DocumentAnalyzer:
         if file_code and kb_code and file_code == kb_code:
             score = max(score, 0.85)
 
-        if 'АР' in filename and 'АР' in kb_title: score = max(score, 0.75)
-        if 'КР' in filename and 'КР' in kb_title: score = max(score, 0.75)
-        if 'ПБ' in filename and ('ПБ' in kb_title or 'пожарн' in kb_title.lower()): score = max(score, 0.85)
-        if 'ОДИ' in filename and 'ОДИ' in kb_title: score = max(score, 0.85)
+        if 'АР' in filename and 'АР' in kb_title:
+            score = max(score, 0.75)
+        if 'КР' in filename and 'КР' in kb_title:
+            score = max(score, 0.75)
+        if 'ПБ' in filename and ('ПБ' in kb_title
+                                 or 'пожарн' in kb_title.lower()):
+            score = max(score, 0.85)
+        if 'ОДИ' in filename and 'ОДИ' in kb_title:
+            score = max(score, 0.85)
 
         return score
 
@@ -121,7 +132,8 @@ class DocumentAnalyzer:
         if matching:
             score, best_match = matching[0]
             if score > 0.90:
-                logger.info(f"KB Override ({int(score*100)}%): '{best_match.get('title', '')[:40]}...'")
+                logger.info(f"KB Override ({int(score * 100)}%): "
+                            f"'{best_match.get('title', '')[:40]}...'")
                 return {
                     'purpose': best_match.get('purpose'),
                     'content_summary': best_match.get('content_summary'),
@@ -164,9 +176,7 @@ class DocumentAnalyzer:
 
         return "\n\n".join(examples)
 
-    def _call_llm(self, text, filename):
-        import requests
-
+    def _call_llm(self, text: str, filename: str) -> Optional[Dict[str, Any]]:
         kb_override = self._get_kb_direct_fields(filename)
         kb_examples = self._get_semantic_examples_enhanced(filename, text)
         prompt = COT_SYSTEM_PROMPT.replace("{kb_examples}", kb_examples)
@@ -200,7 +210,7 @@ class DocumentAnalyzer:
                 end_idx = result_text.rfind('}')
 
                 if start_idx != -1 and end_idx != -1 and start_idx < end_idx:
-                    json_str = result_text[start_idx:end_idx+1]
+                    json_str = result_text[start_idx:end_idx + 1]
                     result = json.loads(json_str)
                     logger.info(f"LLM result: {result}")
 
@@ -229,7 +239,8 @@ class DocumentAnalyzer:
             'raw_text': None,
         }
 
-    def analyze_pdf(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
+    def analyze_pdf(self, filepath: Path,
+                    original_name: Optional[str] = None) -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'PDF')
 
         if not HAS_PYMUPDF:
@@ -260,14 +271,16 @@ class DocumentAnalyzer:
 
         return result
 
-    def analyze_docx(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
+    def analyze_docx(self, filepath: Path,
+                     original_name: Optional[str] = None) -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'DOCX')
 
         if not HAS_PYTHON_DOCX:
-            return {'error': 'python-docx не установлен', 'filename': result['filename']}
+            return {'error': 'python-docx не установлен',
+                    'filename': result['filename']}
 
         try:
-            doc = Document(filepath)
+            doc = Document(str(filepath))
             text_content = "\n".join(para.text for para in doc.paragraphs)
 
             for table in doc.tables:
@@ -288,13 +301,12 @@ class DocumentAnalyzer:
 
         return result
 
-    def analyze_xml(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
-        import xml.etree.ElementTree as ET
-
+    def analyze_xml(self, filepath: Path,
+                    original_name: Optional[str] = None) -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'XML')
 
         try:
-            tree = ET.parse(filepath)
+            tree = ET.parse(str(filepath))
             root = tree.getroot()
 
             text_content = ' '.join(t.text for t in root.iter() if t.text)
@@ -364,10 +376,10 @@ def generate_md_report(results: List[Dict], output_dir: Path) -> str:
 
 
 # Flask веб-сервер
-if __name__ == '__main__':
-    from flask import Flask, request, render_template_string, jsonify
+app = Flask(__name__)
 
-    app = Flask(__name__)
+
+if __name__ == '__main__':
     app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 
     analyzer = DocumentAnalyzer()
@@ -502,7 +514,12 @@ if __name__ == '__main__':
             if (mdData.success) {
                 const mdInfo = document.createElement('div');
                 mdInfo.className = 'stats';
-                mdInfo.innerHTML = '<p><strong>📄 MD отчёт сохранён:</strong> ' + mdData.filepath + '</p>';
+                const p = document.createElement('p');
+                const strong = document.createElement('strong');
+                strong.textContent = '📄 MD отчёт сохранён:';
+                p.appendChild(strong);
+                p.appendChild(document.createTextNode(' ' + mdData.filepath));
+                mdInfo.appendChild(p);
                 resultsContainer.appendChild(mdInfo);
             }
         }
@@ -513,21 +530,31 @@ if __name__ == '__main__':
             const card = document.createElement('div');
             card.className = 'result-card';
             
+            const h3 = document.createElement('h3');
+            h3.textContent = 'Документ ' + index + ': ' + (data.filename || 'Неизвестно');
+            card.appendChild(h3);
+
             if (data.error) {
-                card.innerHTML = '<h3>Документ ' + index + ': ' + (data.filename || 'Неизвестно') + '</h3>' +
-                    '<p class="error">Ошибка: ' + data.error + '</p>';
+                const pError = document.createElement('p');
+                pError.className = 'error';
+                pError.textContent = 'Ошибка: ' + data.error;
+                card.appendChild(pError);
             } else {
                 const fields = ['title', 'customer', 'developer', 'year', 'document_type', 'content_summary', 'purpose'];
                 const labels = ['Название', 'Заказчик', 'Разработчик', 'Год', 'Тип документа', 'Содержание', 'Цель'];
                 
-                let tableHTML = '<table>';
+                const table = document.createElement('table');
                 fields.forEach((field, i) => {
-                    const value = data[field] || 'Не найдено';
-                    tableHTML += '<tr><th>' + labels[i] + '</th><td>' + value + '</td></tr>';
+                    const tr = document.createElement('tr');
+                    const th = document.createElement('th');
+                    th.textContent = labels[i];
+                    const td = document.createElement('td');
+                    td.textContent = data[field] || 'Не найдено';
+                    tr.appendChild(th);
+                    tr.appendChild(td);
+                    table.appendChild(tr);
                 });
-                tableHTML += '</table>';
-                
-                card.innerHTML = '<h3>Документ ' + index + ': ' + data.filename + '</h3>' + tableHTML;
+                card.appendChild(table);
             }
             
             container.appendChild(card);
@@ -536,15 +563,29 @@ if __name__ == '__main__':
         function generateStats(results) {
             const container = document.getElementById('resultsContainer');
             
-            const success = results.filter(r => !r.error).length;
-            const errors = results.filter(r => r.error).length;
+            const successCount = results.filter(r => !r.error).length;
+            const errorsCount = results.filter(r => r.error).length;
             
             const stats = document.createElement('div');
             stats.className = 'stats';
-            stats.innerHTML = '<h3>📊 Статистика обработки</h3>' +
-                '<p>Всего файлов: ' + results.length + '</p>' +
-                '<p class="success">Успешно обработано: ' + success + '</p>' +
-                '<p' + (errors > 0 ? ' class="error"' : '') + '>С ошибками: ' + errors + '</p>';
+
+            const h3 = document.createElement('h3');
+            h3.textContent = '📊 Статистика обработки';
+            stats.appendChild(h3);
+
+            const pTotal = document.createElement('p');
+            pTotal.textContent = 'Всего файлов: ' + results.length;
+            stats.appendChild(pTotal);
+
+            const pSuccess = document.createElement('p');
+            pSuccess.className = 'success';
+            pSuccess.textContent = 'Успешно обработано: ' + successCount;
+            stats.appendChild(pSuccess);
+
+            const pErrors = document.createElement('p');
+            if (errorsCount > 0) pErrors.className = 'error';
+            pErrors.textContent = 'С ошибками: ' + errorsCount;
+            stats.appendChild(pErrors);
             
             container.insertBefore(stats, container.firstChild);
         }
@@ -563,11 +604,12 @@ if __name__ == '__main__':
             return jsonify({'error': 'No file'}), 400
 
         file = request.files['file']
-        if file.filename == '':
+        if not file or file.filename == '':
             return jsonify({'error': 'No filename'}), 400
 
-        import tempfile
-        with tempfile.NamedTemporaryFile(delete=False, suffix=Path(file.filename).suffix) as tmp:
+        filename = secure_filename(file.filename)
+        with tempfile.NamedTemporaryFile(delete=False,
+                                         suffix=Path(filename).suffix) as tmp:
             file.save(tmp.name)
             tmp_path = Path(tmp.name)
 
