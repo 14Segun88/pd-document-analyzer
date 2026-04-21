@@ -71,8 +71,14 @@
 - LLM timeout при первом запросе (нужно ждать ~10-15 сек)
 - Если KB override <60% → используется regex (может быть неточно)
 
+### Актуальный статус v6 (21.04.2026):
+- **Безопасность:** Полный аудит завершен. Исправлены уязвимости XSS (innerHTML -> textContent), Path Traversal (secure_filename) и XXE (defusedxml).
+- **Стабильность:** Добавлен пакет тестов `v6/tests/test_unit_v6.py`. Все тесты проходят.
+- **Линтинг:** Код приведен в соответствие с PEP 8 и проверен mypy (Type Hints).
+- **Запуск:** Сервер v6 (CoT) запускается через `start_v6.sh` на порту 5006.
+
 ### Для будущих сессий:
-1. Сервер уже запущен в screen
-2. Код в `.kilo/worktrees/playful-flower/web_app_v5_final.py`
-3. Добавить новые документы → добавить в KB
-4. Проверить KB override → открыть http://localhost:5005 и загрузить файл
+1. Код v6 находится в директории `v6/`.
+2. Запуск: `bash start_v6.sh`.
+3. Тесты: `export PYTHONPATH=$PYTHONPATH:. && pytest v6/tests/`.
+4. Основной файл логики: `v6/web_app_v6_cot_fallback.py`.

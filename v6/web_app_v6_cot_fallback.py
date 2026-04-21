@@ -12,12 +12,12 @@ web_app_v6_cot_fallback.py - Версия с CoT промптом и fallback н
 Ожидаемая точность: 80-85%
 """
 
-import os
 import re
 import json
 import logging
+import requests
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from datetime import datetime
 
 logging.basicConfig(level=logging.INFO)
@@ -99,10 +99,14 @@ class DocumentAnalyzer:
         if file_code and kb_code and file_code == kb_code:
             score = max(score, 0.85)
 
-        if 'АР' in filename and 'АР' in kb_title: score = max(score, 0.75)
-        if 'КР' in filename and 'КР' in kb_title: score = max(score, 0.75)
-        if 'ПБ' in filename and ('ПБ' in kb_title or 'пожарн' in kb_title.lower()): score = max(score, 0.85)
-        if 'ОДИ' in filename and 'ОДИ' in kb_title: score = max(score, 0.85)
+        if ('АР' in filename or 'AR' in filename) and ('АР' in kb_title or 'AR' in kb_title):
+            score = max(score, 0.75)
+        if ('КР' in filename or 'KR' in filename) and ('КР' in kb_title or 'KR' in kb_title):
+            score = max(score, 0.75)
+        if 'ПБ' in filename and ('ПБ' in kb_title or 'пожарн' in kb_title.lower()):
+            score = max(score, 0.85)
+        if 'ОДИ' in filename and 'ОДИ' in kb_title:
+            score = max(score, 0.85)
 
         return score
 
@@ -165,8 +169,6 @@ class DocumentAnalyzer:
         return "\n\n".join(examples)
 
     def _call_llm(self, text, filename):
-        import requests
-
         kb_override = self._get_kb_direct_fields(filename)
         kb_examples = self._get_semantic_examples_enhanced(filename, text)
         prompt = COT_SYSTEM_PROMPT.replace("{kb_examples}", kb_examples)
@@ -229,7 +231,7 @@ class DocumentAnalyzer:
             'raw_text': None,
         }
 
-    def analyze_pdf(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
+    def analyze_pdf(self, filepath: Path, original_name: Optional[str] = None) -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'PDF')
 
         if not HAS_PYMUPDF:
@@ -260,14 +262,14 @@ class DocumentAnalyzer:
 
         return result
 
-    def analyze_docx(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
+    def analyze_docx(self, filepath: Path, original_name: Optional[str] = None) -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'DOCX')
 
         if not HAS_PYTHON_DOCX:
             return {'error': 'python-docx не установлен', 'filename': result['filename']}
 
         try:
-            doc = Document(filepath)
+            doc = Document(str(filepath))
             text_content = "\n".join(para.text for para in doc.paragraphs)
 
             for table in doc.tables:
@@ -288,13 +290,13 @@ class DocumentAnalyzer:
 
         return result
 
-    def analyze_xml(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
-        import xml.etree.ElementTree as ET
+    def analyze_xml(self, filepath: Path, original_name: Optional[str] = None) -> Dict[str, Any]:
+        import defusedxml.ElementTree as ET
 
         result = self._init_result(original_name or filepath.name, 'XML')
 
         try:
-            tree = ET.parse(filepath)
+            tree = ET.parse(str(filepath))
             root = tree.getroot()
 
             text_content = ' '.join(t.text for t in root.iter() if t.text)
@@ -317,17 +319,17 @@ def generate_md_report(results: List[Dict], output_dir: Path) -> str:
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     filename = f"analysis_report_{timestamp}.md"
     filepath = output_dir / filename
-    
+
     md_content = f"""# Отчёт анализа документов v6
 
-**Дата:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}  
-**Количество документов:** {len(results)}  
+**Дата:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+**Количество документов:** {len(results)}
 **Модель:** mistralai/ministral-3-14b-reasoning
 
 ---
 
 """
-    
+
     for i, result in enumerate(results, 1):
         md_content += f"""## Документ {i}: {result.get('filename', 'Неизвестно')}
 
@@ -344,7 +346,7 @@ def generate_md_report(results: List[Dict], output_dir: Path) -> str:
 ---
 
 """
-    
+
     md_content += f"""## Статистика
 
 - Всего обработано: {len(results)} документов
@@ -355,10 +357,10 @@ def generate_md_report(results: List[Dict], output_dir: Path) -> str:
 
 *Отчёт сгенерирован автоматически системой v6 CoT Analyzer*
 """
-    
+
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(md_content)
-    
+
     logger.info(f"MD report saved: {filepath}")
     return str(filepath)
 
@@ -415,7 +417,7 @@ if __name__ == '__main__':
             <p>Загрузите до 10 документов для анализа (PDF, DOCX, XML)</p>
             <input type="file" id="fileInput" accept=".pdf,.docx,.doc,.xml" multiple>
             <button class="upload-btn" onclick="analyzeFiles()">Анализировать все файлы</button>
-            
+
             <div class="file-list" id="fileList"></div>
         </div>
 
@@ -431,19 +433,26 @@ if __name__ == '__main__':
     <script>
         const fileInput = document.getElementById('fileInput');
         const fileList = document.getElementById('fileList');
-        
+
         fileInput.addEventListener('change', function() {
             const files = Array.from(this.files);
             if (files.length > 10) {
                 alert('Максимум 10 файлов за раз');
                 this.value = '';
-                fileList.innerHTML = '';
+                fileList.textContent = '';
                 return;
             }
-            
-            fileList.innerHTML = '<h4>Выбранные файлы (' + files.length + '):</h4>';
+
+            fileList.textContent = '';
+            const h4 = document.createElement('h4');
+            h4.textContent = 'Выбранные файлы (' + files.length + '):';
+            fileList.appendChild(h4);
+
             files.forEach((file, i) => {
-                fileList.innerHTML += '<div class="file-item">' + (i+1) + '. ' + file.name + '</div>';
+                const item = document.createElement('div');
+                item.className = 'file-item';
+                item.textContent = (i + 1) + '. ' + file.name;
+                fileList.appendChild(item);
             });
         });
 
@@ -457,95 +466,126 @@ if __name__ == '__main__':
             const loading = document.getElementById('loading');
             const resultsContainer = document.getElementById('resultsContainer');
             const progress = document.getElementById('progress');
-            
+
             loading.style.display = 'block';
             resultsContainer.innerHTML = '';
-            
+
             const results = [];
-            
+
             for (let i = 0; i < files.length; i++) {
                 progress.textContent = 'Обработка файла ' + (i+1) + ' из ' + files.length + ': ' + files[i].name;
-                
+
                 const formData = new FormData();
                 formData.append('file', files[i]);
-                
+
                 try {
                     const response = await fetch('/analyze', {
                         method: 'POST',
                         body: formData
                     });
-                    
+
                     const data = await response.json();
                     results.push(data);
-                    
+
                     displayResult(data, i+1);
                 } catch (error) {
                     results.push({ filename: files[i].name, error: error.message });
                     displayResult({ filename: files[i].name, error: error.message }, i+1);
                 }
             }
-            
+
             loading.style.display = 'none';
             progress.textContent = '';
-            
+
             if (results.length > 1) {
                 generateStats(results);
             }
-            
+
             const mdResponse = await fetch('/generate-md', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ results: results })
             });
-            
+
             const mdData = await mdResponse.json();
             if (mdData.success) {
                 const mdInfo = document.createElement('div');
                 mdInfo.className = 'stats';
-                mdInfo.innerHTML = '<p><strong>📄 MD отчёт сохранён:</strong> ' + mdData.filepath + '</p>';
+                const p = document.createElement('p');
+                const strong = document.createElement('strong');
+                strong.textContent = '📄 MD отчёт сохранён: ';
+                p.appendChild(strong);
+                p.appendChild(document.createTextNode(mdData.filepath));
+                mdInfo.appendChild(p);
                 resultsContainer.appendChild(mdInfo);
             }
         }
 
         function displayResult(data, index) {
             const container = document.getElementById('resultsContainer');
-            
+
             const card = document.createElement('div');
             card.className = 'result-card';
-            
+
+            const h3 = document.createElement('h3');
+            h3.textContent = 'Документ ' + index + ': ' + (data.filename || 'Неизвестно');
+            card.appendChild(h3);
+
             if (data.error) {
-                card.innerHTML = '<h3>Документ ' + index + ': ' + (data.filename || 'Неизвестно') + '</h3>' +
-                    '<p class="error">Ошибка: ' + data.error + '</p>';
+                const p = document.createElement('p');
+                p.className = 'error';
+                p.textContent = 'Ошибка: ' + data.error;
+                card.appendChild(p);
             } else {
                 const fields = ['title', 'customer', 'developer', 'year', 'document_type', 'content_summary', 'purpose'];
                 const labels = ['Название', 'Заказчик', 'Разработчик', 'Год', 'Тип документа', 'Содержание', 'Цель'];
-                
-                let tableHTML = '<table>';
+
+                const table = document.createElement('table');
                 fields.forEach((field, i) => {
-                    const value = data[field] || 'Не найдено';
-                    tableHTML += '<tr><th>' + labels[i] + '</th><td>' + value + '</td></tr>';
+                    const tr = document.createElement('tr');
+                    const th = document.createElement('th');
+                    th.textContent = labels[i];
+                    const td = document.createElement('td');
+                    td.textContent = data[field] || 'Не найдено';
+                    tr.appendChild(th);
+                    tr.appendChild(td);
+                    table.appendChild(tr);
                 });
-                tableHTML += '</table>';
-                
-                card.innerHTML = '<h3>Документ ' + index + ': ' + data.filename + '</h3>' + tableHTML;
+                card.appendChild(table);
             }
-            
+
             container.appendChild(card);
         }
 
         function generateStats(results) {
             const container = document.getElementById('resultsContainer');
-            
+
             const success = results.filter(r => !r.error).length;
             const errors = results.filter(r => r.error).length;
-            
+
             const stats = document.createElement('div');
             stats.className = 'stats';
-            stats.innerHTML = '<h3>📊 Статистика обработки</h3>' +
-                '<p>Всего файлов: ' + results.length + '</p>' +
-                '<p class="success">Успешно обработано: ' + success + '</p>' +
-                '<p' + (errors > 0 ? ' class="error"' : '') + '>С ошибками: ' + errors + '</p>';
-            
+
+            const h3 = document.createElement('h3');
+            h3.textContent = '📊 Статистика обработки';
+            stats.appendChild(h3);
+
+            const pTotal = document.createElement('p');
+            pTotal.textContent = 'Всего файлов: ' + results.length;
+            stats.appendChild(pTotal);
+
+            const pSuccess = document.createElement('p');
+            pSuccess.className = 'success';
+            pSuccess.textContent = 'Успешно обработано: ' + success;
+            stats.appendChild(pSuccess);
+
+            const pErrors = document.createElement('p');
+            if (errors > 0) {
+                pErrors.className = 'error';
+            }
+            pErrors.textContent = 'С ошибками: ' + errors;
+            stats.appendChild(pErrors);
+
             container.insertBefore(stats, container.firstChild);
         }
     </script>
@@ -559,15 +599,19 @@ if __name__ == '__main__':
 
     @app.route('/analyze', methods=['POST'])
     def analyze():
+        from werkzeug.utils import secure_filename
         if 'file' not in request.files:
             return jsonify({'error': 'No file'}), 400
 
         file = request.files['file']
-        if file.filename == '':
+        if not file or file.filename == '':
             return jsonify({'error': 'No filename'}), 400
 
+        safe_name = secure_filename(file.filename)
         import tempfile
-        with tempfile.NamedTemporaryFile(delete=False, suffix=Path(file.filename).suffix) as tmp:
+        with tempfile.NamedTemporaryFile(
+            delete=False, suffix=Path(safe_name).suffix
+        ) as tmp:
             file.save(tmp.name)
             tmp_path = Path(tmp.name)
 
@@ -594,12 +638,12 @@ if __name__ == '__main__':
         try:
             data = request.get_json()
             results = data.get('results', [])
-            
+
             tests_dir = Path(__file__).parent.parent / "Тесты_md"
             tests_dir.mkdir(exist_ok=True)
-            
+
             filepath = generate_md_report(results, tests_dir)
-            
+
             return jsonify({'success': True, 'filepath': filepath})
         except Exception as e:
             logger.error(f"MD generation error: {e}")
