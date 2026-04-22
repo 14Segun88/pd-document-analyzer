@@ -7,8 +7,9 @@
 """
 
 import sys
+import subprocess
 from pathlib import Path
 
 # Запускаем версию v6 с CoT Reasoning
 target_file = Path(__file__).parent / 'web_app_v6_cot_fallback.py'
-exec(open(target_file).read())
+subprocess.run([sys.executable, str(target_file)])
