@@ -1,0 +1,11 @@
+flask
+requests
+pymupdf
+python-docx
+defusedxml
+pytest
+flake8
+mypy
+bandit
+python-dotenv
+types-requests
