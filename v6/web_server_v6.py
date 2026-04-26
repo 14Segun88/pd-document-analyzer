@@ -6,9 +6,11 @@
 Активная версия: web_app_v6_cot_fallback.py
 """
 
-import sys
-from pathlib import Path
+import os
+from web_app_v6_cot_fallback import app
 
-# Запускаем версию v6 с CoT Reasoning
-target_file = Path(__file__).parent / 'web_app_v6_cot_fallback.py'
-exec(open(target_file).read())
+if __name__ == '__main__':
+    host = os.getenv("FLASK_HOST", "127.0.0.1")
+    port = int(os.getenv("FLASK_PORT", 5006))
+    print(f"🚀 Сервер запущен: http://{host}:{port}")
+    app.run(host=host, port=port, debug=False)

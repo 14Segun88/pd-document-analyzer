@@ -16,9 +16,16 @@ import os
 import re
 import json
 import logging
+import tempfile
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional
 from datetime import datetime
+from dotenv import load_dotenv
+from flask import Flask, request, render_template_string, jsonify
+from werkzeug.utils import secure_filename
+import defusedxml.ElementTree as dET
+
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -61,8 +68,8 @@ class DocumentAnalyzer:
     """Анализатор v6: CoT промпт + fallback на KB структуру."""
 
     def __init__(self):
-        self.api_url = "http://192.168.47.22:1234/v1/chat/completions"
-        self.model_name = "mistralai/ministral-3-14b-reasoning"
+        self.api_url = os.getenv("LLM_API_URL", "http://192.168.47.22:1234/v1/chat/completions")
+        self.model_name = os.getenv("LLM_MODEL_NAME", "mistralai/ministral-3-14b-reasoning")
         self.kb_data = []
 
         try:
@@ -229,7 +236,7 @@ class DocumentAnalyzer:
             'raw_text': None,
         }
 
-    def analyze_pdf(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
+    def analyze_pdf(self, filepath: Path, original_name: Optional[str] = None) -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'PDF')
 
         if not HAS_PYMUPDF:
@@ -260,14 +267,14 @@ class DocumentAnalyzer:
 
         return result
 
-    def analyze_docx(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
+    def analyze_docx(self, filepath: Path, original_name: Optional[str] = None) -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'DOCX')
 
         if not HAS_PYTHON_DOCX:
             return {'error': 'python-docx не установлен', 'filename': result['filename']}
 
         try:
-            doc = Document(filepath)
+            doc = Document(str(filepath))
             text_content = "\n".join(para.text for para in doc.paragraphs)
 
             for table in doc.tables:
@@ -288,13 +295,11 @@ class DocumentAnalyzer:
 
         return result
 
-    def analyze_xml(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
-        import xml.etree.ElementTree as ET
-
+    def analyze_xml(self, filepath: Path, original_name: Optional[str] = None) -> Dict[str, Any]:
         result = self._init_result(original_name or filepath.name, 'XML')
 
         try:
-            tree = ET.parse(filepath)
+            tree = dET.parse(filepath)
             root = tree.getroot()
 
             text_content = ' '.join(t.text for t in root.iter() if t.text)
@@ -364,15 +369,12 @@ def generate_md_report(results: List[Dict], output_dir: Path) -> str:
 
 
 # Flask веб-сервер
-if __name__ == '__main__':
-    from flask import Flask, request, render_template_string, jsonify
+app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 
-    app = Flask(__name__)
-    app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
+analyzer = DocumentAnalyzer()
 
-    analyzer = DocumentAnalyzer()
-
-    HTML_TEMPLATE = '''
+HTML_TEMPLATE = '''
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -437,13 +439,20 @@ if __name__ == '__main__':
             if (files.length > 10) {
                 alert('Максимум 10 файлов за раз');
                 this.value = '';
-                fileList.innerHTML = '';
+                fileList.textContent = '';
                 return;
             }
             
-            fileList.innerHTML = '<h4>Выбранные файлы (' + files.length + '):</h4>';
+            fileList.textContent = '';
+            const title = document.createElement('h4');
+            title.textContent = 'Выбранные файлы (' + files.length + '):';
+            fileList.appendChild(title);
+
             files.forEach((file, i) => {
-                fileList.innerHTML += '<div class="file-item">' + (i+1) + '. ' + file.name + '</div>';
+                const item = document.createElement('div');
+                item.className = 'file-item';
+                item.textContent = (i+1) + '. ' + file.name;
+                fileList.appendChild(item);
             });
         });
 
@@ -459,7 +468,7 @@ if __name__ == '__main__':
             const progress = document.getElementById('progress');
             
             loading.style.display = 'block';
-            resultsContainer.innerHTML = '';
+            resultsContainer.textContent = '';
             
             const results = [];
             
@@ -502,7 +511,14 @@ if __name__ == '__main__':
             if (mdData.success) {
                 const mdInfo = document.createElement('div');
                 mdInfo.className = 'stats';
-                mdInfo.innerHTML = '<p><strong>📄 MD отчёт сохранён:</strong> ' + mdData.filepath + '</p>';
+
+                const p = document.createElement('p');
+                const strong = document.createElement('strong');
+                strong.textContent = '📄 MD отчёт сохранён:';
+                p.appendChild(strong);
+                p.appendChild(document.createTextNode(' ' + mdData.filepath));
+
+                mdInfo.appendChild(p);
                 resultsContainer.appendChild(mdInfo);
             }
         }
@@ -513,21 +529,31 @@ if __name__ == '__main__':
             const card = document.createElement('div');
             card.className = 'result-card';
             
+            const title = document.createElement('h3');
+            title.textContent = 'Документ ' + index + ': ' + (data.filename || 'Неизвестно');
+            card.appendChild(title);
+
             if (data.error) {
-                card.innerHTML = '<h3>Документ ' + index + ': ' + (data.filename || 'Неизвестно') + '</h3>' +
-                    '<p class="error">Ошибка: ' + data.error + '</p>';
+                const error = document.createElement('p');
+                error.className = 'error';
+                error.textContent = 'Ошибка: ' + data.error;
+                card.appendChild(error);
             } else {
                 const fields = ['title', 'customer', 'developer', 'year', 'document_type', 'content_summary', 'purpose'];
                 const labels = ['Название', 'Заказчик', 'Разработчик', 'Год', 'Тип документа', 'Содержание', 'Цель'];
                 
-                let tableHTML = '<table>';
+                const table = document.createElement('table');
                 fields.forEach((field, i) => {
-                    const value = data[field] || 'Не найдено';
-                    tableHTML += '<tr><th>' + labels[i] + '</th><td>' + value + '</td></tr>';
+                    const row = document.createElement('tr');
+                    const th = document.createElement('th');
+                    th.textContent = labels[i];
+                    const td = document.createElement('td');
+                    td.textContent = data[field] || 'Не найдено';
+                    row.appendChild(th);
+                    row.appendChild(td);
+                    table.appendChild(row);
                 });
-                tableHTML += '</table>';
-                
-                card.innerHTML = '<h3>Документ ' + index + ': ' + data.filename + '</h3>' + tableHTML;
+                card.appendChild(table);
             }
             
             container.appendChild(card);
@@ -541,10 +567,24 @@ if __name__ == '__main__':
             
             const stats = document.createElement('div');
             stats.className = 'stats';
-            stats.innerHTML = '<h3>📊 Статистика обработки</h3>' +
-                '<p>Всего файлов: ' + results.length + '</p>' +
-                '<p class="success">Успешно обработано: ' + success + '</p>' +
-                '<p' + (errors > 0 ? ' class="error"' : '') + '>С ошибками: ' + errors + '</p>';
+
+            const title = document.createElement('h3');
+            title.textContent = '📊 Статистика обработки';
+            stats.appendChild(title);
+
+            const totalP = document.createElement('p');
+            totalP.textContent = 'Всего файлов: ' + results.length;
+            stats.appendChild(totalP);
+
+            const successP = document.createElement('p');
+            successP.className = 'success';
+            successP.textContent = 'Успешно обработано: ' + success;
+            stats.appendChild(successP);
+
+            const errorP = document.createElement('p');
+            if (errors > 0) errorP.className = 'error';
+            errorP.textContent = 'С ошибками: ' + errors;
+            stats.appendChild(errorP);
             
             container.insertBefore(stats, container.firstChild);
         }
@@ -553,58 +593,61 @@ if __name__ == '__main__':
 </html>
 '''
 
-    @app.route('/')
-    def index():
-        return render_template_string(HTML_TEMPLATE)
+@app.route('/')
+def index():
+    return render_template_string(HTML_TEMPLATE)
 
-    @app.route('/analyze', methods=['POST'])
-    def analyze():
-        if 'file' not in request.files:
-            return jsonify({'error': 'No file'}), 400
+@app.route('/analyze', methods=['POST'])
+def analyze():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file'}), 400
 
-        file = request.files['file']
-        if file.filename == '':
-            return jsonify({'error': 'No filename'}), 400
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No filename'}), 400
 
-        import tempfile
-        with tempfile.NamedTemporaryFile(delete=False, suffix=Path(file.filename).suffix) as tmp:
-            file.save(tmp.name)
-            tmp_path = Path(tmp.name)
+    filename = secure_filename(file.filename)
+    with tempfile.NamedTemporaryFile(delete=False, suffix=Path(filename).suffix) as tmp:
+        file.save(tmp.name)
+        tmp_path = Path(tmp.name)
 
-        try:
-            ext = tmp_path.suffix.lower()
-            if ext == '.pdf':
-                result = analyzer.analyze_pdf(tmp_path, file.filename)
-            elif ext in ['.docx', '.doc']:
-                result = analyzer.analyze_docx(tmp_path, file.filename)
-            elif ext == '.xml':
-                result = analyzer.analyze_xml(tmp_path, file.filename)
-            else:
-                return jsonify({'error': 'Unsupported format'}), 400
+    try:
+        ext = tmp_path.suffix.lower()
+        if ext == '.pdf':
+            result = analyzer.analyze_pdf(tmp_path, file.filename)
+        elif ext in ['.docx', '.doc']:
+            result = analyzer.analyze_docx(tmp_path, file.filename)
+        elif ext == '.xml':
+            result = analyzer.analyze_xml(tmp_path, file.filename)
+        else:
+            return jsonify({'error': 'Unsupported format'}), 400
 
+        tmp_path.unlink()
+        return jsonify(result)
+    except Exception as e:
+        if tmp_path.exists():
             tmp_path.unlink()
-            return jsonify(result)
-        except Exception as e:
-            if tmp_path.exists():
-                tmp_path.unlink()
-            return jsonify({'error': str(e)}), 500
+        return jsonify({'error': str(e)}), 500
 
-    @app.route('/generate-md', methods=['POST'])
-    def generate_md():
-        try:
-            data = request.get_json()
-            results = data.get('results', [])
-            
-            tests_dir = Path(__file__).parent.parent / "Тесты_md"
-            tests_dir.mkdir(exist_ok=True)
-            
-            filepath = generate_md_report(results, tests_dir)
-            
-            return jsonify({'success': True, 'filepath': filepath})
-        except Exception as e:
-            logger.error(f"MD generation error: {e}")
-            return jsonify({'success': False, 'error': str(e)}), 500
+@app.route('/generate-md', methods=['POST'])
+def generate_md():
+    try:
+        data = request.get_json()
+        results = data.get('results', [])
 
-    print("🚀 Сервер запущен: http://localhost:5006")
+        tests_dir = Path(__file__).parent.parent / "Тесты_md"
+        tests_dir.mkdir(exist_ok=True)
+
+        filepath = generate_md_report(results, tests_dir)
+
+        return jsonify({'success': True, 'filepath': filepath})
+    except Exception as e:
+        logger.error(f"MD generation error: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+if __name__ == '__main__':
+    host = os.getenv("FLASK_HOST", "0.0.0.0")
+    port = int(os.getenv("FLASK_PORT", 5006))
+    print(f"🚀 Сервер запущен: http://{host}:{port}")
     print("📁 MD отчёты сохраняются в: Тесты_md/")
-    app.run(host='0.0.0.0', port=5006, debug=False)
+    app.run(host=host, port=port, debug=False)
