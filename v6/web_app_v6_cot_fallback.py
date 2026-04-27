@@ -1,24 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-web_app_v6_cot_fallback.py - Версия с CoT промптом и fallback на KB структуру
-Улучшения:
-- CoT (Chain-of-Thought) - 7 шагов анализа
-- Fallback на KB структуру для редких документов
-- Улучшенный Semantic Matching
-- KB Override для известных документов (100% точность)
-- Множественная загрузка файлов (до 10 документов)
-- Генерация MD отчётов в папку Тесты_md
-Ожидаемая точность: 80-85%
-"""
-
 import os
 import re
 import json
 import logging
+import tempfile
+import requests
+import defusedxml.ElementTree as ET
 from pathlib import Path
-from typing import Dict, Any, List
+from typing import Dict, Any, List, Optional, Union, IO
 from datetime import datetime
+from difflib import SequenceMatcher
+from flask import Flask, request, render_template_string, jsonify
+from werkzeug.utils import secure_filename
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -35,7 +29,6 @@ try:
 except ImportError:
     HAS_PYTHON_DOCX = False
 
-
 COT_SYSTEM_PROMPT = """Ты — эксперт по анализу проектной документации.
 
 ПРИМЕРЫ ИЗ БАЗЫ ЗНАНИЙ:
@@ -48,45 +41,65 @@ COT_SYSTEM_PROMPT = """Ты — эксперт по анализу проект�
 - customer: заказчик (например: "ГКУ МО «ДЗКС»")
 - developer: разработчик с городом (например: "ООО «Мосрегионпроект», г. Электросталь")
 - year: год (из шифра /25 → 2025)
-- document_type: тип (Раздел, Пояснительная записка, ТУ, Договор)
-- content_summary: краткое описание 2-3 предложения
-- purpose: цель документа
+- document_type: тип (например: "Проектная документация", "Результаты ИГДИ")
+- content_summary: краткое содержание (3-4 ключевых пункта)
+- purpose: цель документа (для чего он нужен)
 
-ВЕРНИ JSON БЕЗ MARKDOWN:
-{"title": "...", "customer": "...", "developer": "...", "year": "...", "document_type": "...", "content_summary": "...", "purpose": "..."}
-"""
+ИСПОЛЬЗУЙ ПРЕДОСТАВЛЕННУЮ НИЖЕ СТРУКТУРУ XML КАК ПОДСКАЗКУ (XML Structure Hints).
 
+ВАЖНО: Если документ похож на один из примеров, используй его структуру.
+Если документ новый — проанализируй его самостоятельно, следуя 7 шагам CoT.
+
+ПРОЦЕСС (Chain-of-Thought):
+ШАГ 1: ОПРЕДЕЛИ ТИП ДОКУМЕНТА
+ШАГ 2: НАЙДИ ЗАКАЗЧИКА (маркеры: "Заказчик:", "Администрация")
+ШАГ 3: НАЙДИ РАЗРАБОТЧИКА (маркеры: "ИП", "ООО")
+ШАГ 4: ИЗВЛЕКИ ГОД (шифр /25 → 2025)
+ШАГ 5: СОБЕРИ НАЗВАНИЕ
+ШАГ 6: ОПИШИ СОДЕРЖАНИЕ
+ШАГ 7: СФОРМУЛИРУЙ ЦЕЛЬ
+
+ОТВЕТЬ ТОЛЬКО В JSON ФОРМАТЕ.
+
+Твой ответ должен начинаться с <reasoning> где ты опишешь все 7 шагов анализа, и заканчиваться JSON объектом в блоке ```json."""
 
 class DocumentAnalyzer:
-    """Анализатор v6: CoT промпт + fallback на KB структуру."""
-
     def __init__(self):
-        self.api_url = "http://192.168.47.22:1234/v1/chat/completions"
-        self.model_name = "mistralai/ministral-3-14b-reasoning"
         self.kb_data = []
+        self._load_kb()
 
-        try:
-            kb_path = Path(__file__).parent.parent / "knowledge_base.json"
-            if not kb_path.exists():
-                kb_path = Path("knowledge_base.json")
-            if kb_path.exists():
-                with open(kb_path, "r", encoding="utf-8") as f:
+    def _load_kb(self):
+        kb_path = Path(__file__).parent.parent / "knowledge_base.json"
+        if kb_path.exists():
+            try:
+                with open(kb_path, 'r', encoding='utf-8') as f:
                     self.kb_data = json.load(f)
                 logger.info(f"KB loaded: {len(self.kb_data)} entries from {kb_path.absolute()}")
-        except Exception as e:
-            logger.warning(f"KB not loaded: {e}")
+            except Exception as e:
+                logger.warning(f"KB not loaded: {e}")
 
     def _extract_code_from_filename(self, filename):
-        match = re.search(r'(\d{2,4}/\d{2,4})', filename)
+        # Improved regex to handle both / and - or _ in codes
+
+        # Specific match for the common pattern in KB: МЕС-БМК-04/24
+        match = re.search(r'([А-ЯA-Z]{2,4}-[А-ЯA-Z]{2,4}-\d{2,4}/\d{2,4})', filename)
         if match:
             return match.group(1)
-        match = re.search(r'([А-Я]{2,4}-\d{4}-\d{4})', filename)
+
+        # Matches formats like 157/25, 157-25, 157_25
+        match = re.search(r'(\d{2,4}[/_]\d{2,4})', filename)
+        if match:
+            return match.group(1).replace('_', '/')
+
+        # Matches formats like АР-2024-0424
+        # Supporting Cyrillic and Latin
+        match = re.search(r'([А-ЯA-Z]{2,4}-\d{2,4}-\d{3,4})', filename)
         if match:
             return match.group(1)
+
         return None
 
     def _calculate_score(self, filename, kb_title):
-        from difflib import SequenceMatcher
         score = SequenceMatcher(None, filename.lower(), kb_title.lower()).ratio()
 
         file_section = re.search(r'ПД№(\d+)', filename)
@@ -98,11 +111,6 @@ class DocumentAnalyzer:
         kb_code = self._extract_code_from_filename(kb_title)
         if file_code and kb_code and file_code == kb_code:
             score = max(score, 0.85)
-
-        if 'АР' in filename and 'АР' in kb_title: score = max(score, 0.75)
-        if 'КР' in filename and 'КР' in kb_title: score = max(score, 0.75)
-        if 'ПБ' in filename and ('ПБ' in kb_title or 'пожарн' in kb_title.lower()): score = max(score, 0.85)
-        if 'ОДИ' in filename and 'ОДИ' in kb_title: score = max(score, 0.85)
 
         return score
 
@@ -117,103 +125,87 @@ class DocumentAnalyzer:
         return [(score, entry) for score, entry in scored_entries[:top_n]]
 
     def _get_kb_direct_fields(self, filename):
-        matching = self._get_kb_matching_entries(filename, top_n=1)
-        if matching:
-            score, best_match = matching[0]
-            if score > 0.90:
-                logger.info(f"KB Override ({int(score*100)}%): '{best_match.get('title', '')[:40]}...'")
-                return {
-                    'purpose': best_match.get('purpose'),
-                    'content_summary': best_match.get('content_summary'),
-                    'document_type': best_match.get('document_type')
-                }
-        return None
+        matches = self._get_kb_matching_entries(filename, top_n=1)
+        if matches and matches[0][0] >= 0.75:
+            entry = matches[0][1]
+            return {
+                'document_type': entry.get('document_type'),
+                'content_summary': entry.get('content_summary'),
+                'purpose': entry.get('purpose'),
+                'kb_match': True,
+                'kb_title': entry.get('title'),
+                'kb_score': round(matches[0][0] * 100)
+            }
+        return {}
 
     def _get_semantic_examples_enhanced(self, filename: str, doc_text: str) -> str:
-        if not self.kb_data:
-            return "ПРИМЕРЫ НЕ ДОСТУПНЫ. Используй структуру из инструкции выше."
-
-        def tokenize(text):
-            return set(re.findall(r'[а-яА-Яa-zA-Z0-9]+', text.lower()))
-
-        file_tokens = tokenize(filename)
-        text_tokens = tokenize(doc_text[:500])
-        all_tokens = file_tokens.union(text_tokens)
-
-        scored = []
-        for entry in self.kb_data:
-            src = entry.get('_source_doc', '')
-            title = entry.get('title', '')
-            doc_type = entry.get('document_type', '')
-            entry_tokens = tokenize(src + " " + title + " " + doc_type)
-
-            score = len(all_tokens.intersection(entry_tokens))
-            if score > 0:
-                scored.append((score, entry))
-
-        scored.sort(key=lambda x: x[0], reverse=True)
-        top_3 = [e[1] for e in scored[:3]]
-
-        if not top_3:
-            return "ПРИМЕРЫ НЕ НАЙДЕНЫ. Используй СТРУКТУРУ из инструкции выше."
+        matches = self._get_kb_matching_entries(filename, top_n=3)
 
         examples = []
-        for i, ex in enumerate(top_3, 1):
-            clean = {k: v for k, v in ex.items() if not k.startswith('_')}
-            examples.append(f"ПРИМЕР {i}:\n{json.dumps(clean, ensure_ascii=False, indent=2)}")
+        for i, (score, entry) in enumerate(matches):
+            example = f"ПРИМЕР {i+1} (Схожесть: {round(score*100)}%):\n"
+            example += f"Название: {entry.get('title')}\n"
+            example += f"Заказчик: {entry.get('customer')}\n"
+            example += f"Разработчик: {entry.get('developer')}\n"
+            example += f"Тип: {entry.get('document_type')}\n"
+            example += f"Суть: {entry.get('content_summary')}\n"
+            example += f"Цель: {entry.get('purpose')}\n"
+            examples.append(example)
 
         return "\n\n".join(examples)
 
     def _call_llm(self, text, filename):
-        import requests
+        url = "http://192.168.47.22:1234/v1/chat/completions"
 
-        kb_override = self._get_kb_direct_fields(filename)
-        kb_examples = self._get_semantic_examples_enhanced(filename, text)
-        prompt = COT_SYSTEM_PROMPT.replace("{kb_examples}", kb_examples)
+        kb_examples = self._get_semantic_examples_enhanced(filename, text[:2000])
+
+        payload = {
+            "model": "mistralai/ministral-3-14b-reasoning",
+            "messages": [
+                {"role": "system", "content": COT_SYSTEM_PROMPT.format(kb_examples=kb_examples)},
+                {"role": "user", "content": f"ФАЙЛ: {filename}\n\nТЕКСТ ДОКУМЕНТА:\n{text[:4000]}"}
+            ],
+            "temperature": 0.1,
+            "max_tokens": 3000,
+            "response_format": {"type": "json_object"}
+        }
 
         try:
-            response = requests.post(
-                self.api_url,
-                json={
-                    "model": self.model_name,
-                    "messages": [
-                        {"role": "system", "content": prompt},
-                        {"role": "user", "content": f"ТЕКСТ ДОКУМЕНТА:\n{text[:3000]}"}
-                    ],
-                    "max_tokens": 8000,
-                    "temperature": 0.01
-                },
-                timeout=180
-            )
+            response = requests.post(url, json=payload, timeout=60)
+            result = response.json()
+            content = result['choices'][0]['message']['content']
 
-            if response.status_code == 200:
-                msg = response.json()['choices'][0]['message']
-                result_text = msg.get('content') or msg.get('reasoning_content', '')
+            # Попытка извлечь CoT reasoning если есть (native or manual)
+            reasoning = result['choices'][0]['message'].get('reasoning_content', "")
 
-                if not result_text:
-                    return None
+            # Manual extraction if prompt instructed to use <reasoning>
+            if not reasoning and "<reasoning>" in content:
+                match = re.search(r'<reasoning>(.*?)</reasoning>', content, re.DOTALL)
+                if match:
+                    reasoning = match.group(1).strip()
 
-                result_text = re.sub(r'```json\s*', '', result_text)
-                result_text = re.sub(r'```\s*', '', result_text)
+            if reasoning:
+                logger.info(f"CoT Reasoning found for {filename}: {reasoning[:100]}...")
 
-                start_idx = result_text.find('{')
-                end_idx = result_text.rfind('}')
+            # Extract JSON from code block if present
+            if "```json" in content:
+                json_match = re.search(r'```json\s*(.*?)\s*```', content, re.DOTALL)
+                if json_match:
+                    return json.loads(json_match.group(1))
 
-                if start_idx != -1 and end_idx != -1 and start_idx < end_idx:
-                    json_str = result_text[start_idx:end_idx+1]
-                    result = json.loads(json_str)
-                    logger.info(f"LLM result: {result}")
-
-                    if kb_override:
-                        for key in ['purpose', 'content_summary', 'document_type']:
-                            if kb_override.get(key):
-                                result[key] = kb_override[key]
-
-                    return result
+            return json.loads(content)
         except Exception as e:
-            logger.error(f"LLM error: {e}")
-
-        return None
+            logger.error(f"LLM Error for {filename}: {e}")
+            # Fallback на пустую структуру
+            return {
+                "title": filename,
+                "customer": "Error",
+                "developer": "Error",
+                "year": "Error",
+                "document_type": "Error",
+                "content_summary": str(e),
+                "purpose": "Error"
+            }
 
     def _init_result(self, filename: str, format_type: str) -> Dict[str, Any]:
         return {
@@ -229,150 +221,120 @@ class DocumentAnalyzer:
             'raw_text': None,
         }
 
-    def analyze_pdf(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
-        result = self._init_result(original_name or filepath.name, 'PDF')
+    def analyze_pdf(self, filepath: Path, original_name: Optional[str] = None) -> Dict[str, Any]:
+        filename = original_name or filepath.name
+        res = self._init_result(filename, 'pdf')
 
         if not HAS_PYMUPDF:
-            return {'error': 'PyMuPDF не установлен', 'filename': result['filename']}
+            res['content_summary'] = "Error: PyMuPDF not installed"
+            return res
 
         try:
-            doc = fitz.open(filepath)
-            text_content = ""
+            text = ""
+            with fitz.open(str(filepath)) as doc:
+                # Берем первые 5 страниц для анализа
+                for page in doc[:5]:
+                    text += page.get_text()
 
-            for page_num, page in enumerate(doc):
-                text = page.get_text()
-                text_content += text + "\n"
+            res['raw_text'] = text
+            llm_res = self._call_llm(text, filename)
+            res.update(llm_res)
 
-                if len(text_content) > 5000:
-                    break
+            # KB Override
+            kb_fields = self._get_kb_direct_fields(filename)
+            if kb_fields:
+                res.update(kb_fields)
 
-            doc.close()
-            result['raw_text'] = text_content[:5000]
-
-            llm_result = self._call_llm(text_content, result['filename'])
-            if llm_result:
-                for k in ['title', 'customer', 'developer', 'year', 'document_type', 'content_summary', 'purpose']:
-                    if llm_result.get(k):
-                        result[k] = llm_result[k]
-
+            return res
         except Exception as e:
-            result['error'] = str(e)
+            res['content_summary'] = f"Error: {e}"
+            return res
 
-        return result
-
-    def analyze_docx(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
-        result = self._init_result(original_name or filepath.name, 'DOCX')
+    def analyze_docx(self, filepath: Path, original_name: Optional[str] = None) -> Dict[str, Any]:
+        filename = original_name or filepath.name
+        res = self._init_result(filename, 'docx')
 
         if not HAS_PYTHON_DOCX:
-            return {'error': 'python-docx не установлен', 'filename': result['filename']}
+            res['content_summary'] = "Error: python-docx not installed"
+            return res
 
         try:
-            doc = Document(filepath)
-            text_content = "\n".join(para.text for para in doc.paragraphs)
+            doc = Document(str(filepath))
+            text = "\n".join([p.text for p in doc.paragraphs[:100]])
 
-            for table in doc.tables:
-                for row in table.rows:
-                    for cell in row.cells:
-                        text_content += " " + cell.text
+            res['raw_text'] = text
+            llm_res = self._call_llm(text, filename)
+            res.update(llm_res)
 
-            result['raw_text'] = text_content[:5000]
+            # KB Override
+            kb_fields = self._get_kb_direct_fields(filename)
+            if kb_fields:
+                res.update(kb_fields)
 
-            llm_result = self._call_llm(text_content, result['filename'])
-            if llm_result:
-                for k in ['title', 'customer', 'developer', 'year', 'document_type', 'content_summary', 'purpose']:
-                    if llm_result.get(k):
-                        result[k] = llm_result[k]
-
+            return res
         except Exception as e:
-            result['error'] = str(e)
+            res['content_summary'] = f"Error: {e}"
+            return res
 
-        return result
-
-    def analyze_xml(self, filepath: Path, original_name: str = None) -> Dict[str, Any]:
-        import xml.etree.ElementTree as ET
-
-        result = self._init_result(original_name or filepath.name, 'XML')
+    def analyze_xml(self, filepath: Path, original_name: Optional[str] = None) -> Dict[str, Any]:
+        filename = original_name or filepath.name
+        res = self._init_result(filename, 'xml')
 
         try:
             tree = ET.parse(filepath)
             root = tree.getroot()
 
-            text_content = ' '.join(t.text for t in root.iter() if t.text)
-            result['raw_text'] = text_content[:5000]
+            # Дамп структуры XML для LLM
+            xml_structure = ""
+            for child in list(root)[:20]:
+                xml_structure += f"<{child.tag}> {str(child.text)[:50]}\n"
 
-            llm_result = self._call_llm(text_content, result['filename'])
-            if llm_result:
-                for k in ['title', 'customer', 'developer', 'year', 'document_type', 'content_summary', 'purpose']:
-                    if llm_result.get(k):
-                        result[k] = llm_result[k]
+            res['raw_text'] = xml_structure
+            llm_res = self._call_llm(xml_structure, filename)
+            res.update(llm_res)
 
+            # KB Override
+            kb_fields = self._get_kb_direct_fields(filename)
+            if kb_fields:
+                res.update(kb_fields)
+
+            return res
         except Exception as e:
-            result['error'] = str(e)
-
-        return result
-
+            res['content_summary'] = f"Error: {e}"
+            return res
 
 def generate_md_report(results: List[Dict], output_dir: Path) -> str:
-    """Генерирует MD отчёт с результатами анализа."""
-    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    filename = f"analysis_report_{timestamp}.md"
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"report_v6_{timestamp}.md"
     filepath = output_dir / filename
     
-    md_content = f"""# Отчёт анализа документов v6
-
-**Дата:** {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}  
-**Количество документов:** {len(results)}  
-**Модель:** mistralai/ministral-3-14b-reasoning
-
----
-
-"""
-    
-    for i, result in enumerate(results, 1):
-        md_content += f"""## Документ {i}: {result.get('filename', 'Неизвестно')}
-
-| Поле | Значение |
-|------|----------|
-| **Название** | {result.get('title', 'Не найдено') or 'Не найдено'} |
-| **Заказчик** | {result.get('customer', 'Не найдено') or 'Не найдено'} |
-| **Разработчик** | {result.get('developer', 'Не найдено') or 'Не найдено'} |
-| **Год** | {result.get('year', 'Не найдено') or 'Не найдено'} |
-| **Тип документа** | {result.get('document_type', 'Не найдено') or 'Не найдено'} |
-| **Содержание** | {result.get('content_summary', 'Не найдено') or 'Не найдено'} |
-| **Цель** | {result.get('purpose', 'Не найдено') or 'Не найдено'} |
-
----
-
-"""
-    
-    md_content += f"""## Статистика
-
-- Всего обработано: {len(results)} документов
-- Успешно: {sum(1 for r in results if not r.get('error'))} документов
-- С ошибками: {sum(1 for r in results if r.get('error'))} документов
-
----
-
-*Отчёт сгенерирован автоматически системой v6 CoT Analyzer*
-"""
-    
     with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(md_content)
-    
-    logger.info(f"MD report saved: {filepath}")
+        f.write(f"# Отчёт об анализе документов (Версия V6)\n")
+        f.write(f"Дата: {datetime.now().strftime('%d.%m.%Y %H:%M:%S')}\n\n")
+
+        for i, res in enumerate(results):
+            f.write(f"## {i+1}. {res.get('filename')}\n")
+            if res.get('kb_match'):
+                f.write(f"> **✓ Совпадение с Базой Знаний ({res.get('kb_score')}%):** {res.get('kb_title')}\n\n")
+
+            f.write(f"| Поле | Значение |\n")
+            f.write(f"| :--- | :--- |\n")
+            f.write(f"| **Название** | {res.get('title')} |\n")
+            f.write(f"| **Заказчик** | {res.get('customer')} |\n")
+            f.write(f"| **Разработчик** | {res.get('developer')} |\n")
+            f.write(f"| **Год** | {res.get('year')} |\n")
+            f.write(f"| **Тип** | {res.get('document_type')} |\n")
+            f.write(f"| **Содержание** | {res.get('content_summary')} |\n")
+            f.write(f"| **Цель** | {res.get('purpose')} |\n\n")
+
     return str(filepath)
 
+app = Flask(__name__)
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 
-# Flask веб-сервер
-if __name__ == '__main__':
-    from flask import Flask, request, render_template_string, jsonify
+analyzer = DocumentAnalyzer()
 
-    app = Flask(__name__)
-    app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
-
-    analyzer = DocumentAnalyzer()
-
-    HTML_TEMPLATE = '''
+HTML_TEMPLATE = '''
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -386,225 +348,204 @@ if __name__ == '__main__':
         h1 { text-align: center; margin-bottom: 30px; font-size: 2em; }
         .version-badge { background: #e94560; padding: 5px 15px; border-radius: 20px; font-size: 0.8em; margin-left: 10px; }
         .upload-zone { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 40px; text-align: center; margin-bottom: 30px; backdrop-filter: blur(10px); }
-        .upload-btn { background: linear-gradient(135deg, #e94560 0%, #0f3460 100%); color: white; padding: 15px 40px; border: none; border-radius: 30px; font-size: 18px; cursor: pointer; margin-top: 20px; }
-        .upload-btn:hover { transform: scale(1.05); }
-        .upload-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-        .file-list { margin-top: 20px; text-align: left; padding: 20px; }
-        .file-item { padding: 10px; margin: 5px 0; background: rgba(255,255,255,0.05); border-radius: 10px; }
-        .results-container { margin-top: 30px; }
-        .result-card { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; margin-bottom: 30px; backdrop-filter: blur(10px); }
-        .result-card h3 { margin-bottom: 20px; color: #e94560; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { padding: 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        th { background: rgba(233,69,96,0.3); width: 30%; }
-        .loading { text-align: center; padding: 40px; display: none; }
-        .spinner { border: 5px solid rgba(255,255,255,0.1); border-top: 5px solid #e94560; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 0 auto 20px; }
+        .file-input { display: none; }
+        .upload-btn { background: #e94560; color: white; padding: 15px 40px; border-radius: 30px; cursor: pointer; display: inline-block; transition: 0.3s; font-weight: bold; }
+        .upload-btn:hover { background: #ff4d6d; transform: scale(1.05); }
+        .results { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: rgba(255,255,255,0.05); border-radius: 15px; padding: 20px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; position: relative; }
+        .card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.08); }
+        .card.kb-match { border-left: 5px solid #00d2ff; }
+        .kb-badge { position: absolute; top: 10px; right: 10px; background: #00d2ff; font-size: 0.7em; padding: 2px 8px; border-radius: 10px; color: #000; font-weight: bold; }
+        .card h3 { color: #e94560; margin-bottom: 15px; font-size: 1.1em; word-break: break-all; }
+        .field { margin-bottom: 10px; font-size: 0.9em; }
+        .field-label { color: #888; font-weight: bold; display: block; margin-bottom: 2px; }
+        .field-value { color: #eee; }
+        #loading { display: none; margin-top: 20px; text-align: center; }
+        .spinner { border: 4px solid rgba(255,255,255,0.1); border-left: 4px solid #e94560; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 10px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .progress { margin-top: 20px; font-size: 1.1em; }
-        .success { color: #4CAF50; }
-        .error { color: #f44336; }
-        input[type="file"] { margin: 20px 0; }
-        .stats { background: rgba(76, 175, 80, 0.2); padding: 20px; border-radius: 15px; margin-top: 30px; }
+        .md-btn { background: #4ecca3; margin-top: 20px; padding: 10px 20px; border-radius: 5px; color: #fff; text-decoration: none; display: inline-block; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📄 Анализатор v6 <span class="version-badge">CoT + KB Fallback</span></h1>
+        <h1>📑 Document Analyzer <span class="version-badge">v6 CoT</span></h1>
 
         <div class="upload-zone">
-            <p>Загрузите до 10 документов для анализа (PDF, DOCX, XML)</p>
-            <input type="file" id="fileInput" accept=".pdf,.docx,.doc,.xml" multiple>
-            <button class="upload-btn" onclick="analyzeFiles()">Анализировать все файлы</button>
-            
-            <div class="file-list" id="fileList"></div>
+            <h3>Загрузите до 10 документов</h3>
+            <p style="margin: 15px 0; color: #888;">Поддерживаются PDF, DOCX, XML</p>
+            <label class="upload-btn">
+                <input type="file" class="file-input" multiple accept=".pdf,.docx,.xml" onchange="uploadFiles(this.files)">
+                Выберите файлы
+            </label>
         </div>
 
-        <div class="loading" id="loading">
+        <div id="loading">
             <div class="spinner"></div>
-            <p>Анализ документов... (CoT reasoning)</p>
-            <p class="progress" id="progress"></p>
+            <p>Анализируем документы... (2-4 сек на файл)</p>
         </div>
 
-        <div class="results-container" id="resultsContainer"></div>
+        <div id="resultsContainer" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Результаты анализа</h2>
+                <button onclick="downloadReport()" class="md-btn">💾 Скачать MD Отчёт</button>
+            </div>
+            <div class="results" id="resultsGrid"></div>
+        </div>
     </div>
 
     <script>
-        const fileInput = document.getElementById('fileInput');
-        const fileList = document.getElementById('fileList');
-        
-        fileInput.addEventListener('change', function() {
-            const files = Array.from(this.files);
-            if (files.length > 10) {
-                alert('Максимум 10 файлов за раз');
-                this.value = '';
-                fileList.innerHTML = '';
-                return;
-            }
-            
-            fileList.innerHTML = '<h4>Выбранные файлы (' + files.length + '):</h4>';
-            files.forEach((file, i) => {
-                fileList.innerHTML += '<div class="file-item">' + (i+1) + '. ' + file.name + '</div>';
-            });
-        });
+        let lastResults = [];
 
-        async function analyzeFiles() {
-            const files = Array.from(fileInput.files);
-            if (files.length === 0) {
-                alert('Выберите файлы');
+        async function uploadFiles(files) {
+            if (files.length === 0) return;
+            if (files.length > 10) {
+                alert("Максимум 10 файлов за один раз");
                 return;
             }
 
             const loading = document.getElementById('loading');
-            const resultsContainer = document.getElementById('resultsContainer');
-            const progress = document.getElementById('progress');
+            const container = document.getElementById('resultsContainer');
+            const grid = document.getElementById('resultsGrid');
             
             loading.style.display = 'block';
-            resultsContainer.innerHTML = '';
-            
-            const results = [];
-            
-            for (let i = 0; i < files.length; i++) {
-                progress.textContent = 'Обработка файла ' + (i+1) + ' из ' + files.length + ': ' + files[i].name;
-                
+            container.style.display = 'none';
+            grid.innerHTML = '';
+            lastResults = [];
+
+            for (let file of files) {
                 const formData = new FormData();
-                formData.append('file', files[i]);
-                
+                formData.append('file', file);
+
                 try {
                     const response = await fetch('/analyze', {
                         method: 'POST',
                         body: formData
                     });
-                    
                     const data = await response.json();
-                    results.push(data);
-                    
-                    displayResult(data, i+1);
-                } catch (error) {
-                    results.push({ filename: files[i].name, error: error.message });
-                    displayResult({ filename: files[i].name, error: error.message }, i+1);
+                    lastResults.push(data);
+                    renderCard(data);
+                } catch (e) {
+                    console.error(e);
                 }
             }
-            
+
             loading.style.display = 'none';
-            progress.textContent = '';
-            
-            if (results.length > 1) {
-                generateStats(results);
-            }
-            
-            const mdResponse = await fetch('/generate-md', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ results: results })
-            });
-            
-            const mdData = await mdResponse.json();
-            if (mdData.success) {
-                const mdInfo = document.createElement('div');
-                mdInfo.className = 'stats';
-                mdInfo.innerHTML = '<p><strong>📄 MD отчёт сохранён:</strong> ' + mdData.filepath + '</p>';
-                resultsContainer.appendChild(mdInfo);
-            }
+            container.style.display = 'block';
         }
 
-        function displayResult(data, index) {
-            const container = document.getElementById('resultsContainer');
-            
+        function renderCard(data) {
+            const grid = document.getElementById('resultsGrid');
             const card = document.createElement('div');
-            card.className = 'result-card';
+            card.className = `card ${data.kb_match ? 'kb-match' : ''}`;
             
-            if (data.error) {
-                card.innerHTML = '<h3>Документ ' + index + ': ' + (data.filename || 'Неизвестно') + '</h3>' +
-                    '<p class="error">Ошибка: ' + data.error + '</p>';
-            } else {
-                const fields = ['title', 'customer', 'developer', 'year', 'document_type', 'content_summary', 'purpose'];
-                const labels = ['Название', 'Заказчик', 'Разработчик', 'Год', 'Тип документа', 'Содержание', 'Цель'];
-                
-                let tableHTML = '<table>';
-                fields.forEach((field, i) => {
-                    const value = data[field] || 'Не найдено';
-                    tableHTML += '<tr><th>' + labels[i] + '</th><td>' + value + '</td></tr>';
-                });
-                tableHTML += '</table>';
-                
-                card.innerHTML = '<h3>Документ ' + index + ': ' + data.filename + '</h3>' + tableHTML;
+            if (data.kb_match) {
+                const badge = document.createElement('div');
+                badge.className = 'kb-badge';
+                badge.textContent = `✓ KB ${data.kb_score}%`;
+                card.appendChild(badge);
             }
             
-            container.appendChild(card);
+            const title = document.createElement('h3');
+            title.textContent = data.title || data.filename;
+            card.appendChild(title);
+
+            const fields = [
+                { label: 'Заказчик', value: data.customer },
+                { label: 'Разработчик', value: data.developer },
+                { label: 'Год', value: data.year },
+                { label: 'Тип', value: data.document_type },
+                { label: 'Содержание', value: data.content_summary },
+                { label: 'Цель', value: data.purpose }
+            ];
+
+            fields.forEach(f => {
+                const fieldDiv = document.createElement('div');
+                fieldDiv.className = 'field';
+
+                const labelSpan = document.createElement('span');
+                labelSpan.className = 'field-label';
+                labelSpan.textContent = f.label + ':';
+
+                const valueSpan = document.createElement('span');
+                valueSpan.className = 'field-value';
+                valueSpan.textContent = f.value || '-';
+
+                fieldDiv.appendChild(labelSpan);
+                fieldDiv.appendChild(valueSpan);
+                card.appendChild(fieldDiv);
+            });
+
+            grid.appendChild(card);
         }
 
-        function generateStats(results) {
-            const container = document.getElementById('resultsContainer');
-            
-            const success = results.filter(r => !r.error).length;
-            const errors = results.filter(r => r.error).length;
-            
-            const stats = document.createElement('div');
-            stats.className = 'stats';
-            stats.innerHTML = '<h3>📊 Статистика обработки</h3>' +
-                '<p>Всего файлов: ' + results.length + '</p>' +
-                '<p class="success">Успешно обработано: ' + success + '</p>' +
-                '<p' + (errors > 0 ? ' class="error"' : '') + '>С ошибками: ' + errors + '</p>';
-            
-            container.insertBefore(stats, container.firstChild);
+        async function downloadReport() {
+            const response = await fetch('/generate-md', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({results: lastResults})
+            });
+            const data = await response.json();
+            if (data.success) {
+                alert('Отчёт успешно создан: ' + data.filepath);
+            }
         }
     </script>
 </body>
 </html>
-'''
+    '''
 
-    @app.route('/')
-    def index():
-        return render_template_string(HTML_TEMPLATE)
+@app.route('/')
+def index():
+    return render_template_string(HTML_TEMPLATE)
 
-    @app.route('/analyze', methods=['POST'])
-    def analyze():
-        if 'file' not in request.files:
-            return jsonify({'error': 'No file'}), 400
+@app.route('/analyze', methods=['POST'])
+def analyze():
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
 
-        file = request.files['file']
-        if file.filename == '':
-            return jsonify({'error': 'No filename'}), 400
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
 
-        import tempfile
-        with tempfile.NamedTemporaryFile(delete=False, suffix=Path(file.filename).suffix) as tmp:
-            file.save(tmp.name)
-            tmp_path = Path(tmp.name)
+    filename = secure_filename(file.filename)
+    ext = filename.split('.')[-1].lower()
 
-        try:
-            ext = tmp_path.suffix.lower()
-            if ext == '.pdf':
-                result = analyzer.analyze_pdf(tmp_path, file.filename)
-            elif ext in ['.docx', '.doc']:
-                result = analyzer.analyze_docx(tmp_path, file.filename)
-            elif ext == '.xml':
-                result = analyzer.analyze_xml(tmp_path, file.filename)
-            else:
-                return jsonify({'error': 'Unsupported format'}), 400
+    with tempfile.NamedTemporaryFile(delete=False, suffix=f".{ext}") as tmp:
+        file.save(tmp.name)
+        tmp_path = Path(tmp.name)
 
-            tmp_path.unlink()
-            return jsonify(result)
-        except Exception as e:
-            if tmp_path.exists():
-                tmp_path.unlink()
-            return jsonify({'error': str(e)}), 500
+    try:
+        if ext == 'pdf':
+            res = analyzer.analyze_pdf(tmp_path, file.filename)
+        elif ext == 'docx':
+            res = analyzer.analyze_docx(tmp_path, file.filename)
+        elif ext == 'xml':
+            res = analyzer.analyze_xml(tmp_path, file.filename)
+        else:
+            return jsonify({'error': 'Unsupported format'}), 400
 
-    @app.route('/generate-md', methods=['POST'])
-    def generate_md():
-        try:
-            data = request.get_json()
-            results = data.get('results', [])
-            
-            tests_dir = Path(__file__).parent.parent / "Тесты_md"
-            tests_dir.mkdir(exist_ok=True)
-            
-            filepath = generate_md_report(results, tests_dir)
-            
-            return jsonify({'success': True, 'filepath': filepath})
-        except Exception as e:
-            logger.error(f"MD generation error: {e}")
-            return jsonify({'success': False, 'error': str(e)}), 500
+        return jsonify(res)
+    finally:
+        if tmp_path.exists():
+            os.remove(tmp_path)
 
+@app.route('/generate-md', methods=['POST'])
+def generate_md():
+    try:
+        data = request.get_json()
+        results = data.get('results', [])
+
+        tests_dir = Path(__file__).parent.parent / "Тесты_md"
+        tests_dir.mkdir(exist_ok=True)
+
+        filepath = generate_md_report(results, tests_dir)
+
+        return jsonify({'success': True, 'filepath': filepath})
+    except Exception as e:
+        logger.error(f"MD generation error: {e}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+if __name__ == "__main__":
     print("🚀 Сервер запущен: http://localhost:5006")
     print("📁 MD отчёты сохраняются в: Тесты_md/")
-    app.run(host='0.0.0.0', port=5006, debug=False)
+    app.run(host='127.0.0.1', port=5006, debug=False)

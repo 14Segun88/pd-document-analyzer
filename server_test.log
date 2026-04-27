@@ -1,0 +1,7 @@
+INFO:web_app_v6_cot_fallback:KB loaded: 49 entries from /app/knowledge_base.json
+ * Serving Flask app 'web_app_v6_cot_fallback'
+ * Debug mode: off
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5006
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [27/Apr/2026 05:49:04] "HEAD / HTTP/1.1" 200 -
