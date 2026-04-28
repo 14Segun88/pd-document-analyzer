@@ -9,6 +9,8 @@
 import sys
 from pathlib import Path
 
-# Запускаем версию v6 с CoT Reasoning
-target_file = Path(__file__).parent / 'web_app_v6_cot_fallback.py'
-exec(open(target_file).read())
+# Импортируем и запускаем приложение из web_app_v6_cot_fallback.py
+from v6.web_app_v6_cot_fallback import app
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5006, debug=False)
