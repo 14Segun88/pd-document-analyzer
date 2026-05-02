@@ -50,9 +50,7 @@ flowchart TD
 ![PyMuPDF](https://img.shields.io/badge/PyMuPDF-PDF_Parsing-green?style=flat)
 ![LM Studio](https://img.shields.io/badge/LM_Studio-Local_LLM-purple?style=flat)
 
-### Demo
-🎬 [Видео-демо анализа документов](#)
-
+> **Production deployment:** any OpenAI-compatible endpoint (Groq, OpenAI, NVIDIA NIM). LM Studio used for local development and offline mode.
 ---
 
 ## 🚀 Быстрый старт
