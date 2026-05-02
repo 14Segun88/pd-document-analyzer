@@ -1,4 +1,4 @@
-# Windsurf Vetka — AI Document Analyzer with Chain-of-Thought Reasoning
+# PD Document Analyzer — AI-Powered 8-Field Extraction with CoT Reasoning
 
 > **Problem:** Классификация и извлечение метаданных из PDF проектной документации (строительство) вручную — рутинная работа: определить тип документа, заказчика, исполнителя, год, объект, содержание, цель. На 100 документов уходят дни.
 >
@@ -59,8 +59,8 @@ flowchart TD
 
 ### 1. Клонировать
 ```bash
-git clone git@github.com:14Segun88/Windsurf_Vetka.git
-cd Windsurf_Vetka
+git clone git@github.com:14Segun88/pd-document-analyzer.git
+cd pd-document-analyzer
 ```
 
 ### 2. Установить зависимости
@@ -71,7 +71,6 @@ pip install flask pymupdf python-docx
 ### 3. Запустить LM Studio
 Запустите LM Studio локально с моделью `Mistral 14B Reasoning`.
 Обеспечьте доступность сервера по адресу из `.env` файла.
-Скопируйте пример окружения:
 ```bash
 cp .env.example .env
 ```
@@ -81,3 +80,44 @@ cp .env.example .env
 cd v6 && python web_server_v6.py
 # Сервер на http://localhost:5006
 ```
+
+---
+
+## 📂 Структура проекта
+
+```
+pd-document-analyzer/
+├── README.md
+├── .env.example
+├── .gitignore
+├── v6/                          # Текущая версия (V6)
+│   ├── web_app_v6_cot_fallback.py   # Основной анализатор (CoT + KB fallback)
+│   ├── web_server_v6.py             # Flask-сервер
+│   └── kb/                          # Knowledge Base
+│       ├── knowledge_base.json      # 49 объектов + метаданные
+│       └── remove_kb_duplicates.py  # Утилита дедупликации KB
+├── benchmarks/                  # Бенчмарки и скоринг
+│   ├── benchmark_v6_all_documents.py
+│   ├── run_benchmark_v6.py
+│   ├── run_benchmark_fair.py
+│   ├── semantic_scorer.py
+│   ├── cross_model_scorer.py
+│   └── results/                 # Результаты V5 vs V6
+│       ├── V6_FINAL_REPORT.md
+│       └── v6_benchmark_results.json
+├── scripts/                     # Вспомогательные скрипты
+│   ├── start_v6.sh
+│   └── cleanup.sh
+├── docs/                        # Документация
+│   ├── BLOCK_DIAGRAM_v6.md
+│   ├── README_V6.md
+│   ├── START_INSTRUCTIONS.md
+│   └── ...
+└── archive/                     # Предыдущие версии (V2–V5)
+```
+
+---
+
+## 📜 Лицензия
+
+Проприетарное ПО. Все права защищены.
