@@ -97,8 +97,22 @@ class DocumentAnalyzer:
     """Анализатор v6: CoT промпт + fallback на KB структуру."""
 
     def __init__(self):
-        self.api_url = "http://192.168.47.22:1234/v1/chat/completions"
-        self.model_name = "mistralai/ministral-3-14b-reasoning"
+        try:
+            from dotenv import load_dotenv
+            load_dotenv()
+        except ImportError:
+            pass
+            
+        self.api_url = os.environ.get("NVIDIA_API_URL", "https://integrate.api.nvidia.com/v1/chat/completions")
+        self.api_key = os.environ.get("NVIDIA_API_KEY", "")
+        self.model_name = os.environ.get("NVIDIA_MODEL_NAME", "mistralai/mistral-large-2-instruct") # Example Mistral model on NVIDIA
+        
+        # Backward compatibility / alternative if using LM Studio instead
+        if os.environ.get("LM_STUDIO_URL"):
+            self.api_url = f"{os.environ.get('LM_STUDIO_URL')}/chat/completions"
+            self.api_key = os.environ.get("LM_STUDIO_API_KEY", "lm-studio")
+            self.model_name = os.environ.get("LM_STUDIO_MODEL", "mistral-14b-reasoning")
+
         self.kb_data = []
 
         try:
@@ -264,8 +278,15 @@ class DocumentAnalyzer:
         import requests
 
         try:
+            headers = {
+                "Content-Type": "application/json"
+            }
+            if hasattr(self, 'api_key') and self.api_key:
+                headers["Authorization"] = f"Bearer {self.api_key}"
+                
             response = requests.post(
                 self.api_url,
+                headers=headers,
                 json={
                     "model": self.model_name,
                     "messages": [
