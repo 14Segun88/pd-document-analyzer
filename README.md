@@ -51,6 +51,10 @@ flowchart TD
 ![LM Studio](https://img.shields.io/badge/LM_Studio-Local_LLM-purple?style=flat)
 
 > **Production deployment:** any OpenAI-compatible endpoint (Groq, OpenAI, NVIDIA NIM). LM Studio used for local development and offline mode.
+
+### 📋 Описание проекта
+📄 [Подробное описание проекта (PDF)](https://drive.google.com/file/d/1qvp4fEAjbX9im9-FAn11C73hj489kOIL/view?usp=sharing)
+
 ---
 
 ## 🚀 Быстрый старт
