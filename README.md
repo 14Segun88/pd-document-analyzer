@@ -53,7 +53,7 @@ flowchart TD
 > **Production deployment:** any OpenAI-compatible endpoint (Groq, OpenAI, NVIDIA NIM). LM Studio used for local development and offline mode.
 
 ### 📋 Описание проекта
-📄 [Подробное описание проекта (PDF)](https://drive.google.com/file/d/1qvp4fEAjbX9im9-FAn11C73hj489kOIL/view?usp=sharing)
+📄 [Подробное описание проекта (PDF)](https://drive.google.com/file/d/1YGpM1XyP46CPEgGNF9KhXnWoPx_ltfm3/view?usp=sharing)
 
 ---
 
